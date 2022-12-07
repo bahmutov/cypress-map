@@ -1,0 +1,22 @@
+<head>
+  <style>
+    .price {
+      font-weight: bolder;
+    }
+  </style>
+</head>
+<body>
+  <ul id="items">
+    <li>apples <span class="price">$1.99</span></li>
+  </ul>
+  <script>
+    const list = document.getElementById('items')
+    setTimeout(() => {
+      list.innerHTML = `
+        <li>apples <span class="price">$1.99</span></li>
+        <li>bananas <span class="price">$2.99</span></li>
+        <li>pears <span class="price">$3.99</span></li>
+      `
+    }, 1000)
+  </script>
+</body>

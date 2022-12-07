@@ -1,10 +1,10 @@
 {
   "name": "cypress-map",
   "version": "1.0.0",
-  "description": "",
+  "description": "Cypress v12 Querying Commands Introduction",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run"
   },
   "keywords": [
     "cypress-plugin"

@@ -1,6 +1,6 @@
 {
   "name": "cypress-map",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Cypress v12 Querying Commands Introduction",
   "main": "commands/index.js",
   "types": "commands/index.d.ts",
@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "test": "cypress run",
-    "badges": "npx -p dependency-version-badge update-badge cypress"
+    "badges": "npx -p dependency-version-badge update-badge cypress",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "cypress-plugin"
@@ -18,6 +19,11 @@
   "license": "MIT",
   "devDependencies": {
     "cypress": "^12.0.1",
-    "prettier": "^2.8.0"
+    "prettier": "^2.8.0",
+    "semantic-release": "^19.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahmutov/cypress-map.git"
   }
 }

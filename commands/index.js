@@ -3,3 +3,4 @@
 import './map'
 import './map-invoke'
 import './tap'
+import './reduce'

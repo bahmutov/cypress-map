@@ -25,6 +25,7 @@ Alternative: import only the query commands you need:
 ```js
 import 'cypress-map/commands/map'
 import 'cypress-map/commands/tap'
+// and so on, see the /commands folder
 ```
 
 ## API
@@ -46,6 +47,20 @@ cy.get('#items li')
   .mapInvoke('replace', '$', '')
   .mapInvoke('trim')
 ```
+
+### reduce
+
+```js
+cy.get('#items li')
+  .find('.price')
+  .map('innerText')
+  .mapInvoke('replace', '$', '')
+  .map(parseFloat)
+  .reduce((max, n) => (n > max ? n : max))
+// yields the highest price
+```
+
+See [reduce.cy.js](./cypress/e2e/reduce.cy.js)
 
 ### tap
 

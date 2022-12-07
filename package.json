@@ -8,7 +8,8 @@
     "commands"
   ],
   "scripts": {
-    "test": "cypress run"
+    "test": "cypress run",
+    "badges": "npx -p dependency-version-badge update-badge cypress"
   },
   "keywords": [
     "cypress-plugin"

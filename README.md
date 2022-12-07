@@ -1,4 +1,4 @@
-# cypress-map
+# cypress-map ![cypress version](https://img.shields.io/badge/cypress-12.0.1-brightgreen)
 
 > Cypress map query command for v12+
 

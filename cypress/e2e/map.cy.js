@@ -20,3 +20,18 @@ it('confirms the list', () => {
     .map('innerText')
     .should('deep.equal', ['first', 'third', 'fourth'])
 })
+
+it('confirms the last element text', () => {
+  cy.visit('cypress/index.html')
+  // cy.last is a query command
+  cy.get('.matching').last().map('innerText').should('deep.equal', ['fourth'])
+})
+
+it('confirms the last two elements text', () => {
+  cy.visit('cypress/index.html')
+  cy.get('.matching')
+    .map('innerText')
+    // cy.invoke is a query command
+    .invoke('slice', -2)
+    .should('deep.equal', ['third', 'fourth'])
+})

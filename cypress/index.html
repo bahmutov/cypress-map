@@ -1,0 +1,26 @@
+<head>
+  <style>
+    .matching {
+      font-weight: bolder;
+    }
+  </style>
+</head>
+<body>
+  <ul id="items">
+    <li class="matching">first</li>
+    <li>second</li>
+    <li class="matching">third</li>
+  </ul>
+  <script>
+    const list = document.getElementById('items')
+    setTimeout(() => {
+      list.innerHTML = `
+        <li class="matching">first</li>
+        <li>second</li>
+        <li class="matching">third</li>
+        <li class="matching">fourth</li>
+        <li>fifth</li>
+      `
+    }, 1000)
+  </script>
+</body>

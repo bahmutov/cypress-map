@@ -4,6 +4,68 @@
 
 📺 Watch the video [Cypress v12 Querying Commands Introduction](https://youtu.be/4HpEECek2OE)
 
+## Install
+
+Add this package as a dev dependency
+
+```
+$ npm i -D cypress-map
+# or using Yarn
+$ yarn add -D cypress-map
+```
+
+Include this package in your spec or support file to use all custom query commands
+
+```js
+import 'cypress-map'
+```
+
+Alternative: import only the query commands you need:
+
+```js
+import 'cypress-map/commands/map'
+import 'cypress-map/commands/tap'
+```
+
+## API
+
+### map
+
+```js
+cy.get('.matching')
+  .map('innerText')
+  .should('deep.equal', ['first', 'third', 'fourth'])
+```
+
+### mapInvoke
+
+```js
+cy.get('#items li')
+  .find('.price')
+  .map('innerText')
+  .mapInvoke('replace', '$', '')
+  .mapInvoke('trim')
+```
+
+### tap
+
+```js
+cy.get('#items li')
+  .find('.price')
+  .map('innerText')
+  .tap() // console.log by default
+  .mapInvoke('replace', '$', '')
+  .mapInvoke('trim')
+  // console.info with extra label
+  .tap(console.info, 'trimmed strings')
+```
+
+**Notice:** if the label is provided, the callback function is called with label and the subject.
+
+## See also
+
+- [cypress-should-really](https://github.com/bahmutov/cypress-should-really) has similar functional helpers for constructing the `should(callback)` function on the fly.
+
 ## Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2022

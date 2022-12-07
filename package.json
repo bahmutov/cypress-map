@@ -2,7 +2,11 @@
   "name": "cypress-map",
   "version": "1.0.0",
   "description": "Cypress v12 Querying Commands Introduction",
-  "main": "index.js",
+  "main": "commands/index.js",
+  "types": "commands/index.d.ts",
+  "files": [
+    "commands"
+  ],
   "scripts": {
     "test": "cypress run"
   },

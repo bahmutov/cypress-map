@@ -1,7 +1,7 @@
 {
   "name": "cypress-map",
   "version": "0.0.0-development",
-  "description": "Cypress v12 Querying Commands Introduction",
+  "description": "Extra Cypress query commands for v12+",
   "main": "commands/index.js",
   "types": "commands/index.d.ts",
   "files": [

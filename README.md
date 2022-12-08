@@ -1,8 +1,10 @@
 # cypress-map [![ci](https://github.com/bahmutov/cypress-map/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bahmutov/cypress-map/actions/workflows/ci.yml) ![cypress version](https://img.shields.io/badge/cypress-12.0.1-brightgreen)
 
-> Cypress map query command for v12+
+> Extra Cypress query commands for v12+
 
 📺 Watch the video [Cypress v12 Querying Commands Introduction](https://youtu.be/4HpEECek2OE)
+
+🎓 Covered in my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)
 
 ## Install
 

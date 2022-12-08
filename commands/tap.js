@@ -1,6 +1,13 @@
 /// <reference types="cypress" />
 
 Cypress.Commands.addQuery('tap', (fn = console.log, label = undefined) => {
+  if (typeof fn === 'string') {
+    // the user passed the label only, like
+    // cy.tap('numbers')
+    label = fn
+    fn = console.log
+  }
+
   const logName = 'tap ' + (label ? label : fn.name)
   const log = Cypress.log({ name: logName })
 

@@ -31,6 +31,16 @@ declare namespace Cypress {
     tap(fn?: Function, label?: string): Chainable<any>
 
     /**
+     * A query command that can log the data without changing it. Useful
+     * for debugging longer command chains.
+     * @param label Extra label to log to the Command Log
+     * @see https://github.com/bahmutov/cypress-map
+     * @example
+     *  cy.get('#items li').map('innerText').tap('text')
+     */
+    tap(label: string): Chainable<any>
+
+    /**
      * A query command that reduces the list to a single element based on the predicate.
      * @see https://github.com/bahmutov/cypress-map
      * @example

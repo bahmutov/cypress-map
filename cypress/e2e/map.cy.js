@@ -35,3 +35,7 @@ it('confirms the last two elements text', () => {
     .invoke('slice', -2)
     .should('deep.equal', ['third', 'fourth'])
 })
+
+it('makes the callback unary', () => {
+  cy.wrap(['1', '2', '3', '4']).map(parseInt).should('deep.equal', [1, 2, 3, 4])
+})

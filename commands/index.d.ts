@@ -43,9 +43,11 @@ declare namespace Cypress {
     /**
      * A query command that reduces the list to a single element based on the predicate.
      * @see https://github.com/bahmutov/cypress-map
+     * @param fn Callback function that takes the current accumulator and item
+     * @param initialValue Optional starting value
      * @example
      *  cy.get('#items li').map('innerText')
      */
-    reduce(fn: Function): Chainable<any>
+    reduce(fn: Function, initialValue?: any): Chainable<any>
   }
 }

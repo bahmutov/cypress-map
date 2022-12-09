@@ -29,3 +29,9 @@ it('work with wrapped array with async added items', () => {
     list.push(10)
   }, 1000)
 })
+
+it('uses the initial value', () => {
+  cy.wrap([1, 2, 3])
+    .reduce((sum, n) => sum + n, 10)
+    .should('equal', 16)
+})

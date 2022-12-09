@@ -62,6 +62,14 @@ cy.get('#items li')
 // yields the highest price
 ```
 
+You can provide the initial accumulator value
+
+```js
+cy.wrap([1, 2, 3])
+  .reduce((sum, n) => sum + n, 10)
+  .should('equal', 16)
+```
+
 See [reduce.cy.js](./cypress/e2e/reduce.cy.js)
 
 ### tap

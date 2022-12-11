@@ -87,6 +87,36 @@ cy.get('#items li')
 
 **Notice:** if the label is provided, the callback function is called with label and the subject.
 
+## cy.invoke vs cy.map vs cy.mapInvoke
+
+Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)
+
+```js
+const list = ['apples', 'plums', 'bananas']
+
+// cy.invoke
+cy.wrap(list)
+  // calls ".sort()" on the list
+  .invoke('sort')
+  .should('deep.equal', ['apples', 'bananas', 'plums'])
+
+// cy.mapInvoke
+cy.wrap(list)
+  // calls ".toUpperCase()" on every string in the list
+  .mapInvoke('toUpperCase')
+  .should('deep.equal', ['APPLES', 'PLUMS', 'BANANAS'])
+
+// cy.map
+const reverse = (s) => s.split('').reverse().join('')
+cy.wrap(list)
+  // reverses each string in the list
+  .map(reverse)
+  .should('deep.equal', ['selppa', 'smulp', 'sananab'])
+  // reverses each string in the list
+  .map('length')
+  .should('deep.equal', [6, 5, 7])
+```
+
 ## See also
 
 - [cypress-should-really](https://github.com/bahmutov/cypress-should-really) has similar functional helpers for constructing the `should(callback)` function on the fly.

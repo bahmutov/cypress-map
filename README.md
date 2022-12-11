@@ -112,7 +112,7 @@ cy.wrap(list)
   // reverses each string in the list
   .map(reverse)
   .should('deep.equal', ['selppa', 'smulp', 'sananab'])
-  // reverses each string in the list
+  // grabs the "length" property from each string
   .map('length')
   .should('deep.equal', [6, 5, 7])
 ```

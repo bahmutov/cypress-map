@@ -8,8 +8,8 @@ Cypress.Commands.addQuery('tap', (fn = console.log, label = undefined) => {
     fn = console.log
   }
 
-  const logName = 'tap ' + (label ? label : fn.name)
-  const log = Cypress.log({ name: logName })
+  const logName = label ? label : fn.name
+  const log = Cypress.log({ name: 'tap', message: logName })
 
   return (subject) => {
     log.set({

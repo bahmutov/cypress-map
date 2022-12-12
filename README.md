@@ -32,6 +32,13 @@ import 'cypress-map/commands/tap'
 
 ## API
 
+### apply
+
+```js
+const double = (n) => n * 2
+cy.wrap(100).apply(double).should('equal', 200)
+```
+
 ### map
 
 ```js

@@ -49,5 +49,14 @@ declare namespace Cypress {
      *  cy.get('#items li').map('innerText')
      */
     reduce(fn: Function, initialValue?: any): Chainable<any>
+
+    /**
+     * A query command that applies the given callback to the subject.
+     * @see https://github.com/bahmutov/cypress-map
+     * @param fn Callback function to call
+     * @example
+     *  cy.wrap(2).apply(double).should('equal', 4)
+     */
+    apply(fn: Function): Chainable<any>
   }
 }

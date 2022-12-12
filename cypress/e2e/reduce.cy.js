@@ -31,7 +31,6 @@ it('work with wrapped array with async added items', () => {
 })
 
 it('uses the initial value', () => {
-  cy.wrap([1, 2, 3])
-    .reduce((sum, n) => sum + n, 10)
-    .should('equal', 16)
+  const sum = (sum, n) => sum + n
+  cy.wrap([1, 2, 3]).reduce(sum, 10).should('equal', 16)
 })

@@ -77,5 +77,17 @@ declare namespace Cypress {
      *  cy.get('#items li.matching').last().prop('ariaLabel')
      */
     prop(name: string): Chainable<any>
+
+    /**
+     * Returns an object or DOM element from the collection at index K.
+     * Returns elements from the end of the collection for negative K.
+     * @see https://github.com/bahmutov/cypress-map
+     * @param index The index of the element
+     * @example
+     *  cy.get('li').eq(0) // the first DOM element
+     * @example
+     *  cy.wrap([...]).eq(-1) // the last item in the array
+     */
+    at(index: number): Chainable<any>
   }
 }

@@ -116,6 +116,16 @@ cy.get('#items li.matching').last().prop('ariaLabel').should('equal', 'four')
 
 See [prop.cy.js](./cypress/e2e/prop.cy.js)
 
+### at
+
+Returns a DOM element from jQuery object at position `k`. Returns an item from array at position `k`. For negative index, counts the items from the end.
+
+```js
+cy.get('#items li').at(-1).its('innerText').should('equal', 'fifth')
+```
+
+See [at.cy.js](./cypress/e2e/at.cy.js)
+
 ## cy.invoke vs cy.map vs cy.mapInvoke
 
 Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)

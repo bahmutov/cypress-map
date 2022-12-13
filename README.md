@@ -94,6 +94,18 @@ cy.get('#items li')
 
 **Notice:** if the label is provided, the callback function is called with label and the subject.
 
+### primo
+
+```js
+cy.get('.matching')
+  .map('innerText')
+  .primo()
+  .invoke('toUpperCase')
+  .should('equal', 'FIRST')
+```
+
+See [primo.cy.js](./cypress/e2e/primo.cy.js)
+
 ## cy.invoke vs cy.map vs cy.mapInvoke
 
 Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)

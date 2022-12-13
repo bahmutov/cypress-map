@@ -58,5 +58,15 @@ declare namespace Cypress {
      *  cy.wrap(2).apply(double).should('equal', 4)
      */
     apply(fn: Function): Chainable<any>
+
+    /**
+     * A query command that returns the first element / item from the subject.
+     * @see https://github.com/bahmutov/cypress-map
+     * @example
+     *  cy.get('...').primo()
+     * @example
+     *  cy.wrap([1, 2, 3]).primo().should('equal', 1)
+     */
+    primo(): Chainable<any>
   }
 }

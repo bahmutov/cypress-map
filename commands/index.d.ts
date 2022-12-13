@@ -68,5 +68,14 @@ declare namespace Cypress {
      *  cy.wrap([1, 2, 3]).primo().should('equal', 1)
      */
     primo(): Chainable<any>
+
+    /**
+     * Returns the property of the object or DOM element, skipping through jQuery abstraction.
+     * @see https://github.com/bahmutov/cypress-map
+     * @param name The property name to yield
+     * @example
+     *  cy.get('#items li.matching').last().prop('ariaLabel')
+     */
+    prop(name: string): Chainable<any>
   }
 }

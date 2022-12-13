@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 Cypress.Commands.addQuery('primo', () => {
   const log = Cypress.log({ name: 'primo' })
 

@@ -1,0 +1,12 @@
+/// <reference types="cypress" />
+
+Cypress.Commands.addQuery('prop', (propertyName) => {
+  const log = Cypress.log({ name: 'prop', message: propertyName })
+
+  return (subject) => {
+    if (Cypress.dom.isJquery(subject)) {
+      return subject.prop(propertyName)
+    }
+    return subject[propertyName]
+  }
+})

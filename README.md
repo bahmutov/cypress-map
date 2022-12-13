@@ -106,6 +106,16 @@ cy.get('.matching')
 
 See [primo.cy.js](./cypress/e2e/primo.cy.js)
 
+### prop
+
+Works like `cy.its` for objects, but gets the property for jQuery objects, which `cy.its` does not
+
+```js
+cy.get('#items li.matching').last().prop('ariaLabel').should('equal', 'four')
+```
+
+See [prop.cy.js](./cypress/e2e/prop.cy.js)
+
 ## cy.invoke vs cy.map vs cy.mapInvoke
 
 Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)

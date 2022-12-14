@@ -1,6 +1,8 @@
 // confirm the first LI element has text
 // that is either 'first' or 'primo'
 
+// 📺 video "Check If Element Text Is One Of Possible Strings"
+// https://youtu.be/KSlJYjIn_AM
 it('checks the text is one of the variants: single should callback', () => {
   cy.visit('cypress/index.html')
   cy.get('#items li').should(($li) => {

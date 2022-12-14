@@ -2,9 +2,10 @@
 
 > Extra Cypress query commands for v12+
 
-📺 Watch the video [Cypress v12 Querying Commands Introduction](https://youtu.be/4HpEECek2OE)
-
-🎓 Covered in my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)
+- 📺 Watch the video [Cypress v12 Querying Commands Introduction](https://youtu.be/4HpEECek2OE)
+- 📝 Read the blog post [Cypress V12 Is A Big Deal
+  ](https://glebbahmutov.com/blog/cypress-v12/)
+- 🎓 Covered in my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)
 
 ## Install
 

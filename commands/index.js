@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+import './version-check'
 import './map'
 import './map-invoke'
 import './tap'

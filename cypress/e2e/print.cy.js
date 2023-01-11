@@ -59,4 +59,15 @@ describe('{} notation', () => {
       .its('name.first')
       .should('equal', 'Joe')
   })
+
+  it('prints the length of an array', () => {
+    const arr = [1, 2, 3]
+    cy.wrap(arr)
+      .print('array length {0.length}')
+      .its('length')
+      .should('equal', 4)
+    setTimeout(() => {
+      arr.push(4)
+    }, 1000)
+  })
 })

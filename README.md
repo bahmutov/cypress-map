@@ -110,6 +110,8 @@ cy.wrap({ name: 'Joe' }).print('person %o') // 'person {"name":"Joe"}'
 // use {0} with dot notation, supported deep properties
 // https://github.com/davidchambers/string-format
 cy.wrap({ name: 'Joe' }).print('person name {0.name}') // "person name Joe"
+// print the length of an array
+cy.wrap(arr).print('array length {0.length}') // "array length ..."
 ```
 
 See [print.cy.js](./cypress/e2e/print.cy.js) for more examples

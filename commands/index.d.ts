@@ -107,6 +107,8 @@ declare namespace Cypress {
      *  cy.wrap({ name: 'Joe' }).print('person {0}')
      * @example
      *  cy.wrap({ name: { first: 'Joe' } }).print('Hello, {0.name.first}')
+     * @example
+     *  cy.wrap(arr).print('array length {0.length}')
      */
     print(format?: string): Chainable<any>
   }

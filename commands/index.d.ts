@@ -89,5 +89,25 @@ declare namespace Cypress {
      *  cy.wrap([...]).eq(-1) // the last item in the array
      */
     at(index: number): Chainable<any>
+
+    /**
+     * Prints the current subject and yields it to the next command or assertion.
+     * @see https://github.com/bahmutov/cypress-map
+     * @see https://github.com/davidchambers/string-format
+     * @param format Optional format string, supports "%" and "{}" notation
+     * @example
+     *  cy.wrap(42)
+     *    .print('the answer is %d')
+     *    .should('equal', 42)
+     * @example
+     *  cy.wrap({ name: 'Joe' }).print('person %o')
+     * @example
+     *  cy.wrap({ name: 'Joe' }).print('person {}')
+     * @example
+     *  cy.wrap({ name: 'Joe' }).print('person {0}')
+     * @example
+     *  cy.wrap({ name: { first: 'Joe' } }).print('Hello, {0.name.first}')
+     */
+    print(format?: string): Chainable<any>
   }
 }

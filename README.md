@@ -95,6 +95,25 @@ cy.get('#items li')
 
 **Notice:** if the label is provided, the callback function is called with label and the subject.
 
+### print
+
+A better `cy.log`: yields the value, intelligently stringifies values using `%` and [string-format](https://github.com/davidchambers/string-format) notation.
+
+```js
+cy.wrap(42)
+  .print() // "42"
+  // and yields the value
+  .should('equal', 42)
+// pass formatting string
+cy.wrap(42).print('the answer is %d') // "the answer is 42"
+cy.wrap({ name: 'Joe' }).print('person %o') // 'person {"name":"Joe"}'
+// use {0} with dot notation, supported deep properties
+// https://github.com/davidchambers/string-format
+cy.wrap({ name: 'Joe' }).print('person name {0.name}') // "person name Joe"
+```
+
+See [print.cy.js](./cypress/e2e/print.cy.js) for more examples
+
 ### primo
 
 ```js

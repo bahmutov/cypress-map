@@ -20,7 +20,7 @@
   "devDependencies": {
     "cypress": "^12.3.0",
     "prettier": "^2.8.0",
-    "semantic-release": "^19.0.5"
+    "semantic-release": "^20.0.0"
   },
   "peerDependencies": {
     "cypress": ">=12"

@@ -71,7 +71,11 @@ describe.skip('cy.log', () => {
 
   it('retries (NOT)', () => {
     const person = {}
-    cy.wrap(person).log().its('name').should('equal', 'Ann')
+    cy.wrap(person)
+      // @ts-ignore
+      .log()
+      .its('name')
+      .should('equal', 'Ann')
     setTimeout(() => {
       person.name = 'Ann'
     }, 1000)

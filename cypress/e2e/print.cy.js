@@ -71,3 +71,16 @@ describe('{} notation', () => {
     }, 1000)
   })
 })
+
+describe('format callback', () => {
+  it('passes the subject and prints the result', () => {
+    const person = { name: 'Joe' }
+    cy.wrap(person)
+      .print((p) => `name is ${p.name}`)
+      .its('name')
+      .should('equal', 'Ann')
+    setTimeout(() => {
+      person.name = 'Ann'
+    }, 1000)
+  })
+})

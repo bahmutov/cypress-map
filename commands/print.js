@@ -26,7 +26,10 @@ Cypress.Commands.addQuery('print', (formatPattern) => {
     }
   } else if (typeof formatPattern === 'function') {
     return (subject) => {
-      const formatted = formatPattern(subject)
+      let formatted = formatPattern(subject)
+      if (typeof formatted !== 'string') {
+        formatted = JSON.stringify(formatted)
+      }
       log.set('message', formatted)
       return subject
     }

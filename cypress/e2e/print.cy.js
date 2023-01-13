@@ -83,4 +83,9 @@ describe('format callback', () => {
       person.name = 'Ann'
     }, 1000)
   })
+
+  it('can return an object to be stringified', () => {
+    cy.wrap([1, 2, 3]).print((list) => list[1]) // "2"
+    cy.wrap({ name: 'Me' }).print((x) => x) // {"name":"Me"}
+  })
 })

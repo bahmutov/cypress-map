@@ -114,6 +114,8 @@ cy.wrap({ name: 'Joe' }).print('person name {0.name}') // "person name Joe"
 cy.wrap(arr).print('array length {0.length}') // "array length ..."
 // pass your own function to return formatted string
 cy.wrap(arr).print((a) => `array with ${a.length} items`)
+// if you return a non-string, it will attempt to JSON.stringify it
+cy.wrap(arr).print((list) => list[2]) // JSON.stringify(arr[2])
 ```
 
 See [print.cy.js](./cypress/e2e/print.cy.js) for more examples

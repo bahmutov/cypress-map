@@ -44,6 +44,21 @@ describe('cy.print', () => {
       .should('be.an', 'array')
   })
 
+  it('prints using custom format callback', () => {
+    cy.intercept('/users', {
+      body: [
+        { name: 'Joe', age: 1, role: 'student' },
+        { name: 'Ann', age: 2, role: 'student' },
+        { name: 'Mary', age: 3, role: 'student' },
+      ],
+    }).as('users')
+    cy.visit('cypress/log-examples.html')
+    cy.wait('@users')
+      .its('response.body')
+      .print((list) => `first names only ${list.map((l) => l.name).join(',')}`)
+      .should('be.an', 'array')
+  })
+
   it('retries', () => {
     const person = {
       name: 'Joe',

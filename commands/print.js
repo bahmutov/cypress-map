@@ -18,13 +18,22 @@ function formatTitle(pattern, x) {
 Cypress.Commands.addQuery('print', (formatPattern) => {
   const log = Cypress.log({ name: 'print', message: '' })
 
-  return (subject) => {
-    if (typeof formatPattern === 'string') {
+  if (typeof formatPattern === 'string') {
+    return (subject) => {
       const formatted = formatTitle(formatPattern, subject)
       log.set('message', formatted)
-    } else {
-      log.set('message', JSON.stringify(subject))
+      return subject
     }
-    return subject
+  } else if (typeof formatPattern === 'function') {
+    return (subject) => {
+      const formatted = formatPattern(subject)
+      log.set('message', formatted)
+      return subject
+    }
+  } else {
+    return (subject) => {
+      log.set('message', JSON.stringify(subject))
+      return subject
+    }
   }
 })

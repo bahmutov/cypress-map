@@ -110,6 +110,6 @@ declare namespace Cypress {
      * @example
      *  cy.wrap(arr).print('array length {0.length}')
      */
-    print(format?: string): Chainable<any>
+    print(format?: string | function): Chainable<any>
   }
 }

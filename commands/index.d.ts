@@ -111,5 +111,14 @@ declare namespace Cypress {
      *  cy.wrap(arr).print('array length {0.length}')
      */
     print(format?: string | function): Chainable<any>
+
+    /**
+     * Collects all cells from the table subject into a 2D array of strings.
+     * You can slice the array into a smaller region, like a single row, column,
+     * or a 2D region.
+     * @example cy.get('table').table()
+     * @example cy.get('table').table(0, 0, 2, 2)
+     */
+    table(x?: number, y?: number, w?: number, h?: number): Chainable<string[][]>
   }
 }

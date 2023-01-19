@@ -152,6 +152,40 @@ cy.get('#items li').at(-1).its('innerText').should('equal', 'fifth')
 
 See [at.cy.js](./cypress/e2e/at.cy.js)
 
+### table
+
+Extracts all cells from the current subject table. Yields a 2D array of strings.
+
+```js
+cy.get('table').table()
+```
+
+You can slice the table to yield just a region `.table(x, y, w, h)`
+
+![Table](./images/table.png)
+
+For example, you can get 2 by 2 subregion
+
+```js
+cy.get('table')
+  .table(0, 2, 2, 2)
+  .should('deep.equal', [
+    ['Cary', '30'],
+    ['Joe', '28'],
+  ])
+```
+
+See the spec [table.cy.js](./cypress/e2e/table.cy.js) for more examples.
+
+**Tip:** to get just the headings row, combine `.table` and `.its` queries
+
+```js
+cy.get('table')
+  .table(0, 0, 3, 1)
+  .its(0)
+  .should('deep.equal', ['Name', 'Age', 'Date (YYYY-MM-DD)'])
+```
+
 ## cy.invoke vs cy.map vs cy.mapInvoke
 
 Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)

@@ -199,6 +199,22 @@ cy.get('table')
   .should('deep.equal', ['Name', 'Age', 'Date (YYYY-MM-DD)'])
 ```
 
+To get the last row, you could do:
+
+```js
+cy.get('table').table().invoke('slice', -1).its(0)
+```
+
+To get the first column joined into a single array (instead of array of 1x1 arrays)
+
+```js
+cy.get('table')
+  .table(0, 1, 1) // skip the heading "Name" cell
+  // combine 1x1 arrays into one array
+  .invoke('flatMap', Cypress._.identity)
+  .should('deep.equal', ['Dave', 'Cary', 'Joe', 'Anna'])
+```
+
 ## cy.invoke vs cy.map vs cy.mapInvoke
 
 Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)

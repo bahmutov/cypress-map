@@ -60,6 +60,15 @@ describe('table', { viewportWidth: 300, viewportHeight: 200 }, () => {
       .should('deep.equal', [['Name'], ['Dave'], ['Cary'], ['Joe'], ['Anna']])
   })
 
+  it('joins the first column into one array', () => {
+    cy.get('table')
+      .table(0, 1, 1) // skip the heading "Name" cell
+      // combine 1x1 arrays into one array
+      .invoke('flatMap', Cypress._.identity)
+      .print()
+      .should('deep.equal', ['Dave', 'Cary', 'Joe', 'Anna'])
+  })
+
   it('gets a region of the table', () => {
     cy.get('table')
       .table(0, 2, 2, 2)
@@ -80,5 +89,14 @@ describe('table', { viewportWidth: 300, viewportHeight: 200 }, () => {
         ['Cary', '30'],
         ['Joe', '28'],
       ])
+  })
+
+  it('checks the last row', () => {
+    cy.get('table')
+      .table()
+      .invoke('slice', -1)
+      .its(0)
+      .print()
+      .should('deep.equal', ['Anna', '22', '2027-03-26'])
   })
 })

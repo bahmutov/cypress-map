@@ -177,7 +177,20 @@ cy.get('table')
 
 See the spec [table.cy.js](./cypress/e2e/table.cy.js) for more examples.
 
-**Tip:** to get just the headings row, combine `.table` and `.its` queries
+**Tip:** you can combine `cy.table` with `cy.map`, `cy.mapInvoke` to get the parts of the table. For example, the same 2x2 part of the table could be extracted with:
+
+```js
+cy.get('table')
+  .table()
+  .invoke('slice', 2, 4)
+  .mapInvoke('slice', 0, 2)
+  .should('deep.equal', [
+    ['Cary', '30'],
+    ['Joe', '28'],
+  ])
+```
+
+**Tip 2:** to get just the headings row, combine `.table` and `.its` queries
 
 ```js
 cy.get('table')

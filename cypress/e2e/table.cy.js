@@ -69,4 +69,16 @@ describe('table', { viewportWidth: 300, viewportHeight: 200 }, () => {
         ['Joe', '28'],
       ])
   })
+
+  it('gets a region of the table using slice', () => {
+    cy.get('table')
+      .table()
+      .invoke('slice', 2, 4)
+      .mapInvoke('slice', 0, 2)
+      .print()
+      .should('deep.equal', [
+        ['Cary', '30'],
+        ['Joe', '28'],
+      ])
+  })
 })

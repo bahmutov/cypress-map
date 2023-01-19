@@ -7,6 +7,7 @@ import '../../commands'
 describe('table', { viewportWidth: 400, viewportHeight: 400 }, () => {
   it('checks the column of cells', () => {
     cy.visit('cypress/table.html')
+    cy.contains('table#people thead td:nth-child(2)', 'Age')
     cy.get('table#people tbody td:nth-child(2)')
       .should('have.length', 4)
       .map('innerText')

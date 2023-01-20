@@ -215,6 +215,20 @@ cy.get('table')
   .should('deep.equal', ['Dave', 'Cary', 'Joe', 'Anna'])
 ```
 
+### invokeOnce
+
+In Cypress v12 `cy.invoke` became a query, which made working with asynchronous methods really unwieldy. The `cy.invokeOnce` is a return the old way of calling the method and yielding the resolved value.
+
+```js
+cy.wrap(app)
+  // app.fetchName is an asynchronous method
+  // that returns a Promise
+  .invokeOnce('fetchName')
+  .should('equal', 'My App')
+```
+
+See the spec [invoke-once.cy.js](./cypress/e2e/invoke-once.cy.js) for more examples.
+
 ## cy.invoke vs cy.map vs cy.mapInvoke
 
 Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)

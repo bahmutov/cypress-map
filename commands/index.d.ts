@@ -120,5 +120,11 @@ declare namespace Cypress {
      * @example cy.get('table').table(0, 0, 2, 2)
      */
     table(x?: number, y?: number, w?: number, h?: number): Chainable<string[][]>
+
+    /**
+     * Invokes the method on the current subject.
+     * This is a COMMAND, not a query, so it won't retry, unlike the stock `cy.invoke`
+     */
+    invokeOnce(methodName: string, ...args: unknown[]): Chainable<any>
   }
 }

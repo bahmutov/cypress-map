@@ -30,6 +30,17 @@ describe('table', { viewportWidth: 300, viewportHeight: 200 }, () => {
       ])
   })
 
+  it('gets the table body', () => {
+    cy.get('table tbody')
+      .table()
+      .should('deep.equal', [
+        ['Dave', '20', '2023-12-23'],
+        ['Cary', '30', '2024-01-24'],
+        ['Joe', '28', '2022-02-25'],
+        ['Anna', '22', '2027-03-26'],
+      ])
+  })
+
   it('gets the headings', () => {
     cy.get('table')
       .table(0, 0, 3, 1)
@@ -41,6 +52,15 @@ describe('table', { viewportWidth: 300, viewportHeight: 200 }, () => {
   it('gets the headings row', () => {
     cy.get('table')
       .table(0, 0)
+      .its(0)
+      .print()
+      .should('deep.equal', ['Name', 'Age', 'Date (YYYY-MM-DD)'])
+  })
+
+  it('gets the headings row from thead', () => {
+    cy.get('table thead')
+      .table(0, 0)
+      .should('have.length', 1)
       .its(0)
       .print()
       .should('deep.equal', ['Name', 'Age', 'Date (YYYY-MM-DD)'])

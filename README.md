@@ -3,8 +3,7 @@
 > Extra Cypress query commands for v12+
 
 - 📺 Watch the videos [Cypress v12 Querying Commands Introduction](https://youtu.be/4HpEECek2OE) and [Confirm Table Column](https://youtu.be/UOLQlNmuhY0)
-- 📝 Read the blog post [Cypress V12 Is A Big Deal
-  ](https://glebbahmutov.com/blog/cypress-v12/)
+- 📝 Read the blog post [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
 - 🎓 Covered in my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)
 
 ## Install
@@ -153,6 +152,8 @@ cy.get('#items li').at(-1).its('innerText').should('equal', 'fifth')
 See [at.cy.js](./cypress/e2e/at.cy.js)
 
 ### table
+
+📝 to learn more about `cy.table` command, read the blog post [Test HTML Tables Using cy.table Query Command](https://glebbahmutov.com/blog/cy-table/).
 
 Extracts all cells from the current subject table. Yields a 2D array of strings.
 

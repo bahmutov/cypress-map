@@ -260,6 +260,24 @@ cy.wrap(list)
   .should('deep.equal', [6, 5, 7])
 ```
 
+## Types
+
+This package includes TypeScript command definitions for its custom commands in the file [commands/index.d.ts](./commands/index.d.ts). To use it from your JavaScript specs:
+
+```js
+/// <reference types="cypress-map" />
+```
+
+If you are using TypeScript, include this module in your types list
+
+```json
+{
+  "compilerOptions": {
+    "types": ["cypress", "cypress-map"]
+  }
+}
+```
+
 ## See also
 
 - [cypress-should-really](https://github.com/bahmutov/cypress-should-really) has similar functional helpers for constructing the `should(callback)` function on the fly.

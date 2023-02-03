@@ -99,4 +99,21 @@ describe('table rows', { viewportWidth: 300, viewportHeight: 200 }, () => {
         }),
       )
   })
+
+  it('confirms the row with Anna', () => {
+    cy.contains('table tbody tr', 'Anna')
+      .find('td')
+      .map('innerText')
+      .print()
+      .partial(Cypress._.zipObject, headings)
+      .update('Age', Number)
+      .print()
+      .should(
+        spok({
+          Name: 'Anna',
+          Age: spok.range(10, 30),
+          'Date (YYYY-MM-DD)': spok.test(/^\d\d\d\d-\d\d-\d\d$/),
+        }),
+      )
+  })
 })

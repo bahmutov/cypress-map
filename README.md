@@ -2,7 +2,10 @@
 
 > Extra Cypress query commands for v12+
 
-- 📺 Watch the videos [Cypress v12 Querying Commands Introduction](https://youtu.be/4HpEECek2OE) and [Confirm Table Column](https://youtu.be/UOLQlNmuhY0)
+- 📺 Watch the videos:
+  - [Cypress v12 Querying Commands Introduction](https://youtu.be/4HpEECek2OE)
+  - [Confirm Table Column](https://youtu.be/UOLQlNmuhY0)
+  - [Use cypress-map Queries To Validate A Row In A Table](https://youtu.be/eVe4ySgW0qw)
 - 📝 Read the blog post [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
 - 🎓 Covered in my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)
 
@@ -151,7 +154,10 @@ See [primo.cy.js](./cypress/e2e/primo.cy.js)
 Works like `cy.its` for objects, but gets the property for jQuery objects, which `cy.its` does not
 
 ```js
-cy.get('#items li.matching').last().prop('ariaLabel').should('equal', 'four')
+cy.get('#items li.matching')
+  .last()
+  .prop('ariaLabel')
+  .should('equal', 'four')
 ```
 
 See [prop.cy.js](./cypress/e2e/prop.cy.js)
@@ -161,7 +167,9 @@ See [prop.cy.js](./cypress/e2e/prop.cy.js)
 Changes a single property inside the subject by running it through the given callback function. Useful to do type conversions, for example, let's convert the "age" property to a Number
 
 ```js
-cy.wrap({ age: '20' }).update('age', Number).should('deep.equal', { age: 20 })
+cy.wrap({ age: '20' })
+  .update('age', Number)
+  .should('deep.equal', { age: 20 })
 ```
 
 ### at

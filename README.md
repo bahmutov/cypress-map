@@ -141,6 +141,14 @@ cy.get('#items li.matching').last().prop('ariaLabel').should('equal', 'four')
 
 See [prop.cy.js](./cypress/e2e/prop.cy.js)
 
+### update
+
+Changes a single property inside the subject by running it through the given callback function. Useful to do type conversions, for example, let's convert the "age" property to a Number
+
+```js
+cy.wrap({ age: '20' }).update('age', Number).should('deep.equal', { age: 20 })
+```
+
 ### at
 
 Returns a DOM element from jQuery object at position `k`. Returns an item from array at position `k`. For negative index, counts the items from the end.

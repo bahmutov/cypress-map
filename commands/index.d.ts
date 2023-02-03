@@ -79,6 +79,17 @@ declare namespace Cypress {
     prop(name: string): Chainable<any>
 
     /**
+     * Transforms the named property inside the current subjet
+     * by passing it through the given callback
+     * @see https://github.com/bahmutov/cypress-map
+     * @param prop The name of the property you want to update
+     * @param callback The function that receives the property value and returns the updated value
+     * @example
+     *  cy.wrap({ age: '20' }).update('age', Number).should('deep.equal', {age: 20})
+     */
+    update(prop: string, callback: function): Chainable<any>
+
+    /**
      * Returns an object or DOM element from the collection at index K.
      * Returns elements from the end of the collection for negative K.
      * @see https://github.com/bahmutov/cypress-map

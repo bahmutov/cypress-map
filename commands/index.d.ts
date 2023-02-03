@@ -60,6 +60,16 @@ declare namespace Cypress {
     apply(fn: Function): Chainable<any>
 
     /**
+     * Creates a callback to apply to the subject by partially applying known arguments.
+     * @see https://github.com/bahmutov/cypress-map
+     * @param fn Callback function to call
+     * @param knownArguments The first argument(s) to the callback
+     * @example
+     *  cy.wrap(2).partial(Cypress._.add, 4).should('equal', 6)
+     */
+    partial(fn: Function, ...knownArguments: unknown[]): Chainable<any>
+
+    /**
      * A query command that returns the first element / item from the subject.
      * @see https://github.com/bahmutov/cypress-map
      * @example

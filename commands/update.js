@@ -7,7 +7,7 @@ Cypress.Commands.addQuery('update', (prop, callback) => {
 
   const log = Cypress.log({
     name: 'update',
-    message: `${prop} with ${callback.name}`,
+    message: `${prop} by ${callback.name}`,
   })
 
   return (subject) => {

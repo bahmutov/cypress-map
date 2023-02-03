@@ -81,4 +81,22 @@ describe('table rows', { viewportWidth: 300, viewportHeight: 200 }, () => {
         }),
       )
   })
+
+  it('confirms the first row with partial, update, and cy-spok', () => {
+    cy.get('table tbody tr')
+      .first()
+      .find('td')
+      .map('innerText')
+      .print()
+      .partial(Cypress._.zipObject, headings)
+      .update('Age', Number)
+      .print()
+      .should(
+        spok({
+          Name: 'Dave',
+          Age: spok.range(1, 99),
+          'Date (YYYY-MM-DD)': spok.test(/^\d\d\d\d-\d\d-\d\d$/),
+        }),
+      )
+  })
 })

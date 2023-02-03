@@ -39,6 +39,21 @@ const double = (n) => n * 2
 cy.wrap(100).apply(double).should('equal', 200)
 ```
 
+### partial
+
+Sometimes you have the callback to apply, and you know the first argument(s), and just need to put the subject at the last position. This is where you can partially apply the known arguments to the given callback.
+
+```js
+// the Cypress._.add takes to arguments (a, b)
+// we know the first argument a = 5
+// so we partially apply it and wait for the subject = b argument
+cy.wrap(100).partial(Cypress._.add, 5).should('equal', 105)
+// same as
+cy.wrap(100)
+  .apply((subject) => Cypress._.add(5, subject))
+  .should('equal', 105)
+```
+
 ### map
 
 ```js

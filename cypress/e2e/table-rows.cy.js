@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 // @ts-check
 
-//
+// https://github.com/bahmutov/cy-spok
 import spok from 'cy-spok'
 
 // import cypress-map plugin

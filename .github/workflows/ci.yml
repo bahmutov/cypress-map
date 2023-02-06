@@ -7,13 +7,24 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v3
 
-      - name: Run Cypress tests 🧪
+      - name: Install everything 📦
         # https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v5
         with:
-          # make sure we did not leave "it.only" accidentally
-          # https://github.com/bahmutov/stop-only
-          build: npm run stop-only
+          runTests: false
+
+      # make sure we did not leave "it.only" accidentally
+      # https://github.com/bahmutov/stop-only
+      - name: Catch "it.only" 🫴
+        run: npm run stop-only
+
+      - name: Lint code ☑️
+        run: npm run lint
+
+      - name: Run Cypress tests 🧪
+        uses: cypress-io/github-action@v5
+        with:
+          install: false
 
   release:
     needs: [test]

@@ -67,7 +67,10 @@ declare namespace Cypress {
      * @example
      *  cy.wrap(2).partial(Cypress._.add, 4).should('equal', 6)
      */
-    partial(fn: Function, ...knownArguments: unknown[]): Chainable<any>
+    partial(
+      fn: Function,
+      ...knownArguments: unknown[]
+    ): Chainable<any>
 
     /**
      * A query command that returns the first element / item from the subject.
@@ -97,7 +100,7 @@ declare namespace Cypress {
      * @example
      *  cy.wrap({ age: '20' }).update('age', Number).should('deep.equal', {age: 20})
      */
-    update(prop: string, callback: function): Chainable<any>
+    update(prop: string, callback: Function): Chainable<any>
 
     /**
      * Returns an object or DOM element from the collection at index K.
@@ -131,7 +134,7 @@ declare namespace Cypress {
      * @example
      *  cy.wrap(arr).print('array length {0.length}')
      */
-    print(format?: string | function): Chainable<any>
+    print(format?: string | Function): Chainable<any>
 
     /**
      * Collects all cells from the table subject into a 2D array of strings.
@@ -140,7 +143,12 @@ declare namespace Cypress {
      * @example cy.get('table').table()
      * @example cy.get('table').table(0, 0, 2, 2)
      */
-    table(x?: number, y?: number, w?: number, h?: number): Chainable<string[][]>
+    table(
+      x?: number,
+      y?: number,
+      w?: number,
+      h?: number,
+    ): Chainable<string[][]>
 
     /**
      * Invokes the method on the current subject.

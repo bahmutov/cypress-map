@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "lib": ["DOM", "ES6"],
-    "types": ["cypress"]
-  }
-}

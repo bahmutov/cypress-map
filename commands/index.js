@@ -1,16 +1,16 @@
 /// <reference types="cypress" />
 
-import './version-check'
-import './map'
-import './map-invoke'
-import './tap'
-import './reduce'
-import './apply'
-import './primo'
-import './prop'
-import './at'
-import './print'
-import './table'
-import './invoke-once'
-import './update'
-import './partial'
+require('./version-check')
+require('./map')
+require('./map-invoke')
+require('./tap')
+require('./reduce')
+require('./apply')
+require('./primo')
+require('./prop')
+require('./at')
+require('./print')
+require('./table')
+require('./invoke-once')
+require('./update')
+require('./partial')

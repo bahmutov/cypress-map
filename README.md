@@ -9,6 +9,21 @@
   - [How To Check Visibility Of Many Elements](https://youtu.be/puCZGCeUb5k)
 - 📝 Read the blog post [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
 - 🎓 Covered in my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)
+  - [Lesson l1: Confirm the attribute of the last item](https://cypress.tips/courses/cypress-plugins/lessons/l1)
+  - [Lesson l2: Confirm the extracted list of texts](https://cypress.tips/courses/cypress-plugins/lessons/l2)
+  - [Lesson l3: Confirm the last two items in the extracted lis](https://cypress.tips/courses/cypress-plugins/lessons/l3)
+  - [Lesson l4: Confirm the list of attributes](https://cypress.tips/courses/cypress-plugins/lessons/l4)
+  - [Lesson l5: Confirm the sum of attributes](https://cypress.tips/courses/cypress-plugins/lessons/l5)
+  - [Lesson l6: Compare the sum of attributes to the total](https://cypress.tips/courses/cypress-plugins/lessons/l6)
+  - [Lesson l7: Debug chained queries using tap](https://cypress.tips/courses/cypress-plugins/lessons/l7)
+  - [Lesson l8: Get the raw DOM element at index k](https://cypress.tips/courses/cypress-plugins/lessons/l8)
+  - [Lesson l9: Confirm the number of elements with the given attribute](https://cypress.tips/courses/cypress-plugins/lessons/l9)
+  - [Lesson l10: Check the parsed attribute value](https://cypress.tips/courses/cypress-plugins/lessons/l10)
+  - [Lesson l11: Extract and convert prices](https://cypress.tips/courses/cypress-plugins/lessons/l11)
+  - [Lesson l12: Find the element with the smallest attribute value](https://cypress.tips/courses/cypress-plugins/lessons/l12)
+  - [Lesson l13: Check each item's text](https://cypress.tips/courses/cypress-plugins/lessons/l13)
+  - [Lesson l14: Flexible logging using cy.print command](https://cypress.tips/courses/cypress-plugins/lessons/l14)
+  - [Lesson l15: Confirm HTML table values](https://cypress.tips/courses/cypress-plugins/lessons/l15)
 
 ## Install
 

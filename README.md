@@ -6,6 +6,7 @@
   - [Cypress v12 Querying Commands Introduction](https://youtu.be/4HpEECek2OE)
   - [Confirm Table Column](https://youtu.be/UOLQlNmuhY0)
   - [Use cypress-map Queries To Validate A Row In A Table](https://youtu.be/eVe4ySgW0qw)
+  - [How To Check Visibility Of Many Elements](https://youtu.be/puCZGCeUb5k)
 - 📝 Read the blog post [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
 - 🎓 Covered in my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)
 

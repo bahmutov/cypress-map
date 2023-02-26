@@ -7,7 +7,9 @@
   - [Confirm Table Column](https://youtu.be/UOLQlNmuhY0)
   - [Use cypress-map Queries To Validate A Row In A Table](https://youtu.be/eVe4ySgW0qw)
   - [How To Check Visibility Of Many Elements](https://youtu.be/puCZGCeUb5k)
-- 📝 Read the blog post [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
+- 📝 Read the blog posts
+  - [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
+  - [Crawl Weather Using Cypress](https://glebbahmutov.com/blog/crawl-weather/)
 - 🎓 Covered in my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)
   - [Lesson l1: Confirm the attribute of the last item](https://cypress.tips/courses/cypress-plugins/lessons/l1)
   - [Lesson l2: Confirm the extracted list of texts](https://cypress.tips/courses/cypress-plugins/lessons/l2)

@@ -20,6 +20,21 @@ declare namespace Cypress {
     mapInvoke(propertyName: string, ...args: any[]): Chainable<any>
 
     /**
+     * A regular cy command that takes every item from the current subject
+     * and calls the given function with the item and its index.
+     * The function could be synchronous, or async. The function could
+     * call other Cypress commands and yield the value. All async and
+     * Cypress commands are queued up and execute one at a time.
+     * The current subject should be an array.
+     * Yields the final list of results.
+     * @see https://github.com/bahmutov/cypress-map
+     * @example
+     *  // fetch the users from a list of ids
+     *  cy.get(ids).mapChain(id => cy.request('/users/' + id)).then(users => ...)
+     */
+    mapChain(fn: Function): Chainable<any>
+
+    /**
      * A query command that can log the data without changing it. Useful
      * for debugging longer command chains.
      * @param fn Function that does not modify the data, `console.log` by default.

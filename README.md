@@ -310,6 +310,21 @@ cy.wrap(list)
   .should('deep.equal', [6, 5, 7])
 ```
 
+## Misc
+
+### mapChain
+
+I have added another useful command (not a query!) to this package. It allows you to process items in the array subject one by one via synchronous, asynchronous, or `cy` command functions. This is because the common solution to fetch items using `cy.each`, for example does not work:
+
+```js
+// fetch the users from a list of ids
+// 🚨 DOES NOT WORK
+cy.get(ids).each(id => cy.request('/users/' + id)).then(users => ...)
+// Nope, the yielded "users" result is ... still the "ids" subject
+// ✅ CORRECT SOLUTION
+cy.get(ids).mapChain(id => cy.request('/users/' + id)).then(users => ...)
+```
+
 ## Types
 
 This package includes TypeScript command definitions for its custom commands in the file [commands/index.d.ts](./commands/index.d.ts). To use it from your JavaScript specs:

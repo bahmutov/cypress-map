@@ -21,7 +21,7 @@ it('maps each item using async function', () => {
     .should('deep.equal', [2, 4, 6])
 })
 
-it('maps each item to the cy yielded value', () => {
+it('maps each item to the cy yielded value of the returned chain', () => {
   cy.wrap([1, 2, 3])
     .mapChain((x) => cy.wrap(x).then(doubleIt))
     .should('deep.equal', [2, 4, 6])
@@ -35,6 +35,17 @@ it('maps each item using a Promise', () => {
           resolve(doubleIt(x))
         }, 500)
       })
+    })
+    .should('deep.equal', [2, 4, 6])
+})
+
+// https://github.com/bahmutov/cypress-map/issues/27
+it('maps each item to the cy yielded value without returned chain', () => {
+  cy.wrap([1, 2, 3])
+    .mapChain((x) => {
+      // do not return the command chain
+      // but it still should grab the resolved value
+      cy.wrap(x).then(doubleIt)
     })
     .should('deep.equal', [2, 4, 6])
 })

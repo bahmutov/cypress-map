@@ -170,5 +170,16 @@ declare namespace Cypress {
      * This is a COMMAND, not a query, so it won't retry, unlike the stock `cy.invoke`
      */
     invokeOnce(methodName: string, ...args: unknown[]): Chainable<any>
+
+    /**
+     * A query command that finds an item in the array or jQuery object.
+     * Uses Lodash _.find under the hood.
+     * @see https://github.com/bahmutov/cypress-map
+     * @example
+     *  cy.get('...').findOne({ innerText: '...' })
+     * @example
+     *  cy.wrap([1, 2, 3]).findOne(n => n === 3).should('equal', 3)
+     */
+    findOne(predicate: object | Function): Chainable<any>
   }
 }

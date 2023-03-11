@@ -63,6 +63,8 @@ const double = (n) => n * 2
 cy.wrap(100).apply(double).should('equal', 200)
 ```
 
+It works like `cy.then` but `cy.apply(fn)` is a query command. Function `fn` should be synchronous, pure function that only uses the subject argument and returns new value The function callback `fn` cannot use any Cypress commands `cy`.
+
 ### partial
 
 Sometimes you have the callback to apply, and you know the first argument(s), and just need to put the subject at the last position. This is where you can partially apply the known arguments to the given callback.
@@ -157,6 +159,20 @@ cy.wrap(arr).print((list) => list[2]) // JSON.stringify(arr[2])
 ```
 
 See [print.cy.js](./cypress/e2e/print.cy.js) for more examples
+
+### findOne
+
+Finds a single item in the subject. Assumes subject is an array or a jQuery object. Uses Lodash `_.find` method.
+
+```js
+// using predicate function
+const isThree = n => n === 3
+cy.wrap([...]).findOne(isThree).should('equal', 3)
+// using partial known properties of an object
+cy.wrap([...]).findOne({ name: 'Anna' }).should('have.property', 'name', 'Anna')
+```
+
+See [find-one.cy.js](./cypress/e2e/find-one.cy.js)
 
 ### primo
 

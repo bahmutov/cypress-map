@@ -29,6 +29,8 @@
   - [Lesson l15: Confirm HTML table values](https://cypress.tips/courses/cypress-plugins/lessons/l15)
 - 🎓 Covered in my course [Cypress Network Testing Exercises](https://cypress.tips/courses/network-testing)
   - [Bonus 92: Map each item from the list using Cy commands](https://cypress.tips/courses/network-testing/lessons/bonus92)
+- 🎓 Covered in my course [Testing The Swag Store](https://cypress.tips/courses/swag-store)
+  - [Lesson 23: Simplify getting attribute from a list of elements](https://cypress.tips/courses/swag-store/lessons/lesson23)
 
 ## Install
 

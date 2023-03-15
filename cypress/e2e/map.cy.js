@@ -24,7 +24,10 @@ it('confirms the list', () => {
 it('confirms the last element text', () => {
   cy.visit('cypress/index.html')
   // cy.last is a query command
-  cy.get('.matching').last().map('innerText').should('deep.equal', ['fourth'])
+  cy.get('.matching')
+    .last()
+    .map('innerText')
+    .should('deep.equal', ['fourth'])
 })
 
 it('confirms the last two elements text', () => {
@@ -37,5 +40,17 @@ it('confirms the last two elements text', () => {
 })
 
 it('makes the callback unary', () => {
-  cy.wrap(['1', '2', '3', '4']).map(parseInt).should('deep.equal', [1, 2, 3, 4])
+  cy.wrap(['1', '2', '3', '4'])
+    .map(parseInt)
+    .should('deep.equal', [1, 2, 3, 4])
+})
+
+it('verifies that LI elements include 3 strings', () => {
+  // let's say we do not care the order of strings, just that
+  // the list includes strings "first", "fifth", "third"
+  // in any order
+  cy.visit('cypress/index.html')
+  cy.get('li')
+    .map('innerText')
+    .should('include.members', ['first', 'fifth', 'third'])
 })

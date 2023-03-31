@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.add(
+const { registerCommand } = require('./utils')
+
+registerCommand(
   'invokeOnce',
   { prevSubject: true },
   (subject, methodName, ...args) => {
@@ -12,7 +14,9 @@ Cypress.Commands.add(
     const log = Cypress.log({ name: 'invokeOnce', message })
 
     if (typeof subject[methodName] !== 'function') {
-      throw new Error(`Cannot find method ${methodName} on the current subject`)
+      throw new Error(
+        `Cannot find method ${methodName} on the current subject`,
+      )
     }
 
     return subject[methodName](...args)

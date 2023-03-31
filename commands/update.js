@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.addQuery('update', (prop, callback) => {
+const { registerQuery } = require('./utils')
+
+registerQuery('update', (prop, callback) => {
   if (typeof callback !== 'function') {
     throw new Error('Expected a function to apply')
   }

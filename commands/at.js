@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.addQuery('at', (index) => {
+const { registerQuery } = require('./utils')
+
+registerQuery('at', (index) => {
   if (typeof index !== 'number') {
     throw new Error(`Invalid cy.at index ${index}`)
   }

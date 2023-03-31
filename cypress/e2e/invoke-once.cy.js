@@ -5,6 +5,8 @@
 import '../../commands'
 
 describe('invoke vs invokeOnce', () => {
+  expect('invokeOnce' in cy).to.be.true
+
   const app = {
     fetchName() {
       return new Promise((resolve) => {

@@ -15,7 +15,9 @@ function formatTitle(pattern, x) {
   return format(pattern, x)
 }
 
-Cypress.Commands.addQuery('print', (formatPattern) => {
+const { registerQuery } = require('./utils')
+
+registerQuery('print', (formatPattern) => {
   const log = Cypress.log({ name: 'print', message: '' })
 
   if (typeof formatPattern === 'string') {

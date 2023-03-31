@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-const { registerQueryCommand } = require('./utils')
+const { registerQuery } = require('./utils')
 
-registerQueryCommand('primo', () => {
+registerQuery('primo', () => {
   const log = Cypress.log({ name: 'primo' })
 
   return (subject) => {

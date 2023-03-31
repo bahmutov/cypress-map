@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-const { registerQueryCommand } = require('./utils')
+const { registerQuery } = require('./utils')
 
-registerQueryCommand('reduce', (fn, initialValue) => {
+registerQuery('reduce', (fn, initialValue) => {
   if (typeof fn !== 'function') {
     throw new Error('Expected a function to apply')
   }

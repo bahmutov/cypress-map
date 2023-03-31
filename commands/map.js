@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-const { registerQueryCommand } = require('./utils')
+const { registerQuery } = require('./utils')
 
-registerQueryCommand('map', (fnOrProperty) => {
+registerQuery('map', (fnOrProperty) => {
   const message =
     typeof fnOrProperty === 'string'
       ? fnOrProperty

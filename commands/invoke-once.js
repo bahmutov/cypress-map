@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-const { registerQueryCommand } = require('./utils')
+const { registerCommand } = require('./utils')
 
-registerQueryCommand(
+registerCommand(
   'invokeOnce',
   { prevSubject: true },
   (subject, methodName, ...args) => {

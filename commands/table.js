@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-const { registerQueryCommand } = require('./utils')
+const { registerQuery } = require('./utils')
 
-registerQueryCommand('table', (x, y, w, h) => {
+registerQuery('table', (x, y, w, h) => {
   let message
   if (typeof x === 'number' && typeof y === 'number') {
     message = `x:${x},y:${y}`

@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.addQuery('reduce', (fn, initialValue) => {
+const { registerQueryCommand } = require('./utils')
+
+registerQueryCommand('reduce', (fn, initialValue) => {
   if (typeof fn !== 'function') {
     throw new Error('Expected a function to apply')
   }

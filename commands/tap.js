@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.addQuery('tap', (fn = console.log, label = undefined) => {
+const { registerQueryCommand } = require('./utils')
+
+registerQueryCommand('tap', (fn = console.log, label = undefined) => {
   if (typeof fn === 'string') {
     // the user passed the label only, like
     // cy.tap('numbers')

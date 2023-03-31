@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.addQuery('findOne', (predicate) => {
+const { registerQueryCommand } = require('./utils')
+
+registerQueryCommand('findOne', (predicate) => {
   const logOptions = { name: 'findOne' }
   if (typeof predicate === 'function') {
     logOptions.message = predicate.name

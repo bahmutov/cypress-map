@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.addQuery('map', (fnOrProperty) => {
+const { registerQueryCommand } = require('./utils')
+
+registerQueryCommand('map', (fnOrProperty) => {
   const message =
     typeof fnOrProperty === 'string'
       ? fnOrProperty

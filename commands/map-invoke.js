@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.addQuery('mapInvoke', (methodName, ...args) => {
+const { registerQueryCommand } = require('./utils')
+
+registerQueryCommand('mapInvoke', (methodName, ...args) => {
   let message = methodName
   if (args.length) {
     message += ' ' + args.map((x) => JSON.stringify(x)).join(', ')

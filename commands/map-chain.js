@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.add(
+const { registerQueryCommand } = require('./utils')
+
+registerQueryCommand(
   'mapChain',
   { prevSubject: 'Array' },
   (list, fn) => {

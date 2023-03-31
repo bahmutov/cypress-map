@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.addQuery('partial', (callback, ...knownArguments) => {
+const { registerQueryCommand } = require('./utils')
+
+registerQueryCommand('partial', (callback, ...knownArguments) => {
   if (typeof callback !== 'function') {
     throw new Error('Expected a function to partially apply')
   }

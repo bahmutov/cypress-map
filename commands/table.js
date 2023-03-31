@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.addQuery('table', (x, y, w, h) => {
+const { registerQueryCommand } = require('./utils')
+
+registerQueryCommand('table', (x, y, w, h) => {
   let message
   if (typeof x === 'number' && typeof y === 'number') {
     message = `x:${x},y:${y}`

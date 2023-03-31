@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.addQuery('prop', (propertyName) => {
+const { registerQueryCommand } = require('./utils')
+
+registerQueryCommand('prop', (propertyName) => {
   const log = Cypress.log({ name: 'prop', message: propertyName })
 
   return (subject) => {

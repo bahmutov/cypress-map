@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-const { registerQuery } = require('./utils')
+const { registerCommand } = require('./utils')
 
-registerQuery('mapChain', { prevSubject: 'Array' }, (list, fn) => {
+registerCommand('mapChain', { prevSubject: 'Array' }, (list, fn) => {
   if (!Array.isArray(list)) {
     throw new Error('Expected cy.mapChain subject to be an array')
   }

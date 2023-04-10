@@ -54,3 +54,20 @@ it('verifies that LI elements include 3 strings', () => {
     .map('innerText')
     .should('include.members', ['first', 'fifth', 'third'])
 })
+
+it('maps properties of an object', () => {
+  cy.wrap({
+    age: '42',
+    lucky: true,
+  })
+    // cast the property "age" to a number
+    // by running it through the "Number" function
+    .map({
+      age: Number,
+      lucky: Cypress._.identity,
+    })
+    .should('deep.equal', {
+      age: 42,
+      lucky: true,
+    })
+})

@@ -1,3 +1,10 @@
+/**
+ * Specifies a function callback for different object properties
+ */
+interface PropertyCallbacks {
+  [key: string]: Function
+}
+
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -6,8 +13,12 @@ declare namespace Cypress {
      * @see https://github.com/bahmutov/cypress-map
      * @example
      *  cy.get('#items li').map('innerText')
+     * @example
+     *  cy.wrap(['10', '20']).map(Number) // [10, 20]
+     * @example
+     *  cy.wrap({ age: '42' }).map({ age: Number }) // { age: 42 }
      */
-    map(fnOrProperty: string | Function): Chainable<any>
+    map(mapper: string | Function | PropertyCallbacks): Chainable<any>
 
     /**
      * A query command that takes every item from the current subject

@@ -84,10 +84,31 @@ cy.wrap(100)
 
 ### map
 
+Transforms every object in the given collection by running it through the given callback function. Can also map each object to its property. An object could be an array or a jQuery object.
+
 ```js
+// map elements by invoking a function
+cy.wrap(['10', '20', '30']).map(Number) // [10, 20, 30]
+// map elements by a property
 cy.get('.matching')
   .map('innerText')
   .should('deep.equal', ['first', 'third', 'fourth'])
+```
+
+You can even map properties of an object by listing callbacks. For example, let's convert the `age` property from a string to a number
+
+```js
+cy.wrap({
+  age: '42',
+  lucky: true,
+})
+  .map({
+    age: Number,
+  })
+  .should('deep.equal', {
+    age: 42,
+    lucky: true,
+  })
 ```
 
 ### mapInvoke

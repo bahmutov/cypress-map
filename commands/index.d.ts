@@ -181,5 +181,17 @@ declare namespace Cypress {
      *  cy.wrap([1, 2, 3]).findOne(n => n === 3).should('equal', 3)
      */
     findOne(predicate: object | Function): Chainable<any>
+
+    /**
+     * A query that calls `JSON.parse(JSON.parse(subject))`
+     * @see https://github.com/bahmutov/cypress-map
+     * @example
+     *  cy.get('selector')
+     *    // yields DOMStringMap
+     *    .should('have.prop', 'dataset')
+     *    .toPlainObject()
+     *    .should('deep.include', { ... })
+     */
+    toPlainObject(): Chainable<Object>
   }
 }

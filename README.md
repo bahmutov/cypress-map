@@ -286,6 +286,21 @@ cy.get('table')
   .should('deep.equal', ['Dave', 'Cary', 'Joe', 'Anna'])
 ```
 
+### toPlainObject
+
+A query to convert special DOM objects into plain objects. For example, to convert `DOMStringMap` instance into a plain object compatible with `deep.equal` assertion we can do
+
+```js
+cy.get('article')
+  .should('have.prop', 'dataset')
+  .toPlainObject()
+  .should('deep.equal', {
+    columns: '3',
+    indexNumber: '12314',
+    parent: 'cars',
+  })
+```
+
 ### invokeOnce
 
 In Cypress v12 `cy.invoke` became a query, which made working with asynchronous methods really unwieldy. The `cy.invokeOnce` is a return the old way of calling the method and yielding the resolved value.

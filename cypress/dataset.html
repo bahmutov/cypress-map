@@ -1,0 +1,14 @@
+<body>
+  <article id="electric-cars" data-columns="3" data-parent="cars">
+    All about electric cards
+  </article>
+  <script>
+    // force the tests to retry by adding "data-index-number" attribute
+    // after some delay
+    setTimeout(() => {
+      document
+        .getElementById('electric-cars')
+        .setAttribute('data-index-number', '12314')
+    }, 1500)
+  </script>
+</body>

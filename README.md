@@ -243,6 +243,22 @@ cy.get('#items li').at(-1).its('innerText').should('equal', 'fifth')
 
 See [at.cy.js](./cypress/e2e/at.cy.js)
 
+### asEnv
+
+Saves current subject in `Cypress.env` object. Note: Cypress.env object is reset before the spec run, but the changed values are passed from test to test. Thus you can easily pass a value from the first test to the second.
+
+```js
+it('saves value in this test', () => {
+  cy.wrap('hello, world').asEnv('greeting')
+})
+
+it('saved value is available in this test', () => {
+  expect(Cypress.env('greeting'), 'greeting').to.equal('hello, world')
+})
+```
+
+Do you really want to make the tests dependent on each other?
+
 ### table
 
 📝 to learn more about `cy.table` command, read the blog post [Test HTML Tables Using cy.table Query Command](https://glebbahmutov.com/blog/cy-table/).

@@ -204,5 +204,15 @@ declare namespace Cypress {
      *    .should('deep.include', { ... })
      */
     toPlainObject(): Chainable<Object>
+
+    /**
+     * Saves current subject in `Cypress.env` object.
+     * Note: Cypress.env object is reset before the spec run,
+     * but the changed values are passed from test to test.
+     * @see https://github.com/bahmutov/cypress-map
+     * @example
+     *  cy.wrap('hello').asEnv('greeting')
+     */
+    asEnv(name: string): Chainable<any>
   }
 }

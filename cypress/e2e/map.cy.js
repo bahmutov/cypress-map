@@ -71,3 +71,23 @@ it('maps properties of an object', () => {
       lucky: true,
     })
 })
+
+it('maps nested paths', () => {
+  const people = [
+    {
+      name: {
+        first: 'Joe',
+        last: 'Smith',
+      },
+    },
+    {
+      name: {
+        first: 'Anna',
+        last: 'Kova',
+      },
+    },
+  ]
+  cy.wrap(people)
+    .map('name.first')
+    .should('deep.equal', ['Joe', 'Anna'])
+})

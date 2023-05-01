@@ -5,6 +5,11 @@ interface PropertyCallbacks {
   [key: string]: Function
 }
 
+/**
+ * Type for most Cypress commands to control logging and timeout.
+ */
+type CyOptions = Partial<Cypress.Loggable & Cypress.Timeoutable>
+
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -18,7 +23,10 @@ declare namespace Cypress {
      * @example
      *  cy.wrap({ age: '42' }).map({ age: Number }) // { age: 42 }
      */
-    map(mapper: string | Function | PropertyCallbacks): Chainable<any>
+    map(
+      mapper: string | Function | PropertyCallbacks,
+      options?: CyOptions,
+    ): Chainable<any>
 
     /**
      * A query command that takes every item from the current subject

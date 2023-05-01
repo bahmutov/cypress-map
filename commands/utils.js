@@ -1,5 +1,8 @@
 /// <reference types="cypress" />
 
+/**
+ * @see https://on.cypress.io/custom-commands
+ */
 function registerQuery(name, fn) {
   // prevent double registration attempt
   if (!(name in cy)) {

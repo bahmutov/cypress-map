@@ -91,3 +91,25 @@ it('maps nested paths', () => {
     .map('name.first')
     .should('deep.equal', ['Joe', 'Anna'])
 })
+
+it('respects the timeout option', () => {
+  const people = [
+    {
+      name: {
+        first: 'Joe',
+        last: 'Smith',
+      },
+    },
+  ]
+  setTimeout(() => {
+    people.push({
+      name: {
+        first: 'Anna',
+        last: 'Kova',
+      },
+    })
+  }, 6000)
+  cy.wrap(people)
+    .map('name.first', { timeout: 7_000 })
+    .should('deep.equal', ['Joe', 'Anna'])
+})

@@ -2,7 +2,10 @@
 
 const { registerQuery } = require('./utils')
 
-registerQuery('map', (fnOrProperty) => {
+registerQuery('map', function (fnOrProperty, options = {}) {
+  // make sure this query command respects the timeout option
+  this.set('timeout', options.timeout)
+
   if (Cypress._.isPlainObject(fnOrProperty)) {
     Object.keys(fnOrProperty).forEach((key) => {
       if (typeof fnOrProperty[key] !== 'function') {
@@ -13,13 +16,19 @@ registerQuery('map', (fnOrProperty) => {
     const message = Cypress._.map(fnOrProperty, (fn, key) => {
       return key + '=>' + (fn.name ? fn.name : '?')
     }).join(', ')
-    const log = Cypress.log({ name: 'map', message })
+
+    const log =
+      options.log !== false &&
+      Cypress.log({ name: 'map', message, timeout: options.timeout })
   } else {
     const message =
       typeof fnOrProperty === 'string'
         ? fnOrProperty
         : fnOrProperty.name
-    const log = Cypress.log({ name: 'map', message })
+
+    const log =
+      options.log !== false &&
+      Cypress.log({ name: 'map', message, timeout: options.timeout })
   }
 
   return ($el) => {

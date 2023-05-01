@@ -42,7 +42,7 @@ registerQuery('map', (fnOrProperty) => {
       const list = [
         ...Cypress._.map($el, (item) =>
           typeof fnOrProperty === 'string'
-            ? item[fnOrProperty]
+            ? Cypress._.get(item, fnOrProperty)
             : fnOrProperty(item),
         ),
       ]

@@ -113,6 +113,19 @@ cy.wrap({
   })
 ```
 
+You can extract nested paths by using "." in your property path
+
+```js
+cy.wrap(people)
+  .map('name.first')
+  .should('deep.equal', ['Joe', 'Anna'])
+// equivalent to
+cy.wrap(people)
+  .map('name')
+  .map('first')
+  .should('deep.equal', ['Joe', 'Anna'])
+```
+
 ### mapInvoke
 
 ```js

@@ -2,7 +2,14 @@
 
 const { registerQuery } = require('./utils')
 
-registerQuery('table', (x, y, w, h) => {
+/**
+ * Queries the table
+ * @param {number?} x Top left corner X index (zero based)
+ * @param {number?} y Top left corner Y index (zero based)
+ * @param {number?} w Number of columns
+ * @param {number?} h Number of rows
+ */
+function cyTable(x, y, w, h) {
   let message
   if (typeof x === 'number' && typeof y === 'number') {
     message = `x:${x},y:${y}`
@@ -15,16 +22,19 @@ registerQuery('table', (x, y, w, h) => {
   }
   const log = Cypress.log({ name: 'table', message })
 
+  const wSet = typeof w === 'number'
+  const hSet = typeof h === 'number'
+
   return ($table) => {
     const cells = Cypress._.map($table.find('tr'), (tr) => {
       return Cypress._.map(tr.children, 'innerText')
     })
 
     if (typeof x === 'number' && typeof y === 'number') {
-      if (typeof w === 'undefined' && cells.length) {
+      if (!wSet && cells.length) {
         w = cells[0].length
       }
-      if (typeof h === 'undefined') {
+      if (!hSet) {
         h = cells.length
       }
       const slice = cells.slice(y, y + h).map((row) => {
@@ -34,4 +44,6 @@ registerQuery('table', (x, y, w, h) => {
     }
     return cells
   }
-})
+}
+
+registerQuery('table', cyTable)

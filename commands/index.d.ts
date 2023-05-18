@@ -142,11 +142,22 @@ declare namespace Cypress {
      * @see https://github.com/bahmutov/cypress-map
      * @param index The index of the element
      * @example
-     *  cy.get('li').eq(0) // the first DOM element
+     *  cy.get('li').at(0) // the first DOM element
      * @example
-     *  cy.wrap([...]).eq(-1) // the last item in the array
+     *  cy.wrap([...]).at(-1) // the last item in the array
      */
     at(index: number): Chainable<any>
+
+    /**
+     * Returns a randomly picked item from the current subject.
+     * Uses `_.sample` under the hood.
+     * @see https://github.com/bahmutov/cypress-map
+     * @example
+     *  cy.get('li').sample() // one of the list elements
+     * @example
+     *  cy.wrap([...]).sample() // a random item from the array
+     */
+    sample(): Chainable<any>
 
     /**
      * Prints the current subject and yields it to the next command or assertion.

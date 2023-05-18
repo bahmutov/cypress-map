@@ -260,6 +260,16 @@ cy.get('#items li').at(-1).its('innerText').should('equal', 'fifth')
 
 See [at.cy.js](./cypress/e2e/at.cy.js)
 
+### sample
+
+Returns a randomly picked item or element from the current subject
+
+```js
+cy.get('#items li').sample().should('have.text', 'four')
+```
+
+See [sample.cy.js](./cypress/e2e/sample.cy.js)
+
 ### asEnv
 
 Saves current subject in `Cypress.env` object. Note: Cypress.env object is reset before the spec run, but the changed values are passed from test to test. Thus you can easily pass a value from the first test to the second.

@@ -8,6 +8,7 @@
   - [Use cypress-map Queries To Validate A Row In A Table](https://youtu.be/eVe4ySgW0qw)
   - [How To Check Visibility Of Many Elements](https://youtu.be/puCZGCeUb5k)
   - [Pick A Random Menu Link](https://youtu.be/xvvL3GRjXCY)
+  - [Confirm The Same Text In A Couple Of Elements](https://youtu.be/xvImOlCSul4)
 - 📝 Read the blog posts
   - [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
   - [Crawl Weather Using Cypress](https://glebbahmutov.com/blog/crawl-weather/)

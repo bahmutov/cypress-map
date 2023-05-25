@@ -37,6 +37,8 @@
 - 🎓 Covered in my course [Testing The Swag Store](https://cypress.tips/courses/swag-store)
   - [Lesson 23: Simplify getting attribute from a list of elements](https://cypress.tips/courses/swag-store/lessons/lesson23)
   - [Bonus 36: Manipulate data- attributes using cypress-map methods](https://cypress.tips/courses/swag-store/lessons/bonus36)
+  - [Bonus 41: Pick and confirm a random product](https://cypress.tips/courses/swag-store/lessons/bonus41)
+  - [Bonus 42: Add 3 random items to the cart](https://cypress.tips/courses/swag-store/lessons/bonus42)
 
 ## Install
 

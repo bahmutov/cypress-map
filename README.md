@@ -269,6 +269,13 @@ Returns a randomly picked item or element from the current subject
 cy.get('#items li').sample().should('have.text', 'four')
 ```
 
+If you pass a positive number, then it picks multiple elements or items
+
+```js
+// yields jQuery object with 3 random items
+cy.get('#items li').sample(3).should('have.length', 3)
+```
+
 See [sample.cy.js](./cypress/e2e/sample.cy.js)
 
 ### asEnv

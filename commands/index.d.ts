@@ -151,13 +151,14 @@ declare namespace Cypress {
     /**
      * Returns a randomly picked item from the current subject.
      * Uses `_.sample` under the hood.
+     * @param n Maximum number of items to pick, 1 by default
      * @see https://github.com/bahmutov/cypress-map
      * @example
      *  cy.get('li').sample() // one of the list elements
      * @example
      *  cy.wrap([...]).sample() // a random item from the array
      */
-    sample(): Chainable<any>
+    sample(n?: number): Chainable<any>
 
     /**
      * Prints the current subject and yields it to the next command or assertion.

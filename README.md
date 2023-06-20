@@ -9,10 +9,10 @@
   - [How To Check Visibility Of Many Elements](https://youtu.be/puCZGCeUb5k)
   - [Pick A Random Menu Link](https://youtu.be/xvvL3GRjXCY)
   - [Confirm The Same Text In A Couple Of Elements](https://youtu.be/xvImOlCSul4)
+  - [Map Input Elements Values](https://youtu.be/OmVzv6pJN6I)
 - 📝 Read the blog posts
   - [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
   - [Crawl Weather Using Cypress](https://glebbahmutov.com/blog/crawl-weather/)
-  - [Map Input Elements Values](https://youtu.be/OmVzv6pJN6I)
   - [Pass Values Between Cypress Tests](https://glebbahmutov.com/blog/pass-values-between-tests/)
   - [Do Not Use SHA To Compare HTML During E2E Tests](https://glebbahmutov.com/blog/do-not-use-sha/)
 - 🎓 Covered in my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)

@@ -10,6 +10,7 @@
   - [Pick A Random Menu Link](https://youtu.be/xvvL3GRjXCY)
   - [Confirm The Same Text In A Couple Of Elements](https://youtu.be/xvImOlCSul4)
   - [Map Input Elements Values](https://youtu.be/OmVzv6pJN6I)
+  - [Iterate Over DOM Elements Using cy.each, jQuery each and map, and cypress-map Plugin Commands](https://youtu.be/tMeKIIfEhyo)
 - 📝 Read the blog posts
   - [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
   - [Crawl Weather Using Cypress](https://glebbahmutov.com/blog/crawl-weather/)

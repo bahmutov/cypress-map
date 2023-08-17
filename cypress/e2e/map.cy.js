@@ -113,3 +113,23 @@ it('respects the timeout option', () => {
     .map('name.first', { timeout: 7_000 })
     .should('deep.equal', ['Joe', 'Anna'])
 })
+
+// enable only to see the thrown errors
+// https://github.com/bahmutov/cypress-map/issues/74
+describe.skip(
+  'invalid subjects',
+  { defaultCommandTimeout: 0 },
+  () => {
+    it('throws on a string', () => {
+      cy.wrap('hello').map(parseInt).print()
+    })
+
+    it('throws on a number', () => {
+      cy.wrap(42).map(parseInt).print()
+    })
+
+    it('throws on a boolean', () => {
+      cy.wrap(true).map(parseInt).print()
+    })
+  },
+)

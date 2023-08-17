@@ -2,6 +2,9 @@
 
 const { registerQuery } = require('./utils')
 
+const repoUrl = 'https://github.com/bahmutov/cypress-map'
+const repoLink = `[${repoUrl}](${repoUrl})`
+
 registerQuery('map', function (fnOrProperty, options = {}) {
   // make sure this query command respects the timeout option
   this.set('timeout', options.timeout)
@@ -32,6 +35,22 @@ registerQuery('map', function (fnOrProperty, options = {}) {
   }
 
   return ($el) => {
+    if (Cypress._.isString($el)) {
+      throw new Error(
+        `cy.map is not meant to work with a string subject, did you mean cy.apply?\n${repoLink}`,
+      )
+    }
+    if (Cypress._.isNumber($el)) {
+      throw new Error(
+        `cy.map is not meant to work with a number subject, did you mean cy.apply?\n${repoLink}`,
+      )
+    }
+    if (Cypress._.isBoolean($el)) {
+      throw new Error(
+        `cy.map is not meant to work with a boolean subject, did you mean cy.apply?\n${repoLink}`,
+      )
+    }
+
     if (Cypress._.isPlainObject(fnOrProperty)) {
       const result = { ...$el }
       Object.keys(fnOrProperty).forEach((key) => {

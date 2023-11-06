@@ -460,7 +460,7 @@ If you are using TypeScript, include this module in your types list
 
 - [cypress-should-really](https://github.com/bahmutov/cypress-should-really) has similar functional helpers for constructing the `should(callback)` function on the fly.
 
-**Note:** this module does not have `filter` method because Cypress API has query commands [cy.filter](https://on.cypress.io/filter) and [cy.invoke](https://on.cypress.io/invoke) that you can use to filter elements in a jQuery object or items in an array. See the examples in the [filter.cy.js](./cypress/e2e/filter.cy.js) spec.
+**Note:** this module does not have `filter` method because Cypress API has query commands [cy.filter](https://on.cypress.io/filter) and [cy.invoke](https://on.cypress.io/invoke) that you can use to filter elements in a jQuery object or items in an array. See the examples in the [filter.cy.js](./cypress/e2e/filter.cy.js) spec. 📺 See video [Filter Elements And Items With Retries](https://youtu.be/70kRnoMuzds).
 
 ## Small print
 

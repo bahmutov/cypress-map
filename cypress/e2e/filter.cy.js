@@ -6,6 +6,10 @@ import '../../commands'
 
 chai.config.truncateThreshold = 500
 
+// 📺 watch these examples explained
+// in the video "Filter Elements And Items With Retries"
+// https://youtu.be/70kRnoMuzds
+
 describe('Filter examples', () => {
   it('filters array items', () => {
     const people = [

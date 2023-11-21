@@ -49,3 +49,20 @@ it('maps each item to the cy yielded value without returned chain', () => {
     })
     .should('deep.equal', [2, 4, 6])
 })
+
+it('works for an empty array', () => {
+  cy.wrap([])
+    .mapChain(() => {
+      throw new Error('Should not call mapChain callback')
+    })
+    .should('deep.equal', [])
+})
+
+it('works for a filtered empty array', () => {
+  cy.wrap([1, 2, 3])
+    .invoke('filter', () => false)
+    .mapChain(() => {
+      throw new Error('Should not call mapChain callback')
+    })
+    .should('deep.equal', [])
+})

@@ -21,4 +21,31 @@ function registerCommand(name, options, fn) {
   }
 }
 
-module.exports = { registerQuery, registerCommand }
+/**
+ * Finds the timeout option from this command or from its parent command
+ */
+function findTimeout(cmd, options = {}) {
+  if (Cypress._.isFinite(options.timeout)) {
+    return options.timeout
+  }
+
+  const defaultTimeout = Cypress.config('defaultCommandTimeout')
+  if (!cmd) {
+    return defaultTimeout
+  }
+  const prev = cmd.attributes?.prev
+  const prevTimeout = prev?.attributes?.timeout
+  if (Cypress._.isFinite(prevTimeout)) {
+    return prevTimeout
+  }
+  if (prev.attributes.args?.length) {
+    const lastArg = prev.attributes.args.at(-1)
+    if (Cypress._.isFinite(lastArg?.timeout)) {
+      return lastArg?.timeout
+    }
+  }
+
+  return defaultTimeout
+}
+
+module.exports = { registerQuery, registerCommand, findTimeout }

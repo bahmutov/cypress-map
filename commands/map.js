@@ -1,13 +1,15 @@
 /// <reference types="cypress" />
 
-const { registerQuery } = require('./utils')
+const { registerQuery, findTimeout } = require('./utils')
 
 const repoUrl = 'https://github.com/bahmutov/cypress-map'
 const repoLink = `[${repoUrl}](${repoUrl})`
 
 registerQuery('map', function (fnOrProperty, options = {}) {
+  const timeout = findTimeout(this, options)
+
   // make sure this query command respects the timeout option
-  this.set('timeout', options.timeout)
+  this.set('timeout', timeout)
 
   if (Cypress._.isPlainObject(fnOrProperty)) {
     Object.keys(fnOrProperty).forEach((key) => {
@@ -22,7 +24,7 @@ registerQuery('map', function (fnOrProperty, options = {}) {
 
     const log =
       options.log !== false &&
-      Cypress.log({ name: 'map', message, timeout: options.timeout })
+      Cypress.log({ name: 'map', message, timeout })
   } else {
     const message =
       typeof fnOrProperty === 'string'
@@ -31,7 +33,7 @@ registerQuery('map', function (fnOrProperty, options = {}) {
 
     const log =
       options.log !== false &&
-      Cypress.log({ name: 'map', message, timeout: options.timeout })
+      Cypress.log({ name: 'map', message, timeout })
   }
 
   return ($el) => {

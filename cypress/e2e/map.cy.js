@@ -114,6 +114,29 @@ it('respects the timeout option', () => {
     .should('deep.equal', ['Joe', 'Anna'])
 })
 
+it('respects the timeout option from the parent command', () => {
+  const people = [
+    {
+      name: {
+        first: 'Joe',
+        last: 'Smith',
+      },
+    },
+  ]
+  setTimeout(() => {
+    people.push({
+      name: {
+        first: 'Anna',
+        last: 'Kova',
+      },
+    })
+  }, 6000)
+  cy.wrap(people, { timeout: 10_000 })
+    .map('name') // should use the timeout from the parent command
+    .map('first') // should use the timeout from the parent command
+    .should('deep.equal', ['Joe', 'Anna'])
+})
+
 // enable only to see the thrown errors
 // https://github.com/bahmutov/cypress-map/issues/74
 describe.skip(

@@ -1,6 +1,10 @@
 /// <reference types="cypress" />
 
-const { registerQuery, findTimeout } = require('./utils')
+const {
+  registerQuery,
+  findTimeout,
+  isArrayOfStrings,
+} = require('./utils')
 
 const repoUrl = 'https://github.com/bahmutov/cypress-map'
 const repoLink = `[${repoUrl}](${repoUrl})`
@@ -11,7 +15,14 @@ registerQuery('map', function (fnOrProperty, options = {}) {
   // make sure this query command respects the timeout option
   this.set('timeout', timeout)
 
-  if (Cypress._.isPlainObject(fnOrProperty)) {
+  if (isArrayOfStrings(fnOrProperty)) {
+    // the user wants to pick the listed properties from the subject
+    const message = fnOrProperty.join(', ')
+
+    const log =
+      options.log !== false &&
+      Cypress.log({ name: 'map', message, timeout })
+  } else if (Cypress._.isPlainObject(fnOrProperty)) {
     Object.keys(fnOrProperty).forEach((key) => {
       if (typeof fnOrProperty[key] !== 'function') {
         throw new Error(`Expected ${key} to be a function`)
@@ -53,7 +64,16 @@ registerQuery('map', function (fnOrProperty, options = {}) {
       )
     }
 
-    if (Cypress._.isPlainObject(fnOrProperty)) {
+    if (isArrayOfStrings(fnOrProperty)) {
+      const result = {}
+      fnOrProperty.forEach((key) => {
+        if (!(key in $el)) {
+          throw new Error(`Cannot find property ${key}`)
+        }
+        result[key] = $el[key]
+      })
+      return result
+    } else if (Cypress._.isPlainObject(fnOrProperty)) {
       const result = { ...$el }
       Object.keys(fnOrProperty).forEach((key) => {
         if (!(key in $el)) {

@@ -48,4 +48,21 @@ function findTimeout(cmd, options = {}) {
   return defaultTimeout
 }
 
-module.exports = { registerQuery, registerCommand, findTimeout }
+/**
+ * Returns true if the argument is an array of strings.
+ * Note: an empty array is not considered an array of strings.
+ */
+function isArrayOfStrings(x) {
+  return (
+    Cypress._.isArray(x) &&
+    x.length &&
+    x.every((item) => typeof item === 'string')
+  )
+}
+
+module.exports = {
+  registerQuery,
+  registerCommand,
+  findTimeout,
+  isArrayOfStrings,
+}

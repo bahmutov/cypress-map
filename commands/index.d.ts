@@ -22,9 +22,12 @@ declare namespace Cypress {
      *  cy.wrap(['10', '20']).map(Number) // [10, 20]
      * @example
      *  cy.wrap({ age: '42' }).map({ age: Number }) // { age: 42 }
+     * @example
+     *  cy.wrap({ name: 'Joe' age: '42', zip: '90210' })
+     *    .map(['name', 'age']) // { name: ..., age: ... }
      */
     map(
-      mapper: string | Function | PropertyCallbacks,
+      mapper: string | string[] | Function | PropertyCallbacks,
       options?: CyOptions,
     ): Chainable<any>
 

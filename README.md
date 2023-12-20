@@ -122,6 +122,20 @@ cy.wrap({
   })
 ```
 
+You can avoid any conversion to simply pick the list of properties from an object
+
+```js
+const person = {
+  name: 'Joe',
+  age: 21,
+  occupation: 'student',
+}
+cy.wrap(person).map(['name', 'age']).should('deep.equal', {
+  name: 'Joe',
+  age: 21,
+})
+```
+
 You can extract nested paths by using "." in your property path
 
 ```js

@@ -470,6 +470,10 @@ If you are using TypeScript, include this module in your types list
 }
 ```
 
+## The build process
+
+The source code is in the [src/commands](./src/commands/) folder. The build command produces ES5 code that goes into the `commands` folder (should not be checked into the source code control). The `package.json` in its NPM distribution includes `commands` plus the types from `src/commands/index.d.ts` file.
+
 ## See also
 
 - [cypress-should-really](https://github.com/bahmutov/cypress-should-really) has similar functional helpers for constructing the `should(callback)` function on the fly.

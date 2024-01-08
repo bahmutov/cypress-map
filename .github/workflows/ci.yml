@@ -21,6 +21,9 @@ jobs:
       - name: Lint code ☑️
         run: npm run lint
 
+      - name: Build dist 🏗
+        run: npm run build
+
       - name: Run Cypress tests 🧪
         uses: cypress-io/github-action@v5
         with:
@@ -33,6 +36,12 @@ jobs:
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v4
+
+      - name: Install everything 📦
+        # https://github.com/cypress-io/github-action
+        uses: cypress-io/github-action@v5
+        with:
+          runTests: false
 
       - name: Install only the semantic release 📦
         run: npm install semantic-release

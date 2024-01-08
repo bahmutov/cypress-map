@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 // @ts-check
 
-import '../..'
+import '../../src/commands'
 
 const getTexts = ($el) => {
   return Cypress._.map($el, 'innerText')

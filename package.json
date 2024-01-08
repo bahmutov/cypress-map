@@ -2,18 +2,18 @@
   "name": "cypress-map",
   "version": "0.0.0-development",
   "description": "Extra Cypress query commands for v12+",
-  "main": "dist/commands/index.js",
-  "types": "commands/index.d.ts",
+  "main": "commands/index.js",
+  "types": "src/commands/index.d.ts",
   "files": [
-    "dist",
-    "commands/index.d.ts"
+    "commands",
+    "src/commands/index.d.ts"
   ],
   "scripts": {
     "test": "cypress run",
     "badges": "npx -p dependency-version-badge update-badge cypress",
     "semantic-release": "semantic-release",
     "stop-only": "stop-only --folder cypress/e2e",
-    "lint": "tsc --noEmit --pretty --allowJs --esModuleInterop commands/*.* cypress/*/*.js cypress/*/*/*.js",
+    "lint": "tsc --noEmit --pretty --allowJs --esModuleInterop src/commands/*.* cypress/*/*.js cypress/*/*/*.js",
     "build": "tsc"
   },
   "keywords": [

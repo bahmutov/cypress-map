@@ -3,9 +3,9 @@
     "lib": ["DOM", "ES6"],
     "types": ["cypress"],
     "target": "ES5",
-    "outDir": "./dist",
+    "outDir": "./commands",
     "allowJs": true,
     "esModuleInterop": true
   },
-  "include": ["commands/*.*"]
+  "include": ["src/commands/*.*"]
 }

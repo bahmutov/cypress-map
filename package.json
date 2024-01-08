@@ -14,7 +14,8 @@
     "semantic-release": "semantic-release",
     "stop-only": "stop-only --folder cypress/e2e",
     "lint": "tsc --noEmit --pretty --allowJs --esModuleInterop src/commands/*.* cypress/*/*.js cypress/*/*/*.js",
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc --watch"
   },
   "keywords": [
     "cypress-plugin"

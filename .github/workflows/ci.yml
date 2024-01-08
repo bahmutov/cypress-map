@@ -43,8 +43,8 @@ jobs:
         with:
           runTests: false
 
-      - name: Install only the semantic release 📦
-        run: npm install semantic-release
+      - name: Build dist 🏗
+        run: npm run build
 
       - name: Semantic Release 🚀
         uses: cycjimmy/semantic-release-action@v3

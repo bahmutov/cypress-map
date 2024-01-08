@@ -1,24 +1,17 @@
 /// <reference types="cypress" />
-
-const { registerCommand } = require('./utils')
-
-registerCommand(
-  'invokeOnce',
-  { prevSubject: true },
-  (subject, methodName, ...args) => {
-    let message = methodName
+var registerCommand = require('./utils').registerCommand;
+registerCommand('invokeOnce', { prevSubject: true }, function (subject, methodName) {
+    var args = [];
+    for (var _i = 2; _i < arguments.length; _i++) {
+        args[_i - 2] = arguments[_i];
+    }
+    var message = methodName;
     if (args.length) {
-      message += ' ' + args.map(JSON.stringify).join(',')
+        message += ' ' + args.map(JSON.stringify).join(',');
     }
-
-    const log = Cypress.log({ name: 'invokeOnce', message })
-
+    var log = Cypress.log({ name: 'invokeOnce', message: message });
     if (typeof subject[methodName] !== 'function') {
-      throw new Error(
-        `Cannot find method ${methodName} on the current subject`,
-      )
+        throw new Error("Cannot find method ".concat(methodName, " on the current subject"));
     }
-
-    return subject[methodName](...args)
-  },
-)
+    return subject[methodName].apply(subject, args);
+});

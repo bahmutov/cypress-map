@@ -3,16 +3,19 @@
   "version": "0.0.0-development",
   "description": "Extra Cypress query commands for v12+",
   "main": "commands/index.js",
-  "types": "commands/index.d.ts",
+  "types": "src/commands/index.d.ts",
   "files": [
-    "commands"
+    "commands",
+    "src/commands/index.d.ts"
   ],
   "scripts": {
     "test": "cypress run",
     "badges": "npx -p dependency-version-badge update-badge cypress",
     "semantic-release": "semantic-release",
     "stop-only": "stop-only --folder cypress/e2e",
-    "lint": "tsc --noEmit --pretty"
+    "lint": "tsc --noEmit --pretty --allowJs --esModuleInterop src/commands/*.* cypress/*/*.js cypress/*/*/*.js",
+    "build": "tsc",
+    "watch": "tsc --watch"
   },
   "keywords": [
     "cypress-plugin"

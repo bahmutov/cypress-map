@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 // @ts-check
-import '../../../commands'
+import '../../../src/commands'
 
 // implementation similar to "Json data attribute" recipe
 // from https://glebbahmutov.com/cypress-examples

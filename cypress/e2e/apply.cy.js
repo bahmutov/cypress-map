@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 // @ts-check
 
-import '../../commands'
+import '../../src/commands'
 
 it('applies the given callback to the subject', () => {
   const double = (n) => n * 2

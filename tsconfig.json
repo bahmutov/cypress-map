@@ -2,9 +2,10 @@
   "compilerOptions": {
     "lib": ["DOM", "ES6"],
     "types": ["cypress"],
+    "target": "ES5",
+    "outDir": "./commands",
     "allowJs": true,
-    "noEmit": true,
     "esModuleInterop": true
   },
-  "include": ["commands/*.*", "cypress/e2e/**/*.js"]
+  "include": ["src/commands/*.*"]
 }

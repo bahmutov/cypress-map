@@ -1,4 +1,4 @@
 node_modules/
 cypress/videos/
 dist
-commands
+commands/

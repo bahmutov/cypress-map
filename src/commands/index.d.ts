@@ -237,5 +237,11 @@ declare namespace Cypress {
      *  cy.wrap('hello').asEnv('greeting')
      */
     asEnv(name: string): Chainable<any>
+
+    /**
+     * Queries each selector and returns the found elements _in the specified order_.
+     * Retries if the elements are not found for any of the selectors.
+     */
+    getInOrder(...selector: string[]): Chainable<JQuery<HTMLElement>>
   }
 }

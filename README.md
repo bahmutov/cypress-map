@@ -313,6 +313,18 @@ it('saved value is available in this test', () => {
 
 Do you really want to make the tests dependent on each other?
 
+### getInOrder
+
+Queries the page using multiple selectors and returns the found elements _in the specified_ order, no matter how they are ordered in the document. Retries if any of the selectors are not found.
+
+```js
+cy.getInOrder('selector1', 'selector2', 'selector3', ...)
+// yields a single jQuery subject with
+// elements for selector1
+// and selector2,
+// and selector3, etc
+```
+
 ### table
 
 📝 to learn more about `cy.table` command, read the blog post [Test HTML Tables Using cy.table Query Command](https://glebbahmutov.com/blog/cy-table/).

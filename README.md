@@ -12,6 +12,7 @@
   - [Map Input Elements Values](https://youtu.be/OmVzv6pJN6I)
   - [Iterate Over DOM Elements Using cy.each, jQuery each and map, and cypress-map Plugin Commands](https://youtu.be/tMeKIIfEhyo)
   - [Confirm Sorted Attributes](https://youtu.be/sVb5MU2AkqE)
+  - [Query Multiple Elements In Order](https://youtu.be/3BjwoG1dW7o)
 - 📝 Read the blog posts
   - [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
   - [Crawl Weather Using Cypress](https://glebbahmutov.com/blog/crawl-weather/)

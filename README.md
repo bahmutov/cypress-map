@@ -326,6 +326,17 @@ cy.getInOrder('selector1', 'selector2', 'selector3', ...)
 // and selector3, etc
 ```
 
+### stable
+
+Sometimes you just want to wait until the element is stable. For example, if the element's text content does not change for N milliseconds, then we can consider the element to be `text` stable.
+
+```js
+cy.get('#message').stable('text')
+// yields the element
+```
+
+See [stable.cy.js](./cypress/e2e/stable/stable.cy.js)
+
 ### table
 
 📝 to learn more about `cy.table` command, read the blog post [Test HTML Tables Using cy.table Query Command](https://glebbahmutov.com/blog/cy-table/).

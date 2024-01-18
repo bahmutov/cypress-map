@@ -10,6 +10,12 @@ interface PropertyCallbacks {
  */
 type CyOptions = Partial<Cypress.Loggable & Cypress.Timeoutable>
 
+/**
+ * How to determine if an element is stable. For example, its text content
+ * should not change for N milliseconds
+ */
+type StableType = 'text'
+
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -243,5 +249,15 @@ declare namespace Cypress {
      * Retries if the elements are not found for any of the selectors.
      */
     getInOrder(...selector: string[]): Chainable<JQuery<HTMLElement>>
+
+    /**
+     * Query the element for N milliseconds to see if its text stays the same.
+     * If the text changes, reset the timer. Yields the original element.
+     * @example cy.get('h1').stable('text', 1000)
+     */
+    stable(
+      type: StableType,
+      ms?: number,
+    ): Chainable<JQuery<HTMLElement>>
   }
 }

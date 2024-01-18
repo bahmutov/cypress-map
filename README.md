@@ -335,6 +335,15 @@ cy.get('#message').stable('text')
 // yields the element
 ```
 
+You can control the quiet period (milliseconds), and pass the `log` and the `timeout` options
+
+```js
+// stable for 500ms
+// without logging
+// with maximum retries duration of 6 seconds
+cy.get('#message').stable('text', 500, { log: false, timeout: 6_000 })
+```
+
 See [stable.cy.js](./cypress/e2e/stable/stable.cy.js)
 
 ### table

@@ -258,6 +258,7 @@ declare namespace Cypress {
     stable(
       type: StableType,
       ms?: number,
+      options?: CyOptions,
     ): Chainable<JQuery<HTMLElement>>
   }
 }

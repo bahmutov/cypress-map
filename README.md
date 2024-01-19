@@ -18,6 +18,7 @@
   - [Crawl Weather Using Cypress](https://glebbahmutov.com/blog/crawl-weather/)
   - [Pass Values Between Cypress Tests](https://glebbahmutov.com/blog/pass-values-between-tests/)
   - [Do Not Use SHA To Compare HTML During E2E Tests](https://glebbahmutov.com/blog/do-not-use-sha/)
+  - [Cypress Flakiness Examples](https://glebbahmutov.com/blog/flakiness-example/)
 - 🎓 Covered in my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)
   - [Lesson l1: Confirm the attribute of the last item](https://cypress.tips/courses/cypress-plugins/lessons/l1)
   - [Lesson l2: Confirm the extracted list of texts](https://cypress.tips/courses/cypress-plugins/lessons/l2)

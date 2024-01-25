@@ -3,6 +3,10 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v4
@@ -28,6 +32,10 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           install: false
+        # pass the machine index and the total number
+        env:
+          SPLIT: ${{ strategy.job-total }}
+          SPLIT_INDEX: ${{ strategy.job-index }}
 
   release:
     needs: [test]

@@ -1,12 +1,22 @@
 <html>
   <body>
     <div id="message">--</div>
+    <br />
+    <input type="text" id="name" value="..." />
     <script>
+      // change the message element several times
       setTimeout(() => {
         document.getElementById('message').innerText = 'loading...'
       }, 1000)
       setTimeout(() => {
         document.getElementById('message').innerText = 'Hello'
+      }, 2000)
+      // change the name input element several times
+      setTimeout(() => {
+        document.getElementById('name').value = 'loading...'
+      }, 1000)
+      setTimeout(() => {
+        document.getElementById('name').value = 'World'
       }, 2000)
     </script>
   </body>

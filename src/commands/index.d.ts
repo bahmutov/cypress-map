@@ -12,9 +12,9 @@ type CyOptions = Partial<Cypress.Loggable & Cypress.Timeoutable>
 
 /**
  * How to determine if an element is stable. For example, its text content
- * should not change for N milliseconds
+ * should not change for N milliseconds, or its value.
  */
-type StableType = 'text'
+type StableType = 'text' | 'value'
 
 declare namespace Cypress {
   interface Chainable {

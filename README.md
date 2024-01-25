@@ -337,6 +337,8 @@ cy.get('#message').stable('text')
 // yields the element
 ```
 
+Supported types: `text` and `value` (for input elements)
+
 You can control the quiet period (milliseconds), and pass the `log` and the `timeout` options
 
 ```js

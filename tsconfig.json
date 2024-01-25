@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "lib": ["DOM", "ES6"],
+    "lib": ["DOM", "ES2021"],
     "types": ["cypress"],
     "target": "ES5",
     "outDir": "./commands",
     "allowJs": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
   },
-  "include": ["src/commands/*.*"]
+  "include": ["src/commands/*.*"],
 }

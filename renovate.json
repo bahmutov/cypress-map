@@ -11,5 +11,6 @@
   "prHourlyLimit": 2,
   "schedule": ["every weekend"],
   "masterIssue": true,
-  "labels": ["type: dependencies", "renovate"]
+  "labels": ["type: dependencies", "renovate"],
+  "ignoreDeps": ["cy-spok"]
 }

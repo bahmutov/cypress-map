@@ -55,7 +55,7 @@ jobs:
         run: npm run build
 
       - name: Semantic Release 🚀
-        uses: cycjimmy/semantic-release-action@v3
+        uses: cycjimmy/semantic-release-action@v4
         with:
           branch: main
         env:

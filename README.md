@@ -50,7 +50,7 @@
 
 ## Install
 
-Add this package as a dev dependency
+Add this package as a dev dependency:
 
 ```
 $ npm i -D cypress-map

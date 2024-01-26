@@ -1,12 +1,8 @@
 name: ci
 on: push
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-22.04
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2]
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v4
@@ -25,20 +21,15 @@ jobs:
       - name: Lint code ☑️
         run: npm run lint
 
-      - name: Build dist 🏗
-        run: npm run build
-
-      - name: Run Cypress tests 🧪
-        uses: cypress-io/github-action@v6
-        with:
-          install: false
-        # pass the machine index and the total number
-        env:
-          SPLIT: ${{ strategy.job-total }}
-          SPLIT_INDEX: ${{ strategy.job-index }}
+  test:
+    # https://github.com/bahmutov/cypress-workflows
+    uses: bahmutov/cypress-workflows/.github/workflows/split.yml@v2
+    with:
+      nE2E: 2
+      build: npm run build
 
   release:
-    needs: [test]
+    needs: [lint, test]
     runs-on: ubuntu-22.04
     if: github.ref == 'refs/heads/main'
     steps:

@@ -312,6 +312,16 @@ cy.get('#items li').second().should('have.text', 'second')
 
 See [second.cy.js](./cypress/e2e/second.cy.js)
 
+### third
+
+Yields the third element from the current subject. Could be an element or an array item.
+
+```js
+cy.get('#items li').third().should('have.text', 'third')
+```
+
+See [third.cy.js](./cypress/e2e/third.cy.js)
+
 ### asEnv
 
 Saves current subject in `Cypress.env` object. Note: Cypress.env object is reset before the spec run, but the changed values are passed from test to test. Thus you can easily pass a value from the first test to the second.

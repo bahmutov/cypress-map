@@ -177,6 +177,13 @@ declare namespace Cypress {
     second(): Chainable<any>
 
     /**
+     * Yields the third element or array item.
+     * @example
+     *  cy.get('li').third() // the third DOM element
+     */
+    third(): Chainable<any>
+
+    /**
      * Prints the current subject and yields it to the next command or assertion.
      * @see https://github.com/bahmutov/cypress-map
      * @see https://github.com/davidchambers/string-format

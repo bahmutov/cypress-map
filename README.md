@@ -16,6 +16,7 @@
   - [Element's Text Becomes Stable](https://youtu.be/GrRUnQ2r7Wk)
   - [Cut Cypress Execution In Half By Running Tests In Parallel Using cypress-split And GitHub Actions](https://youtu.be/jvBzNs0pRXU)
   - [Fix GitHub Actions Node Version Warnings](https://youtu.be/1_jvJ3c8QAY)
+  - [Use cy.second and cy.third Commands](https://youtu.be/gZtTN9LaD7U)
 - 📝 Read the blog posts
   - [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
   - [Crawl Weather Using Cypress](https://glebbahmutov.com/blog/crawl-weather/)

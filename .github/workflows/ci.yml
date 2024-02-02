@@ -25,7 +25,7 @@ jobs:
     # https://github.com/bahmutov/cypress-workflows
     uses: bahmutov/cypress-workflows/.github/workflows/split.yml@v2
     with:
-      nE2E: 2
+      nE2E: 3
       build: npm run build
 
   release:

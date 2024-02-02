@@ -24,7 +24,7 @@
   "license": "MIT",
   "devDependencies": {
     "cy-spok": "^1.5.2",
-    "cypress": "^13.6.0",
+    "cypress": "^13.6.4",
     "cypress-split": "^1.19.0",
     "prettier": "^3.0.0",
     "semantic-release": "^23.0.0",

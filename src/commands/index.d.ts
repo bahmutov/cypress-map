@@ -237,8 +237,11 @@ declare namespace Cypress {
     findOne(predicate: object | Function): Chainable<any>
 
     /**
-     * A query that calls `JSON.parse(JSON.parse(subject))`
+     * A query that calls `JSON.parse(JSON.parse(subject))` or entries.
+     * When using `entries`, it calls `Object.entries`
+     * then constructs the object again using `Object.fromEntries`.
      * @see https://github.com/bahmutov/cypress-map
+     * @param conversionType Json by default, could be 'entries'
      * @example
      *  cy.get('selector')
      *    // yields DOMStringMap
@@ -246,7 +249,9 @@ declare namespace Cypress {
      *    .toPlainObject()
      *    .should('deep.include', { ... })
      */
-    toPlainObject(): Chainable<Object>
+    toPlainObject(
+      conversionType?: 'json' | 'entries',
+    ): Chainable<Object>
 
     /**
      * Calls the given constructor function with "new" keyword

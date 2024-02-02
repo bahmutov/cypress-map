@@ -465,6 +465,12 @@ cy.get('article')
   })
 ```
 
+By default uses JSON stringify and parse back. If you want to convert using `entries` and `fromEntries`, add an argument:
+
+```js
+cy.wrap(new URLSearchParams(searchParams)).toPlainObject('entries')
+```
+
 ### invokeOnce
 
 In Cypress v12 `cy.invoke` became a query, which made working with asynchronous methods really unwieldy. The `cy.invokeOnce` is a return the old way of calling the method and yielding the resolved value.

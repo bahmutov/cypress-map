@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+/// <reference path="../../src/commands/index.d.ts" />
 // @ts-check
 
 import '../../commands'
@@ -47,4 +47,16 @@ describe('to plain object', () => {
         parent: 'cars',
       })
   })
+})
+
+it('uses entries to convert', () => {
+  const searchParams =
+    '?callback=%2Fmy-profile-page.html&question=what%20is%20the%20meaning%20of%20life%3F&answer=42'
+  cy.wrap(new URLSearchParams(searchParams))
+    .toPlainObject('entries')
+    .should('deep.equal', {
+      callback: '/my-profile-page.html',
+      question: 'what is the meaning of life?',
+      answer: '42',
+    })
 })

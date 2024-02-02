@@ -249,6 +249,12 @@ declare namespace Cypress {
     toPlainObject(): Chainable<Object>
 
     /**
+     * Calls the given constructor function with "new" keyword
+     * and the current subject as the only argument.
+     */
+    make(constructorFunction: Function): Chainable<any>
+
+    /**
      * Saves current subject in `Cypress.env` object.
      * Note: Cypress.env object is reset before the spec run,
      * but the changed values are passed from test to test.

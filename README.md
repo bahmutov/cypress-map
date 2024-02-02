@@ -202,6 +202,18 @@ cy.get('#items li')
 
 **Notice:** if the label is provided, the callback function is called with label and the subject.
 
+### make
+
+A retryable query that calls the given constructor function using the `new` keyword and the current subject as argument.
+
+```js
+cy.wrap('Jan 1, 2019')
+  // same as "new Date('Jan 1, 2019')"
+  .make(Date)
+  .invoke('getFullYear')
+  .should('equal', 2019)
+```
+
 ### print
 
 A better `cy.log`: yields the value, intelligently stringifies values using `%` and [string-format](https://github.com/davidchambers/string-format) notation.

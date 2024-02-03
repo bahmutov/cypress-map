@@ -48,6 +48,7 @@
   - [Bonus 36: Manipulate data- attributes using cypress-map methods](https://cypress.tips/courses/swag-store/lessons/bonus36)
   - [Bonus 41: Pick and confirm a random product](https://cypress.tips/courses/swag-store/lessons/bonus41)
   - [Bonus 42: Add 3 random items to the cart](https://cypress.tips/courses/swag-store/lessons/bonus42)
+  - [Bonus 127: Parse URLSearchParams with retries](https://cypress.tips/courses/network-testing/lessons/bonus127)
 
 ## Install
 

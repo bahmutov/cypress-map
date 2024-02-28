@@ -3,6 +3,7 @@
 require('./apply')
 require('./as-env')
 require('./at')
+require('./detaches')
 require('./find-one')
 require('./get-in-order')
 require('./invoke-once')

@@ -387,6 +387,19 @@ cy.get('#message').stable('text', 500, { log: false, timeout: 6_000 })
 
 See [stable.cy.js](./cypress/e2e/stable/stable.cy.js)
 
+### detaches
+
+**experimental**
+
+Retries until the element with the given selector detaches from DOM.
+
+```js
+cy.contains('Click to re-render').click()
+cy.detaches('#list')
+```
+
+See [detach.cy.js](./cypress/e2e/detach.cy.js)
+
 ### table
 
 📝 to learn more about `cy.table` command, read the blog post [Test HTML Tables Using cy.table Query Command](https://glebbahmutov.com/blog/cy-table/).

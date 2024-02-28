@@ -285,5 +285,13 @@ declare namespace Cypress {
       ms?: number,
       options?: CyOptions,
     ): Chainable<JQuery<HTMLElement>>
+
+    /**
+     * Checks if the element is detached from the DOM,
+     * auto-retries until the element is detached.
+     * @warning Experimental.
+     * @example cy.detaches('#name2')
+     */
+    detaches(selector: string): void
   }
 }

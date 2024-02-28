@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <div id="name">Santo</div>
+
+    <div id="main-section">
+      <div id="name2">Joe</div>
+    </div>
+    <button id="click">Click to remove Joe</button>
+
+    <script>
+      setTimeout(() => {
+        document.getElementById('name').remove()
+      }, 1000)
+
+      document
+        .getElementById('click')
+        .addEventListener('click', () => {
+          setTimeout(() => {
+            document.getElementById('name2').remove()
+            document.getElementById('main-section').innerHTML =
+              '<div id="name2">Anna</div>'
+          }, 1000)
+        })
+    </script>
+  </body>
+</html>

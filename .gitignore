@@ -2,3 +2,4 @@ node_modules/
 cypress/videos/
 dist
 commands/
+.DS_Store

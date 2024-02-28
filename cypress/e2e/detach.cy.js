@@ -18,7 +18,7 @@ describe('detach', () => {
 
   it('removes after click', () => {
     // grab the initial element to prepare
-    cy.get('#name').then(($el) => {
+    cy.get('#name2').then(($el) => {
       cy.contains('Click to remove Joe').click()
       // confirm the old element is gone
       cy.wrap(null).should(() => {
@@ -27,7 +27,7 @@ describe('detach', () => {
         )
       })
       // the new element should be quickly there
-      cy.contains('#name', 'Anna', { timeout: 0 })
+      cy.contains('#name2', 'Anna', { timeout: 0 })
     })
   })
 

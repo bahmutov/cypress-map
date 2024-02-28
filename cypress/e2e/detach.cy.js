@@ -19,7 +19,7 @@ describe('detach', () => {
   it('removes after click', () => {
     // grab the initial element to prepare
     cy.get('#name').then(($el) => {
-      cy.contains('Click to process').click()
+      cy.contains('Click to remove Joe').click()
       // confirm the old element is gone
       cy.wrap(null).should(() => {
         expect($el[0], 'element is gone').to.satisfy(

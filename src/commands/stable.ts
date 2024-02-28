@@ -1,8 +1,8 @@
 import { registerQuery } from './utils'
 
-export type StableType = 'text' | 'value'
+export type StableType = 'text' | 'value' | 'element'
 
-const validStableTypes = ['text', 'value']
+const validStableTypes = ['text', 'value', 'element']
 
 // set to console.log if you want to debug the command
 const logger = Cypress._.noop
@@ -25,7 +25,7 @@ registerQuery(
     this.set('timeout', timeout)
 
     if (!validStableTypes.includes(type)) {
-      throw new Error(`unknown stable type ${type}`)
+      throw new Error(`unknown stable type "${type}"`)
     }
 
     const log =
@@ -118,6 +118,49 @@ registerQuery(
           started = +new Date()
           initialValue = $el.val()
           logger('value changed to %o', initialValue)
+          throw new Error('reset')
+        }
+      }
+    } else if (type === 'element') {
+      let started = null
+      let initialElement = null
+      let initialAt = null
+      return ($el) => {
+        if (initialElement === null) {
+          if ($el.length !== 1) {
+            throw new Error('Expected one element to check if stable')
+          }
+          started = +new Date()
+          initialElement = $el[0]
+          initialAt = started
+          throw new Error('start')
+        }
+        if ($el[0] === initialElement) {
+          const now = +new Date()
+          if (now - started > ms) {
+            logger('after %dms stable element', now - started)
+            if (shouldLog) {
+              log.set('consoleProps', () => {
+                return {
+                  time: now - started,
+                  duration: now - initialAt,
+                  result: initialElement,
+                }
+              })
+            }
+            // yield the original element
+            // so we can chain more commands and assertions
+            return $el
+          } else {
+            throw new Error('waiting')
+          }
+        } else {
+          started = +new Date()
+          initialElement = $el[0]
+          logger(
+            'element changed to "%s"',
+            initialElement.innerText.substring(0, 100) + '...',
+          )
           throw new Error('reset')
         }
       }

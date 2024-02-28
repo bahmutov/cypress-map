@@ -3,6 +3,9 @@
     <div id="message">--</div>
     <br />
     <input type="text" id="name" value="..." />
+    <br />
+    <div id="result-parent"><div id="result">--</div></div>
+    <button id="replace-result">Replace result</button>
     <script>
       // change the message element several times
       setTimeout(() => {
@@ -18,6 +21,15 @@
       setTimeout(() => {
         document.getElementById('name').value = 'World'
       }, 2000)
+      // replace the result element completely
+      document
+        .getElementById('replace-result')
+        .addEventListener('click', () => {
+          setTimeout(() => {
+            document.getElementById('result-parent').innerHTML =
+              '<div id="result">Replaced</div>'
+          }, 500)
+        })
     </script>
   </body>
 </html>

@@ -374,7 +374,7 @@ cy.get('#message').stable('text')
 // yields the element
 ```
 
-Supported types: `text` and `value` (for input elements)
+Supported types: `text`, `value` (for input elements) and `element` (compares the element reference)
 
 You can control the quiet period (milliseconds), and pass the `log` and the `timeout` options
 

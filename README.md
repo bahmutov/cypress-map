@@ -399,6 +399,16 @@ cy.contains('Click to re-render').click()
 cy.detaches('#list')
 ```
 
+Sometimes the detachment can happen right with the action and the `cy.detaches(selector)` is _too late_. If you know the detachment might have already happened, you need to prepare for it by using an alias stored in the `Cypress.env` object:
+
+```js
+cy.get('#name2').asEnv('name')
+cy.contains('Click to remove Joe').click()
+cy.detaches('@name')
+```
+
+The jQuery object will be stored inside the `Cypress.env` under the `name` property.
+
 See [detach.cy.js](./cypress/e2e/detach.cy.js)
 
 ### table

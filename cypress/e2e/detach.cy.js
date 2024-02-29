@@ -38,4 +38,13 @@ describe('detach', () => {
     // the new element should be quickly there
     cy.contains('#name2', 'Anna', { timeout: 0 })
   })
+
+  it('removes after click (split query)', () => {
+    cy.get('#name2').asEnv('name')
+    cy.contains('Click to remove Joe').click()
+    cy.detaches('@name')
+    // confirm the old element is gone
+    // the new element should be quickly there
+    cy.contains('#name2', 'Anna', { timeout: 0 })
+  })
 })

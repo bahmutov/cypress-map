@@ -3,6 +3,9 @@
 
 import '../../commands'
 
+// this spec shows the difference between
+// cy.invoke, cy.mapInvoke, and cy.map
+
 it('invokes a method on the subject', () => {
   const list = ['apples', 'plums', 'bananas']
   cy.wrap(list)

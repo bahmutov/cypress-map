@@ -301,5 +301,13 @@ declare namespace Cypress {
      * @example cy.detaches('#name2')
      */
     detaches(selector: string): void
+
+    /**
+     * Computes the object with the different properties from the current subject
+     * and the given expected object. If there are no differences, yields the `{}`
+     * @example cy.wrap({ name: 'Joe', age: 42 }).difference({ name: 'Joe' })
+     *  // { age: { expected: undefined, actual: 42 } }
+     */
+    difference(expected: Object): Chainable<Object>
   }
 }

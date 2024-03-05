@@ -417,6 +417,18 @@ The jQuery object will be stored inside the `Cypress.env` under the `name` prope
 
 See [detach.cy.js](./cypress/e2e/detach.cy.js)
 
+### difference
+
+Computes an object of the difference with the current subject object.
+
+```js
+cy.wrap({ name: 'Joe', age: 20 })
+  .difference({ name: 'Joe', age: 30 })
+  .should('deep.equal', { age: { actual: 20, expected: 30 } })
+```
+
+Reports missing and extra properties. See [difference.cy.js](./cypress/e2e/difference.cy.js)
+
 ### table
 
 📝 to learn more about `cy.table` command, read the blog post [Test HTML Tables Using cy.table Query Command](https://glebbahmutov.com/blog/cy-table/).

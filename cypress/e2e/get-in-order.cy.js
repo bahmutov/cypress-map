@@ -35,3 +35,17 @@ it('OR selector', () => {
     // the order is the same as in the DOM
     .should('deep.equal', ['first', 'third', 'fifth'])
 })
+
+// https://github.com/bahmutov/cypress-map/issues/144
+it('spreads an array of strings', () => {
+  cy.visit('cypress/index.html')
+  const selectors = [
+    'li:contains("fifth")',
+    'li:contains("first")',
+    'li:contains("third")',
+  ]
+  cy.getInOrder(selectors)
+    .should('have.length', 3)
+    .map('innerText')
+    .should('deep.equal', ['fifth', 'first', 'third'])
+})

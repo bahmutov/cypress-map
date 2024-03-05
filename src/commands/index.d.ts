@@ -273,8 +273,15 @@ declare namespace Cypress {
     /**
      * Queries each selector and returns the found elements _in the specified order_.
      * Retries if the elements are not found for any of the selectors.
+     * @example cy.getInOrder('h1', 'h2', 'h3')
      */
     getInOrder(...selector: string[]): Chainable<JQuery<HTMLElement>>
+    /**
+     * Queries each selector and returns the found elements _in the specified order_.
+     * Retries if the elements are not found for any of the selectors.
+     * @example cy.getInOrder(['h1', 'h2', 'h3'])
+     */
+    getInOrder(selectors: string[]): Chainable<JQuery<HTMLElement>>
 
     /**
      * Query the element for N milliseconds to see if its text stays the same.

@@ -366,6 +366,12 @@ cy.getInOrder('selector1', 'selector2', 'selector3', ...)
 // and selector3, etc
 ```
 
+You can also use a single array of selector strings
+
+```js
+cy.getInOrder(['h1', 'h2', 'h3'])
+```
+
 ### stable
 
 Sometimes you just want to wait until the element is stable. For example, if the element's text content does not change for N milliseconds, then we can consider the element to be `text` stable.

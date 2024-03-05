@@ -3,6 +3,15 @@
 const { registerQuery } = require('./utils')
 
 registerQuery('getInOrder', (...selectors) => {
+  // if you pass a single array of selectors, use it as the selectors
+  if (
+    Array.isArray(selectors) &&
+    selectors.length === 1 &&
+    Array.isArray(selectors[0])
+  ) {
+    selectors = selectors[0]
+  }
+
   if (!Array.isArray(selectors)) {
     throw new Error(`Invalid cy.getInOrder selectors ${selectors}`)
   }

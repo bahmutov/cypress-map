@@ -428,6 +428,14 @@ cy.wrap({ name: 'Joe', age: 20 })
   .should('deep.equal', { age: { actual: 20, expected: 30 } })
 ```
 
+You can use synchronous predicate functions to validate properties
+
+```js
+// confirm the value of the "age" property
+// is larger than 15
+.difference({ name: 'Joe', age: (n) => n > 15 })
+```
+
 Reports missing and extra properties. See [difference.cy.js](./cypress/e2e/difference.cy.js)
 
 ### table

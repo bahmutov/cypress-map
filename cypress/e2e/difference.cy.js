@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+/// <reference path="../../src/commands/index.d.ts" />
 // @ts-check
 
 import '../../commands'
@@ -41,4 +41,18 @@ it('reports extra property', () => {
     .should('deep.equal', {
       extra: { extra: true, actual: true },
     })
+})
+
+describe('predicates', () => {
+  it('allows to use custom predicates', () => {
+    cy.wrap({ name: 'Joe', age: 20 })
+      .difference({ name: 'Joe', age: (n) => n > 15 })
+      .should('deep.equal', {})
+  })
+
+  it('checks the number', () => {
+    cy.wrap({ name: 'Joe', age: 20 })
+      .difference({ name: 'Joe', age: Cypress._.isNumber })
+      .should('deep.equal', {})
+  })
 })

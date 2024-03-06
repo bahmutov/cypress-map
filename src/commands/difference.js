@@ -14,7 +14,14 @@ registerQuery('difference', (expected) => {
         const expectedValue = expected[name]
         // console.log({ name, actual, expectedValue })
 
-        if (actual !== expectedValue) {
+        if (typeof expectedValue === 'function') {
+          if (expectedValue(actual) === false) {
+            const predicteName = expectedValue.name
+            diff[name] = {
+              message: `value ${actual} did not pass predicate "${predicteName}"`,
+            }
+          }
+        } else if (actual !== expectedValue) {
           diff[name] = { actual, expected: expectedValue }
         }
       }

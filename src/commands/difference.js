@@ -3,6 +3,8 @@
 const { registerQuery } = require('./utils')
 
 registerQuery('difference', (expected) => {
+  const log = Cypress.log({ name: 'difference', type: 'child' })
+
   const names = Object.keys(expected)
   return (subject) => {
     const diff = {}
@@ -30,6 +32,10 @@ registerQuery('difference', (expected) => {
       if (!(name in expected)) {
         diff[name] = { extra: true, actual: subject[name] }
       }
+    })
+
+    log.set('consoleProps', () => {
+      return { expected, subject, diff }
     })
 
     return diff

@@ -18,6 +18,8 @@
   - [Fix GitHub Actions Node Version Warnings](https://youtu.be/1_jvJ3c8QAY)
   - [Use cy.second and cy.third Commands](https://youtu.be/gZtTN9LaD7U)
   - [Remove Class From Sampled Elements](https://youtu.be/zB2LYB0yFwQ)
+  - [Check Multiple Properties At Once Using cy.difference Query](https://youtu.be/WKVaJjst_-8)
+  - [cy.difference Command With Predicates](https://youtu.be/RKgSBN2fk_s)
 - 📝 Read the blog posts
   - [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
   - [Crawl Weather Using Cypress](https://glebbahmutov.com/blog/crawl-weather/)

@@ -422,7 +422,7 @@ See [detach.cy.js](./cypress/e2e/detach.cy.js)
 
 ### difference
 
-Computes an object of the difference with the current subject object.
+Computes an object/arrays of the difference with the current subject object/array.
 
 ```js
 cy.wrap({ name: 'Joe', age: 20 })

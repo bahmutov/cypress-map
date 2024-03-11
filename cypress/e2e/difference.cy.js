@@ -56,3 +56,43 @@ describe('predicates', () => {
       .should('deep.equal', {})
   })
 })
+
+describe('compares two arrays', () => {
+  it('compares two equal arrays', () => {
+    cy.wrap([1, 2, 3]).difference([1, 2, 3]).should('be.empty')
+  })
+
+  it('compares two different arrays', () => {
+    cy.wrap([1, 2, 3])
+      .difference([1, 2, 4])
+      .should('deep.equal', { 2: { actual: 3, expected: 4 } })
+  })
+
+  it('compares two arrays that become equal', () => {
+    const list = []
+    cy.wrap(list).difference([1, 2, 3]).should('be.empty')
+    setTimeout(() => {
+      list.push(1, 2, 3)
+    }, 200)
+  })
+
+  it('compares two arrays with predicates', () => {
+    const list = []
+    cy.wrap(list)
+      .difference([
+        Cypress._.isNumber,
+        (x) => x === 'foo',
+        (x) => x === 'bar',
+      ])
+      .should('be.empty')
+    setTimeout(() => {
+      list.push(1)
+    }, 200)
+    setTimeout(() => {
+      list.push('foo')
+    }, 400)
+    setTimeout(() => {
+      list.push('bar')
+    }, 600)
+  })
+})

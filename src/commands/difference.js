@@ -2,8 +2,26 @@
 
 const { registerQuery } = require('./utils')
 
+const toDifference = (o) => {
+  if (typeof o === 'function') {
+    return o.name || 'fn'
+  } else {
+    return o
+  }
+}
+
 registerQuery('difference', (expected) => {
-  const log = Cypress.log({ name: 'difference', type: 'child' })
+  const logOptions = {
+    name: 'difference',
+    type: 'child',
+  }
+  if (Array.isArray(expected)) {
+    logOptions.message =
+      '[' + expected.map(toDifference).join(', ') + ']'
+  } else {
+    logOptions.message = JSON.stringify(expected, null, 2)
+  }
+  const log = Cypress.log(logOptions)
 
   const names = Object.keys(expected)
   return (subject) => {

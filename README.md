@@ -440,6 +440,28 @@ You can use synchronous predicate functions to validate properties
 
 Reports missing and extra properties. See [difference.cy.js](./cypress/e2e/difference.cy.js)
 
+**Note:** use `have.length` to validate the number of items in an array:
+
+```js
+// let's check if there are 3 objects in the array
+// INSTEAD OF THIS
+.difference([Cypress._.object, Cypress._.object, Cypress._.object])
+// USE AN ASSERTION
+.should('have.length', 3)
+```
+
+You can check each item in the array subject using values / predicates from the expected object.
+
+```js
+// list of people objects
+cy.wrap(people)
+  .difference({
+    name: Cypress._.isString,
+    age: (age) => age > 1 && age < 100,
+  })
+  .should('be.empty')
+```
+
 ### table
 
 📝 to learn more about `cy.table` command, read the blog post [Test HTML Tables Using cy.table Query Command](https://glebbahmutov.com/blog/cy-table/).

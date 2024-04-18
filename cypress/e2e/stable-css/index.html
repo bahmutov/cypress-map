@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <style>
+      @keyframes error {
+        0% {
+          background-color: #ffffff;
+          color: black;
+        }
+        50% {
+          background-color: #ff0000;
+          color: gray;
+        }
+        100% {
+          background-color: #e2231a;
+          color: white;
+        }
+      }
+
+      .custom-background {
+        background-color: #e2231a;
+        color: white;
+        animation: error 3.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Stable CSS</h1>
+    <div id="message">Some text</div>
+    <br />
+    <button id="show">Click to show</button>
+    <script>
+      document
+        .getElementById('show')
+        .addEventListener('click', () => {
+          const message = document.getElementById('message')
+          message.classList.add('custom-background')
+        })
+    </script>
+  </body>
+</html>

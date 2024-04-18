@@ -384,7 +384,7 @@ cy.get('#message').stable('text')
 // yields the element
 ```
 
-Supported types: `text`, `value` (for input elements) and `element` (compares the element reference)
+Supported types: `text`, `value` (for input elements), `css`, and `element` (compares the element reference)
 
 You can control the quiet period (milliseconds), and pass the `log` and the `timeout` options
 
@@ -395,7 +395,18 @@ You can control the quiet period (milliseconds), and pass the `log` and the `tim
 cy.get('#message').stable('text', 500, { log: false, timeout: 6_000 })
 ```
 
-See [stable.cy.js](./cypress/e2e/stable/stable.cy.js)
+When checking the CSS property to be stable, provide the name of the property:
+
+```js
+// retries until the CSS animation finishes
+// and the background color is red
+cy.get('#message')
+  .stable('css', 'background-color', 100)
+  // yields the element
+  .should('have.css', 'background-color', 'rgb(255, 0, 0)')
+```
+
+See [stable.cy.js](./cypress/e2e/stable/stable.cy.js) and [stable-css.cy.js](./cypress/e2e/stable-css/stable-css.cy.js)
 
 ### detaches
 

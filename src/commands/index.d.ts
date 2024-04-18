@@ -293,6 +293,17 @@ declare namespace Cypress {
       ms?: number,
       options?: CyOptions,
     ): Chainable<JQuery<HTMLElement>>
+    /**
+     * Query the element for N milliseconds to see if its CSS property stays the same.
+     * If the property changes, reset the timer. Yields the original element.
+     * @example cy.get('h1').stable('css', 'background-color', 1000)
+     */
+    stable(
+      type: 'css',
+      param: string,
+      ms?: number,
+      options?: CyOptions,
+    ): Chainable<JQuery<HTMLElement>>
 
     /**
      * Checks if the element is detached from the DOM,

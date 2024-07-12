@@ -128,6 +128,25 @@ declare namespace Cypress {
     applyRight(fn: Function, ...arguments: any[]): Chainable<any>
 
     /**
+     * Applies the given function to the arguments and the first item.
+     * The first item from the current subject is **the last argument**.
+     * @example
+     *  cy.wrap([2, 3]).applyToFirst(Cypress._.add, 4).should('equal', 6)
+     */
+    applyToFirst(fn: Function, ...arguments: any[]): Chainable<any>
+
+    /**
+     * Applies the given function to the arguments and the first item.
+     * The first item from the current subject is **the last argument**.
+     * @example
+     *  cy.wrap([8, 1]).applyToFirstRight(Cypress._.subtract, 4).should('equal', 4)
+     */
+    applyToFirstRight(
+      fn: Function,
+      ...arguments: any[]
+    ): Chainable<any>
+
+    /**
      * Creates a callback to apply to the subject by partially applying known arguments.
      * @see https://github.com/bahmutov/cypress-map
      * @param fn Callback function to call

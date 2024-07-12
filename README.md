@@ -123,6 +123,28 @@ cy.wrap(100)
   .should('equal', 105)
 ```
 
+### applyToFirst
+
+If the current subject is an array, or a jQuery object, you can apply the given callback with arguments to the _first_ item or element. The current subject will be the _last_ argument.
+
+```js
+// cy.applyToFirst(callback, ...args)
+cy.wrap(Cypress.$('<div>100</div><div>200</div>'))
+  .applyToFirst((base, el) => parseInt(el.innerText, base), 10)
+  .should('equal', 100)
+```
+
+### applyToFirstRight
+
+If the current subject is an array, or a jQuery object, you can apply the given callback with arguments to the _first_ item or element. The current subject will be the _first_ argument.
+
+```js
+// cy.applyToFirstRight(callback, ...args)
+cy.wrap(Cypress.$('<div>100</div><div>200</div>'))
+  .applyToFirstRight((el, base) => parseInt(el.innerText, base), 10)
+  .should('equal', 100)
+```
+
 ### map
 
 Transforms every object in the given collection by running it through the given callback function. Can also map each object to its property. An object could be an array or a jQuery object.

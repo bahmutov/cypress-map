@@ -102,6 +102,30 @@ declare namespace Cypress {
      *  cy.wrap(2).apply(double).should('equal', 4)
      */
     apply(fn: Function): Chainable<any>
+    /**
+     * Applies the given function to the arguments and subject
+     * The subject is **the last argument**.
+     * @example
+     *  cy.wrap(2).apply(Cypress._.add, 4).should('equal', 6)
+     */
+    apply(fn: Function, ...arguments: any[]): Chainable<any>
+
+    /**
+     * A query command that applies the given callback to the subject.
+     * Without arguments works the same as `apply`.
+     * @see https://github.com/bahmutov/cypress-map
+     * @param fn Callback function to call
+     * @example
+     *  cy.wrap(2).applyRight(double).should('equal', 4)
+     */
+    applyRight(fn: Function): Chainable<any>
+    /**
+     * Applies the given function to the arguments and subject
+     * The subject is **the first argument**.
+     * @example
+     *  cy.wrap(8).applyRight(Cypress._.subtract, 4).should('equal', 4)
+     */
+    applyRight(fn: Function, ...arguments: any[]): Chainable<any>
 
     /**
      * Creates a callback to apply to the subject by partially applying known arguments.

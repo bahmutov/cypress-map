@@ -90,6 +90,24 @@ cy.wrap(100).apply(double).should('equal', 200)
 
 It works like `cy.then` but `cy.apply(fn)` is a query command. Function `fn` should be synchronous, pure function that only uses the subject argument and returns new value The function callback `fn` cannot use any Cypress commands `cy`.
 
+You can pass additional _left_ arguments to the callback function. Then it puts the subject as _last argument_ before calling the function:
+
+```js
+cy.wrap(8).apply(Cypress._.subtract, 4).should('equal', -4)
+```
+
+### applyRight
+
+Without arguments, `cy.applyRight` works the same as `cy.apply`. If you pass arguments, then the subject plus the arguments become the arguments to the callback. The subject is at the _left_ (first) position
+
+```js
+cy.wrap(8).applyRight(Cypress._.subtract, 4).should('equal', 4)
+// same as
+cy.wrap(8)
+  .apply((subject) => Cypress._.subtract(subject, 4))
+  .should('equal', 4)
+```
+
 ### partial
 
 Sometimes you have the callback to apply, and you know the first argument(s), and just need to put the subject at the last position. This is where you can partially apply the known arguments to the given callback.

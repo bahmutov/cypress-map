@@ -136,6 +136,16 @@ declare namespace Cypress {
     applyToFirst(fn: Function, ...arguments: any[]): Chainable<any>
 
     /**
+     * Calls the specified method on the first item in the current subject.
+     * @example
+     *  cy.get(selector).invokeFirst('getBoundingClientRect')
+     */
+    invokeFirst(
+      methodName: string,
+      ...arguments: any[]
+    ): Chainable<any>
+
+    /**
      * Applies the given function to the arguments and the first item.
      * The first item from the current subject is **the last argument**.
      * @example

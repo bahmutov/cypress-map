@@ -145,6 +145,15 @@ cy.wrap(Cypress.$('<div>100</div><div>200</div>'))
   .should('equal', 100)
 ```
 
+### invokeFirst
+
+We often just need to call a method on the first element / item in the current subject
+
+```js
+cy.get(selector).invokeFirst('getBoundingClientRect')
+// compute the vertical center for example
+```
+
 ### map
 
 Transforms every object in the given collection by running it through the given callback function. Can also map each object to its property. An object could be an array or a jQuery object.

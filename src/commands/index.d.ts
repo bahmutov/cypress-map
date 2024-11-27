@@ -378,4 +378,20 @@ declare namespace Cypress {
      */
     difference(expected: Object): Chainable<Object>
   }
+
+  interface Chainer<Subject> {
+    /**
+     * Chai assertion that gets the text from the current subject element
+     * and compares it to the given text value
+     * @example cy.get('#name').should('read', 'Joe Smith')
+     */
+    (chainer: 'read', text: string): Chainable<Subject>
+
+    /**
+     * Chai assertion that gets the text from the current subject elements
+     * and compares them to the given text values
+     * @example cy.get('#ages').should('read', ['20', '35', '15'])
+     */
+    (chainer: 'read', texts: string[]): Chainable<Subject>
+  }
 }

@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+require('./assertions')
 require('./apply')
 require('./as-env')
 require('./at')

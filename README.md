@@ -628,6 +628,23 @@ cy.wrap(app)
 
 See the spec [invoke-once.cy.js](./cypress/e2e/invoke-once.cy.js) for more examples.
 
+### read
+
+**Assertion**
+
+Checks the exact text match for a single element or multiple ones
+
+```js
+cy.get('#name').should('read', 'Joe Smith')
+cy.get('#ages').should('read', ['20', '35', '15'])
+
+// equivalent to
+cy.get('#name').map('innerText').should('deep.equal', ['Joe Smith'])
+cy.get('#ages')
+  .map('innerText')
+  .should('deep.equal', ['20', '35', '15'])
+```
+
 ## cy.invoke vs cy.map vs cy.mapInvoke
 
 Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)

@@ -16,3 +16,13 @@ it('compares text', () => {
     'fifth',
   ])
 })
+
+it('supports a single regular expression', () => {
+  cy.visit('cypress/index.html')
+  cy.get('li').first().should('read', /FIRST/i)
+})
+
+it('supports a mixture of strings and regular expressions', () => {
+  cy.visit('cypress/index.html')
+  cy.get('li').should('read', ['first', /^sec/, 'third'])
+})

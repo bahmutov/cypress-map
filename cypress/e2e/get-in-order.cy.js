@@ -49,3 +49,19 @@ it('spreads an array of strings', () => {
     .map('innerText')
     .should('deep.equal', ['fifth', 'first', 'third'])
 })
+
+// https://github.com/bahmutov/cypress-map/issues/219
+it(
+  'uses the current subject',
+  { viewportWidth: 500, viewportHeight: 500 },
+  () => {
+    cy.visit('cypress/e2e/filter-table/index.html')
+    cy.get('table tbody tr').should('have.length', 5)
+    cy.get('table tbody tr:eq(2)')
+      .should('include.text', 'Dave')
+      // get the age and the name cells
+      .getInOrder('td:eq(2)', 'td:eq(0)')
+      .map('innerText')
+      .should('deep.equal', ['25', 'Dave'])
+  },
+)

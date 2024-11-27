@@ -424,6 +424,12 @@ You can also use a single array of selector strings
 cy.getInOrder(['h1', 'h2', 'h3'])
 ```
 
+Supports parent subject
+
+```js
+cy.get('...').getInOrder('...', '...')
+```
+
 ### stable
 
 Sometimes you just want to wait until the element is stable. For example, if the element's text content does not change for N milliseconds, then we can consider the element to be `text` stable.

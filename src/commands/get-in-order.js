@@ -20,21 +20,26 @@ registerQuery('getInOrder', (...selectors) => {
     message: selectors.join(','),
   })
 
-  return () => {
-    let subject = Cypress.$(selectors[0])
-    if (subject.length === 0) {
+  return ($subject) => {
+    let found = $subject
+      ? $subject.find(selectors[0])
+      : Cypress.$(selectors[0])
+
+    if (found.length === 0) {
       throw new Error(`No elements found for ${selectors[0]}`)
     }
 
     selectors.slice(1).forEach((selector) => {
-      const next = Cypress.$(selector)
+      const next = $subject
+        ? $subject.find(selector)
+        : Cypress.$(selector)
       if (next.length === 0) {
         throw new Error(`No elements found for ${selector}`)
       }
       // avoid sorting elements by passing the elements as a single array
-      subject = Cypress.$(subject.toArray().concat(next.toArray()))
+      found = Cypress.$(found.toArray().concat(next.toArray()))
     })
 
-    return subject
+    return found
   }
 })

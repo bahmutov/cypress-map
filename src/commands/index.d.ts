@@ -326,13 +326,17 @@ declare namespace Cypress {
     /**
      * Queries each selector and returns the found elements _in the specified order_.
      * Retries if the elements are not found for any of the selectors.
+     * Supports parent subject.
      * @example cy.getInOrder('h1', 'h2', 'h3')
+     * @example cy.get('tr').getInOrder('td', 'th')
      */
     getInOrder(...selector: string[]): Chainable<JQuery<HTMLElement>>
     /**
      * Queries each selector and returns the found elements _in the specified order_.
      * Retries if the elements are not found for any of the selectors.
+     * Supports parent subject.
      * @example cy.getInOrder(['h1', 'h2', 'h3'])
+     * @example cy.get('tr').getInOrder(['td', 'th'])
      */
     getInOrder(selectors: string[]): Chainable<JQuery<HTMLElement>>
 

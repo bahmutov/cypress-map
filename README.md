@@ -632,7 +632,7 @@ See the spec [invoke-once.cy.js](./cypress/e2e/invoke-once.cy.js) for more examp
 
 **Assertion**
 
-Checks the exact text match for a single element or multiple ones
+Checks the exact text match or regular expression for a single element or multiple ones
 
 ```js
 cy.get('#name').should('read', 'Joe Smith')
@@ -643,6 +643,13 @@ cy.get('#name').map('innerText').should('deep.equal', ['Joe Smith'])
 cy.get('#ages')
   .map('innerText')
   .should('deep.equal', ['20', '35', '15'])
+```
+
+Using with regular expression or a mix of strings and regular expressions
+
+```js
+cy.get('#name').should('read', /\sSmith$/)
+cy.get('#ages').should('read', [/^\d+$/, '35', '15'])
 ```
 
 ## cy.invoke vs cy.map vs cy.mapInvoke

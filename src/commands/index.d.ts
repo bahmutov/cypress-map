@@ -382,16 +382,18 @@ declare namespace Cypress {
   interface Chainer<Subject> {
     /**
      * Chai assertion that gets the text from the current subject element
-     * and compares it to the given text value
+     * and compares it to the given text value or against a regular expression.
      * @example cy.get('#name').should('read', 'Joe Smith')
+     * @example cy.get('#name').should('read', /Joe/)
      */
-    (chainer: 'read', text: string): Chainable<Subject>
+    (chainer: 'read', text: string | RegExp): Chainable<Subject>
 
     /**
      * Chai assertion that gets the text from the current subject elements
-     * and compares them to the given text values
+     * and compares them to the given text values or regular expressions.
      * @example cy.get('#ages').should('read', ['20', '35', '15'])
+     * @example cy.get('#ages').should('read', ['20', /^\d+$/, '15'])
      */
-    (chainer: 'read', texts: string[]): Chainable<Subject>
+    (chainer: 'read', texts: (string | RegExp)[]): Chainable<Subject>
   }
 }

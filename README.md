@@ -28,6 +28,7 @@
   - [Cypress Flakiness Examples](https://glebbahmutov.com/blog/flakiness-example/)
   - [Solve Tough Pagination Cases Using Cypress](https://glebbahmutov.com/blog/solve-tough-pagination-cases-using-cypress/)
   - [Check Fees And Totals Using Cypress](https://glebbahmutov.com/blog/check-fees-using-cypress/)
+  - [Custom Cypress Should Read Assertion](https://glebbahmutov.com/blog/cypress-map-should-read-assertion/)
 - 🎓 Covered in my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)
   - [Lesson l1: Confirm the attribute of the last item](https://cypress.tips/courses/cypress-plugins/lessons/l1)
   - [Lesson l2: Confirm the extracted list of texts](https://cypress.tips/courses/cypress-plugins/lessons/l2)

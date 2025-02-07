@@ -85,4 +85,19 @@ describe('should possess assertion', () => {
       .should('possess', 'foo', 'bar', 123)
       .should('deep.equal', { foo: 'bar' })
   })
+
+  context('with a predicate', () => {
+    it('checks the property value against the predicate function', () => {
+      cy.wrap({ foo: 'bar' })
+        .should('possess', 'foo', (val) => val === 'bar')
+        // keeps the subject
+        .and('deep.equal', { foo: 'bar' })
+    })
+
+    it('negates the predicate function', () => {
+      const isDrinkingAge = (years) => years > 21
+      cy.wrap({ age: 42 }).should('possess', 'age', isDrinkingAge)
+      cy.wrap({ age: 1 }).should('not.possess', 'age', isDrinkingAge)
+    })
+  })
 })

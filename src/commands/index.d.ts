@@ -418,6 +418,25 @@ declare namespace Cypress {
 
     /**
      * Checks the presence of the given property with the given value
+     * in the current subject object against the given predicate function.
+     * Yields the original subject.
+     * Supports deep nested properties using dot notation.
+     * Supports arrays and array indexes, brackets are optional
+     *
+     * @example
+     *  const isDrinkingAge = (years) => years > 21
+     *  cy.wrap({ age: 42 }).should('possess', 'age', isDrinkingAge)
+     *
+     * @see https://github.com/bahmutov/cypress-map
+     */
+    (
+      chainer: 'possess',
+      propertyName: string,
+      value: Function,
+    ): Chainable<Subject>
+
+    /**
+     * Checks the presence of the given property with the given value
      * in the current subject object.
      * Yields the original subject.
      * Supports deep nested properties using dot notation.

@@ -687,6 +687,14 @@ cy.wrap({ users: [{ name: 'Joe' }, { name: 'Jane' }] })
   .and('possess', 'users.1.name', 'Jane') // simple dot notation
 ```
 
+You can also pass a predicate function instead of the value to check the property value against it.
+
+```js
+const isDrinkingAge = (years) => years > 21
+cy.wrap({ age: 42 }).should('possess', 'age', isDrinkingAge)
+// yields the original subject
+```
+
 ## cy.invoke vs cy.map vs cy.mapInvoke
 
 Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)

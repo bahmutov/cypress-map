@@ -39,7 +39,7 @@ chai.use((_chai) => {
   }
   _chai.Assertion.addMethod('read', readAssertion)
 
-  function possesAssertion(propertyName, maybeValue) {
+  function possesAssertion(propertyName, maybeValueOrPredicate) {
     if (typeof propertyName !== 'string') {
       throw new Error(
         `possess assertion: Expected a string, but got ${typeof propertyName}`,
@@ -60,11 +60,21 @@ chai.use((_chai) => {
       )
     }
     if (arguments.length === 2) {
-      return this.assert(
-        Cypress._.get(this._obj, propertyName) === maybeValue,
-        `expected ${subjectShort} to possess property ${propertyName}=${maybeValue}`,
-        `expected ${subjectShort} to not possess property ${propertyName}=${maybeValue}`,
-      )
+      const value = Cypress._.get(this._obj, propertyName)
+      if (typeof maybeValueOrPredicate === 'function') {
+        const functionName = maybeValueOrPredicate.name || 'function'
+        return this.assert(
+          maybeValueOrPredicate(value),
+          `expected ${subjectShort} to pass the ${functionName} predicate`,
+          `expected ${subjectShort} to not pass the ${functionName} predicate`,
+        )
+      } else {
+        return this.assert(
+          value === maybeValueOrPredicate,
+          `expected ${subjectShort} to possess property ${propertyName}=${maybeValueOrPredicate}`,
+          `expected ${subjectShort} to not possess property ${propertyName}=${maybeValueOrPredicate}`,
+        )
+      }
     }
 
     throw new Error(

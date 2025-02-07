@@ -653,6 +653,40 @@ cy.get('#name').should('read', /\sSmith$/)
 cy.get('#ages').should('read', [/^\d+$/, '35', '15'])
 ```
 
+### possess
+
+**Assertion**
+
+Checks if the subject has the given property. Can check the property value. Yields the original subject
+
+```js
+// check if the subject has the "name" property
+cy.wrap({ name: 'Joe' }).should('possess', 'name')
+// yields the { name: 'Joe' } object
+
+// check if the subject has the "name" property with the value "Joe"
+cy.wrap({ name: 'Joe' }).should('possess', 'name', 'Joe')
+// yields the { name: 'Joe' } object
+```
+
+The assertion supports deep object access using the dot notation
+
+```js
+cy.wrap({ user: { name: 'Joe' } }).should(
+  'possess',
+  'user.name',
+  'Joe',
+)
+```
+
+The assertion supports arrays using `[ ]` or simple dot notation
+
+```js
+cy.wrap({ users: [{ name: 'Joe' }, { name: 'Jane' }] })
+  .should('possess', 'users[0].name', 'Joe') // [] notation
+  .and('possess', 'users.1.name', 'Jane') // simple dot notation
+```
+
 ## cy.invoke vs cy.map vs cy.mapInvoke
 
 Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)

@@ -385,6 +385,7 @@ declare namespace Cypress {
      * and compares it to the given text value or against a regular expression.
      * @example cy.get('#name').should('read', 'Joe Smith')
      * @example cy.get('#name').should('read', /Joe/)
+     * @see https://github.com/bahmutov/cypress-map
      */
     (chainer: 'read', text: string | RegExp): Chainable<Subject>
 
@@ -393,7 +394,50 @@ declare namespace Cypress {
      * and compares them to the given text values or regular expressions.
      * @example cy.get('#ages').should('read', ['20', '35', '15'])
      * @example cy.get('#ages').should('read', ['20', /^\d+$/, '15'])
+     * @see https://github.com/bahmutov/cypress-map
      */
     (chainer: 'read', texts: (string | RegExp)[]): Chainable<Subject>
+
+    /**
+     * Checks the presence of the given property in the current subject object.
+     * Yields the original subject.
+     * Supports deep nested properties using dot notation.
+     * Supports arrays and array indexes.
+     *
+     * @example cy.wrap({ name: 'Joe' }).should('possess', 'name')
+     * @example
+     *  cy.wrap({ user: { name: 'Joe' } })
+     *    .should('possess', 'user.name')
+     * @example
+     *  cy.wrap({ users: ['Joe', 'Jane'] })
+     *    .should('possess', 'users[0]')
+     *
+     * @see https://github.com/bahmutov/cypress-map
+     */
+    (chainer: 'possess', propertyName: string): Chainable<Subject>
+
+    /**
+     * Checks the presence of the given property with the given value
+     * in the current subject object.
+     * Yields the original subject.
+     * Supports deep nested properties using dot notation.
+     * Supports arrays and array indexes, brackets are optional
+     *
+     * @example cy.wrap({ name: 'Joe' }).should('possess', 'name', 'Joe')
+     * @example
+     *  cy.wrap({ user: { name: 'Joe' } })
+     *    .should('possess', 'user.name', 'Joe')
+     * @example
+     *  cy.wrap({ users: [{ name: 'Joe' }, { name: 'Jane' }] })
+     *    .should('possess', 'users[0].name', 'Joe')
+     *    .and('possess', 'users.1.name', 'Jane')
+     *
+     * @see https://github.com/bahmutov/cypress-map
+     */
+    (
+      chainer: 'possess',
+      propertyName: string,
+      value: unknown,
+    ): Chainable<Subject>
   }
 }

@@ -38,4 +38,38 @@ chai.use((_chai) => {
     )
   }
   _chai.Assertion.addMethod('read', readAssertion)
+
+  function possesAssertion(propertyName, maybeValue) {
+    if (typeof propertyName !== 'string') {
+      throw new Error(
+        `possess assertion: Expected a string, but got ${typeof propertyName}`,
+      )
+    }
+
+    const subjectText = JSON.stringify(this._obj)
+    const subjectShort =
+      subjectText.length > 40
+        ? `${subjectText.slice(0, 40)}...`
+        : subjectText
+
+    if (arguments.length === 1) {
+      return this.assert(
+        propertyName in this._obj,
+        `expected ${subjectShort} to possess property "${propertyName}"`,
+        `expected ${subjectShort} to not possess property "${propertyName}"`,
+      )
+    }
+    if (arguments.length === 2) {
+      return this.assert(
+        Cypress._.get(this._obj, propertyName) === maybeValue,
+        `expected ${subjectShort} to possess property ${propertyName}=${maybeValue}`,
+        `expected ${subjectShort} to not possess property ${propertyName}=${maybeValue}`,
+      )
+    }
+
+    throw new Error(
+      `Unexpected arguments to the "possess" assertion ${[...arguments].join(', ')}`,
+    )
+  }
+  _chai.Assertion.addMethod('possess', possesAssertion)
 })

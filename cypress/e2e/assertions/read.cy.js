@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 // @ts-check
 
-import '../../src/commands'
+import '../../../src/commands'
 
 it('compares text', () => {
   cy.visit('cypress/index.html')

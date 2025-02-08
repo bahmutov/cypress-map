@@ -20,6 +20,7 @@
   - [Remove Class From Sampled Elements](https://youtu.be/zB2LYB0yFwQ)
   - [Check Multiple Properties At Once Using cy.difference Query](https://youtu.be/WKVaJjst_-8)
   - [cy.difference Command With Predicates](https://youtu.be/RKgSBN2fk_s)
+  - [The Possess Assertion From cypress-map Plugin](https://youtu.be/HHxkL-BPyjA)
 - 📝 Read the blog posts
   - [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
   - [Crawl Weather Using Cypress](https://glebbahmutov.com/blog/crawl-weather/)
@@ -694,6 +695,8 @@ const isDrinkingAge = (years) => years > 21
 cy.wrap({ age: 42 }).should('possess', 'age', isDrinkingAge)
 // yields the original subject
 ```
+
+📺 You can watch this assertion explained in the video [The Possess Assertion From cypress-map Plugin](https://youtu.be/HHxkL-BPyjA)
 
 ## cy.invoke vs cy.map vs cy.mapInvoke
 

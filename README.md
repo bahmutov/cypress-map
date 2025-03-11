@@ -654,6 +654,8 @@ cy.get('#name').should('read', /\sSmith$/)
 cy.get('#ages').should('read', [/^\d+$/, '35', '15'])
 ```
 
+The assertion fails if the number of elements does not match the expected number of strings.
+
 ### possess
 
 **Assertion**

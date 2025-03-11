@@ -22,6 +22,11 @@ chai.use((_chai) => {
       })
       .join(', ')
 
+    const message = `expected ${texts.join(', ')} to read ${expectedValuesMessage}`
+    // confirm the number of elements matches the number of expected strings
+    this.assert(texts.length === strings.length, message)
+
+    // confirm the texts match the expected strings
     const passed = Cypress._.every(strings, (s, i) => {
       if (Cypress._.isString(s)) {
         return texts[i] === s
@@ -32,10 +37,7 @@ chai.use((_chai) => {
       return false
     })
 
-    this.assert(
-      passed,
-      `expected ${texts.join(', ')} to read ${expectedValuesMessage}`,
-    )
+    this.assert(passed, message)
   }
   _chai.Assertion.addMethod('read', readAssertion)
 

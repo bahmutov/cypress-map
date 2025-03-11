@@ -21,6 +21,7 @@
   - [Check Multiple Properties At Once Using cy.difference Query](https://youtu.be/WKVaJjst_-8)
   - [cy.difference Command With Predicates](https://youtu.be/RKgSBN2fk_s)
   - [The Possess Assertion From cypress-map Plugin](https://youtu.be/HHxkL-BPyjA)
+  - [Custom Should Read Assertion From Cypress-map Plugin](https://youtu.be/AzJx-8VD6yI)
 - 📝 Read the blog posts
   - [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
   - [Crawl Weather Using Cypress](https://glebbahmutov.com/blog/crawl-weather/)

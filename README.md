@@ -701,6 +701,15 @@ cy.wrap({ age: 42 }).should('possess', 'age', isDrinkingAge)
 
 📺 You can watch this assertion explained in the video [The Possess Assertion From cypress-map Plugin](https://youtu.be/HHxkL-BPyjA)
 
+### unique
+
+Confirms the items in the current subject array are unique (using a `Set` to check)
+
+```js
+cy.wrap([1, 2, 3]).should('be.unique')
+cy.wrap([1, 2, 2]).should('not.be.unique')
+```
+
 ## cy.invoke vs cy.map vs cy.mapInvoke
 
 Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)

@@ -84,4 +84,23 @@ chai.use((_chai) => {
     )
   }
   _chai.Assertion.addMethod('possess', possesAssertion)
+
+  function uniqueAssertion() {
+    const values = this._obj
+
+    if (!Array.isArray(values)) {
+      throw new Error(
+        `unique assertion: Expected an array, but got ${typeof values}`,
+      )
+    }
+
+    // report duplicate values?
+    const uniqueValues = new Set(values)
+    return this.assert(
+      uniqueValues.size === values.length,
+      `expected ${values} to be unique`,
+      `expected ${values} to not be unique`,
+    )
+  }
+  _chai.Assertion.addMethod('unique', uniqueAssertion)
 })

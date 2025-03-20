@@ -458,5 +458,13 @@ declare namespace Cypress {
       propertyName: string,
       value: unknown,
     ): Chainable<Subject>
+
+    /**
+     * Checks if the current subject is an array of unique values.
+     * @example cy.wrap([1, 2, 3]).should('be.unique')
+     * @example cy.wrap([1, 2, 2]).should('not.be.unique')
+     * @see https://github.com/bahmutov/cypress-map
+     */
+    (chainer: 'unique'): Chainable<Subject>
   }
 }

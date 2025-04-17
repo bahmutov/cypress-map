@@ -409,6 +409,32 @@ it('saved value is available in this test', () => {
 
 Do you really want to make the tests dependent on each other?
 
+### elements
+
+Often we need to find a list of elements with some sub-parts. The query `cy.elements` uses the parent selector plus child selectors and returns an array of arrays of strings.
+
+Given this HTML
+
+```html
+<ul id="tasks">
+  <li><span class="name">Item A</span> <span class="k">1</span></li>
+  <li><span class="name">Item B</span> <span class="k">2</span></li>
+  <li><span class="name">Item C</span> <span class="k">3</span></li>
+  <li><span class="name">Item D</span> <span class="k">4</span></li>
+</ul>
+```
+
+Find all items and the numbers. The parent selector is `#tasks li`, and inside the parts we want to get are `.k` and `.name` (in this order)
+
+```js
+cy.elements('#tasks li', '.k', '.name').should('deep.equal', [
+  ['1', 'Item A'],
+  ['2', 'Item B'],
+  ['3', 'Item C'],
+  ['4', 'Item D'],
+])
+```
+
 ### getInOrder
 
 Queries the page using multiple selectors and returns the found elements _in the specified_ order, no matter how they are ordered in the document. Retries if any of the selectors are not found.

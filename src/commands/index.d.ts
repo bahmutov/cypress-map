@@ -341,6 +341,16 @@ declare namespace Cypress {
     getInOrder(selectors: string[]): Chainable<JQuery<HTMLElement>>
 
     /**
+     * Finds the elements using the parent selector,
+     * then for each finds the children using the child selectors in order.
+     * Yields the array of arrays of text values.
+     */
+    elements(
+      parent: string,
+      ...children: string[]
+    ): Chainable<string[]>
+
+    /**
      * Query the element for N milliseconds to see if its text stays the same.
      * If the text changes, reset the timer. Yields the original element.
      * @example cy.get('h1').stable('text', 1000)

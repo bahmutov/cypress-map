@@ -5,7 +5,7 @@ import '../../commands'
 
 chai.config.truncateThreshold = 300
 
-describe.only('elements', () => {
+describe('elements', () => {
   it('loads the list of elements', () => {
     cy.visit('cypress/list.html')
     cy.elements('#tasks li', '.name', '.k').should('deep.equal', [

@@ -72,34 +72,54 @@ it('maps properties of an object', () => {
     })
 })
 
-// https://github.com/bahmutov/cypress-map/issues/110
-it('picks the listed properties of the subject', () => {
-  const person = {
-    name: 'Joe',
-    age: 21,
-    occupation: 'student',
-  }
-  cy.wrap(person, { timeout: 0 })
-    .map(['name', 'age'])
-    .should('deep.equal', {
+describe('Picking properties', () => {
+  // https://github.com/bahmutov/cypress-map/issues/110
+  it('picks the listed properties of the subject', () => {
+    const person = {
       name: 'Joe',
       age: 21,
-    })
-})
+      occupation: 'student',
+    }
+    cy.wrap(person, { timeout: 0 })
+      .map(['name', 'age'])
+      .should('deep.equal', {
+        name: 'Joe',
+        age: 21,
+      })
+  })
 
-it('retries to find the picked properties', () => {
-  const person = {}
-  setTimeout(() => {
-    person.name = 'Joe'
-    person.occupation = 'student'
-    person.age = 21
-  }, 1000)
-  cy.wrap(person, { timeout: 1100 })
-    .map(['name', 'age'])
-    .should('deep.equal', {
-      name: 'Joe',
-      age: 21,
-    })
+  it('retries to find the picked properties', () => {
+    const person = {}
+    setTimeout(() => {
+      person.name = 'Joe'
+      person.occupation = 'student'
+      person.age = 21
+    }, 1000)
+    cy.wrap(person, { timeout: 1100 })
+      .map(['name', 'age'])
+      .should('deep.equal', {
+        name: 'Joe',
+        age: 21,
+      })
+  })
+
+  it('picks multiple nested properties', () => {
+    const person = {}
+    setTimeout(() => {
+      person.name = { first: 'Joe', last: 'Smith' }
+      person.occupation = 'student'
+      person.age = 21
+    }, 1000)
+    cy.wrap(person, { timeout: 1100 })
+      // should pick the property "age"
+      // and should pick the nested property "name.first"
+      // and store it under the name "first"
+      .map(['name.first', 'age'])
+      .should('deep.equal', {
+        first: 'Joe',
+        age: 21,
+      })
+  })
 })
 
 it('maps nested paths', () => {

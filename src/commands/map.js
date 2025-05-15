@@ -67,10 +67,18 @@ registerQuery('map', function (fnOrProperty, options = {}) {
     if (isArrayOfStrings(fnOrProperty)) {
       const result = {}
       fnOrProperty.forEach((key) => {
-        if (!(key in $el)) {
-          throw new Error(`Cannot find property ${key}`)
+        if (key.includes('.')) {
+          // deep property pick
+          // use the last part of the key as the name
+          const name = key.split('.').pop()
+          const value = Cypress._.get($el, key)
+          result[name] = value
+        } else {
+          if (!(key in $el)) {
+            throw new Error(`Cannot find property ${key}`)
+          }
+          result[key] = $el[key]
         }
-        result[key] = $el[key]
       })
       return result
     } else if (Cypress._.isPlainObject(fnOrProperty)) {

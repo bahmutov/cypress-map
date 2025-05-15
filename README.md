@@ -214,6 +214,15 @@ cy.wrap(people)
   .should('deep.equal', ['Joe', 'Anna'])
 ```
 
+If you want to pick multiple deep properties, the last segment will be the output property name
+
+```js
+// each person has nested objects like
+// { name: { first: '...', last: '...', }, human: { age: xx, ... } }
+cy.wrap(people).map(['name.first', 'human.age'])
+// each object will have "first" and "age" properties
+```
+
 ### mapInvoke
 
 ```js

@@ -65,6 +65,25 @@ registerQuery('map', function (fnOrProperty, options = {}) {
     }
 
     if (isArrayOfStrings(fnOrProperty)) {
+      if (Array.isArray($el)) {
+        // map over the array elements
+        return $el.map((item) => {
+          return fnOrProperty.reduce((acc, key) => {
+            if (key.includes('.')) {
+              // deep property pick
+              // use the last part of the key as the name
+              const name = key.split('.').pop()
+              const value = Cypress._.get(item, key)
+              acc[name] = value
+            } else if (!(key in item)) {
+              throw new Error(`Cannot find property ${key}`)
+            } else {
+              acc[key] = item[key]
+            }
+            return acc
+          }, {})
+        })
+      }
       const result = {}
       fnOrProperty.forEach((key) => {
         if (key.includes('.')) {

@@ -120,26 +120,75 @@ describe('Picking properties', () => {
         age: 21,
       })
   })
-})
 
-it('maps nested paths', () => {
-  const people = [
-    {
-      name: {
-        first: 'Joe',
-        last: 'Smith',
+  it('maps nested paths', () => {
+    const people = [
+      {
+        name: {
+          first: 'Joe',
+          last: 'Smith',
+        },
       },
-    },
-    {
-      name: {
-        first: 'Anna',
-        last: 'Kova',
+      {
+        name: {
+          first: 'Anna',
+          last: 'Kova',
+        },
       },
-    },
-  ]
-  cy.wrap(people)
-    .map('name.first')
-    .should('deep.equal', ['Joe', 'Anna'])
+    ]
+    cy.wrap(people)
+      .map('name.first')
+      .should('deep.equal', ['Joe', 'Anna'])
+  })
+
+  it('maps paths over an array subject', () => {
+    const people = [
+      {
+        name: {
+          first: 'Joe',
+          last: 'Smith',
+        },
+      },
+      {
+        name: {
+          first: 'Anna',
+          last: 'Kova',
+        },
+      },
+    ]
+    cy.wrap(people)
+      .map(['name.first', 'name.last'])
+      .should('deep.equal', [
+        { first: 'Joe', last: 'Smith' },
+        { first: 'Anna', last: 'Kova' },
+      ])
+  })
+
+  it('maps combo paths over an array subject', () => {
+    const people = [
+      {
+        name: {
+          first: 'Joe',
+          last: 'Smith',
+        },
+        age: 21,
+      },
+      {
+        name: {
+          first: 'Anna',
+          last: 'Kova',
+        },
+        age: 22,
+      },
+    ]
+    cy.wrap(people)
+      // some paths are nested, some are not
+      .map(['name.first', 'age'])
+      .should('deep.equal', [
+        { first: 'Joe', age: 21 },
+        { first: 'Anna', age: 22 },
+      ])
+  })
 })
 
 it('respects the timeout option', () => {

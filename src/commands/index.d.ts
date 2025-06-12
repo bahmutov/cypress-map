@@ -281,14 +281,17 @@ declare namespace Cypress {
 
     /**
      * A query command that finds an item in the array or jQuery object.
+     * Can find an element with exact inner text match.
      * Uses Lodash _.find under the hood.
      * @see https://github.com/bahmutov/cypress-map
      * @example
      *  cy.get('...').findOne({ innerText: '...' })
      * @example
      *  cy.wrap([1, 2, 3]).findOne(n => n === 3).should('equal', 3)
+     * @example
+     *  cy.get('...').findOne('Item 2').should('have.text', 'Item 2)
      */
-    findOne(predicate: object | Function): Chainable<any>
+    findOne(predicate: object | Function | string): Chainable<any>
 
     /**
      * A query that calls `JSON.parse(JSON.parse(subject))` or entries.

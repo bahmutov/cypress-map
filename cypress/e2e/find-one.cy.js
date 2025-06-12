@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+/// <reference path="../../src/commands/index.d.ts" />
 // @ts-check
 
 // import cypress-map plugin
@@ -44,5 +44,24 @@ describe('findOne', () => {
       values.push({ name: 'Anna' })
     }, 1000)
     cy.wrap(values).findOne({ name: 'Anna' }).should('exist')
+  })
+
+  it('finds one element with exact text match', () => {
+    cy.visit('cypress/list.html')
+    cy.get('li .name')
+      .should('have.length', 4)
+      .findOne((el) => el.innerText === 'Item C')
+      .should('have.class', 'name')
+      .and('have.text', 'Item C')
+  })
+
+  it('finds one element with exact text match (shortcut)', () => {
+    cy.visit('cypress/list.html')
+    cy.get('li .name')
+      .should('have.length', 4)
+      // if we pass a string, it will be used for exact text match
+      .findOne('Item C')
+      .should('have.class', 'name')
+      .and('have.text', 'Item C')
   })
 })

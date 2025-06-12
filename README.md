@@ -314,9 +314,27 @@ Finds a single item in the subject. Assumes subject is an array or a jQuery obje
 ```js
 // using predicate function
 const isThree = n => n === 3
+// predicate function receives every item from the array
 cy.wrap([...]).findOne(isThree).should('equal', 3)
 // using partial known properties of an object
 cy.wrap([...]).findOne({ name: 'Anna' }).should('have.property', 'name', 'Anna')
+```
+
+You can find one element from the jQuery subject
+
+```js
+// find one element with exact text
+cy.get('...')
+  .findOne((el) => el.innerText === 'Item C')
+  .should('have.text', 'Item C')
+```
+
+**Note:** if you pass a string predicate, it will be used to find one element with exact inner text match
+
+```js
+.findOne(el => el.innerText === 'Item C')
+// is the same as
+.findOne('Item C')
 ```
 
 See [find-one.cy.js](./cypress/e2e/find-one.cy.js)

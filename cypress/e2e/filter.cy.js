@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+/// <reference path="../../src/commands/index.d.ts" />
 // @ts-check
 
 // import cypress-map plugin

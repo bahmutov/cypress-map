@@ -3,6 +3,7 @@
 
 import '../../commands'
 // https://github.com/bahmutov/cy-spok
+// @ts-ignore
 import spok from 'cy-spok'
 
 describe('to plain object', () => {

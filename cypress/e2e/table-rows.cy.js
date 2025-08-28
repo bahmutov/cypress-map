@@ -2,6 +2,7 @@
 // @ts-check
 
 // https://github.com/bahmutov/cy-spok
+// @ts-ignore
 import spok from 'cy-spok'
 
 // import cypress-map plugin
@@ -9,13 +10,19 @@ import '../../commands'
 
 describe(
   'table rows',
-  { viewportWidth: 300, viewportHeight: 200, defaultCommandTimeout: 100 },
+  {
+    viewportWidth: 300,
+    viewportHeight: 200,
+    defaultCommandTimeout: 100,
+  },
   () => {
     beforeEach(() => {
       cy.visit('cypress/table.html')
       // confirm the table headings
       const headings = ['Name', 'Age', 'Date (YYYY-MM-DD)']
-      cy.get('table thead td').map('innerText').should('deep.equal', headings)
+      cy.get('table thead td')
+        .map('innerText')
+        .should('deep.equal', headings)
     })
 
     it('confirms the first row (text)', () => {

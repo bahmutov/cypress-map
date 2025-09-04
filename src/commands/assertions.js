@@ -189,14 +189,22 @@ chai.use((_chai) => {
         let expectedChildren = Array.from(expectedNode.children)
         if (expectedChildren.length > actualChildren.length)
           return false
+
+        // confirm the elements match IN ORDER
+        let currentActualChildIndex = 0
         for (let i = 0; i < expectedChildren.length; i++) {
           // Find a matching actual child for each expected child
           let found = false
-          for (let j = 0; j < actualChildren.length; j++) {
+          for (
+            let j = currentActualChildIndex;
+            j < actualChildren.length;
+            j++
+          ) {
             if (
               partialMatch(actualChildren[j], expectedChildren[i])
             ) {
               found = true
+              currentActualChildIndex = j + 1
               break
             }
           }
@@ -216,17 +224,26 @@ chai.use((_chai) => {
 
     // Compare the root nodes
     const actualRoot = actualDoc.body.firstElementChild
+    if (actualRoot === null) {
+      throw new Error('Actual HTML has nothing')
+    }
+
     const expectedRoot = expectedDoc.body.firstElementChild
+    if (expectedRoot === null) {
+      throw new Error('Expected HTML has nothing')
+    }
+
     const passed = partialMatch(actualRoot, expectedRoot)
 
     // escape the expected html script tags in the assertion message
     const escapedExpectedHtml = expectedHtml
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
+      .trim()
     return this.assert(
       passed,
-      `expected subject to partially look like "${escapedExpectedHtml}"`,
-      `expected subject to not partially look like "${escapedExpectedHtml}"`,
+      `expected subject to partially look like:<br/>${escapedExpectedHtml}`,
+      `expected subject to not partially look like:<br/>${escapedExpectedHtml}`,
     )
   }
   _chai.Assertion.addMethod('look', lookAssertion)

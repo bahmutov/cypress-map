@@ -73,4 +73,57 @@ describe('should look', () => {
     // class "xyz" does not exist
     cy.get('#classes').should('not.look', '<div class="xyz" />')
   })
+
+  // https://github.com/bahmutov/cypress-map/issues/290
+  it('checks the elements in the given order', () => {
+    cy.visit('cypress/index.html')
+    cy.get('#items')
+      .should(
+        'look',
+        `
+          <ul id="items">
+            <li>first</li>
+            <li>second</li>
+          </ul>
+        `,
+      )
+      .and(
+        'look',
+        `
+          <ul id="items">
+            <li>first</li>
+            <li>third</li>
+          </ul>
+        `,
+      )
+      .and(
+        'look',
+        `
+          <ul id="items">
+            <li>second</li>
+            <li>third</li>
+          </ul>
+        `,
+      )
+      // the fourth child element appear after delay
+      .and(
+        'look',
+        `
+          <ul id="items">
+            <li>second</li>
+            <li>fourth</li>
+          </ul>
+        `,
+      )
+      .and(
+        'not.look',
+        // the order of children is wrong
+        `
+          <ul id="items">
+            <li>second</li>
+            <li>first</li>
+          </ul>
+        `,
+      )
+  })
 })

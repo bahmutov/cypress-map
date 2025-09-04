@@ -19,7 +19,7 @@ it('controls the timeout', () => {
 })
 
 it('waits for the input value to be stable', () => {
-  cy.get('#name').stable('value')
+  cy.get('#name').should('be.visible').stable('value')
   cy.get('#name', { timeout: 0 }).should('have.value', 'World')
 })
 

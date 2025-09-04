@@ -685,6 +685,10 @@ cy.wrap(app)
 
 See the spec [invoke-once.cy.js](./cypress/e2e/invoke-once.cy.js) for more examples.
 
+### Assertions
+
+This plugin includes a few useful assertions
+
 ### read
 
 **Assertion**
@@ -763,6 +767,31 @@ Confirms the items in the current subject array are unique (using a `Set` to che
 cy.wrap([1, 2, 3]).should('be.unique')
 cy.wrap([1, 2, 2]).should('not.be.unique')
 ```
+
+### look
+
+Compares trees of HTML elements allowing for partial matches.
+
+```js
+cy.get('selector').should(
+  'look',
+  `
+    <div id="parent">
+      <div class="child">With some text</div>
+    </div>
+  `,
+)
+```
+
+The above example parses the expected DOM into the parent element with id "parent" and the child element, then checks if the subject contains top-level "#parent" DIV with at least child element with class "child" and text "With some text". This assertion is useful to confirm the important attributes of the DOM tree in a single shot.
+
+```js
+cy.get('#items')
+  .should('look', '<ul id="items"><li>second</li></ul>')
+  .and('not.look', '<ul id="items"><li>DOES NOT EXIST</li></ul>')
+```
+
+See the spec [look.cy.js](./cypress/e2e/assertions/look.cy.js) for more examples.
 
 ## cy.invoke vs cy.map vs cy.mapInvoke
 

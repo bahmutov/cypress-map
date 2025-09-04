@@ -791,6 +791,13 @@ cy.get('#items')
   .and('not.look', '<ul id="items"><li>DOES NOT EXIST</li></ul>')
 ```
 
+You can check only the "interesting" attributes and classes
+
+```js
+// the DIV might have lots of other classes, but we are interested in the class "error" only
+cy.get('#field').should('look', '<div class="error">Missing...</div>')
+```
+
 See the spec [look.cy.js](./cypress/e2e/assertions/look.cy.js) for more examples.
 
 ## cy.invoke vs cy.map vs cy.mapInvoke

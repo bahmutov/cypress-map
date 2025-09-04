@@ -140,7 +140,10 @@ chai.use((_chai) => {
     // Helper to compare nodes recursively
     function partialMatch(actualNode, expectedNode) {
       // Compare node type and tag name
-      if (actualNode.nodeType !== expectedNode.nodeType) return false
+      if (actualNode.nodeType !== expectedNode.nodeType) {
+        return false
+      }
+
       if (actualNode.nodeType === 1) {
         // Element
         if (actualNode.tagName !== expectedNode.tagName) return false
@@ -149,8 +152,23 @@ chai.use((_chai) => {
           return false
         // Compare expected attributes
         for (let attr of expectedNode.attributes) {
-          if (actualNode.getAttribute(attr.name) !== attr.value)
-            return false
+          if (attr.name === 'class') {
+            // compare class lists partially
+            const actualClasses = actualNode
+              .getAttribute(attr.name)
+              .split(' ')
+            const expectedClasses = attr.value.split(' ')
+            if (
+              !expectedClasses.every((cls) =>
+                actualClasses.includes(cls),
+              )
+            ) {
+              return false
+            }
+          } else {
+            if (actualNode.getAttribute(attr.name) !== attr.value)
+              return false
+          }
         }
         // Compare text if expectedNode has only text child
         const expectedText =

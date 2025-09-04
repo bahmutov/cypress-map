@@ -47,7 +47,6 @@ describe('should look', () => {
       .invoke('split', '\n')
       .mapInvoke('trim')
       .then((html) => {
-        console.log(html)
         expect(html, 'exact html').to.deep.equal([
           '<li class="matching">first</li>',
           '<li>second</li>',
@@ -63,5 +62,15 @@ describe('should look', () => {
       'look',
       '<ul id="items"><li class="matching" /><li class="matching" /><li class="matching" /></ul>',
     )
+  })
+
+  it('allows partial class list match', () => {
+    cy.visit('cypress/e2e/assertions/look.html')
+    cy.get('#classes')
+      .should('look', '<div class="a c e g" />')
+      // order does not matter
+      .and('look', '<div class="g e c a" />')
+    // class "xyz" does not exist
+    cy.get('#classes').should('not.look', '<div class="xyz" />')
   })
 })

@@ -14,7 +14,7 @@ function registerCommand(name, options, fn) {
   // prevent double registration attempt
   if (!(name in cy)) {
     if (typeof options === 'function') {
-      return Cypress.Commands.add(name, fn)
+      return Cypress.Commands.add(name, options)
     } else {
       return Cypress.Commands.add(name, options, fn)
     }

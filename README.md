@@ -845,6 +845,22 @@ cy.get(ids).each(id => cy.request('/users/' + id)).then(users => ...)
 cy.get(ids).mapChain(id => cy.request('/users/' + id)).then(users => ...)
 ```
 
+### never
+
+This is a command that runs for N milliseconds (the default command timeout, or custom) and checks if the given selector is NOT found on the page. Useful to confirm that an error widget does not flash unexpectedly on the page, for example.
+
+```js
+// check for default period of time
+// and if an element with class "error" is found, fail immediately
+cy.never('.error')
+// specify custom timeout for checking
+cy.never('.error', { timeout: 2_000 })
+// stop checking once there is the finished message
+cy.never('.error', { stopSelector: '#message:contains("Finished")' })
+```
+
+You can use jQuery selectors.
+
 ## Types
 
 This package includes TypeScript command definitions for its custom commands in the file [commands/index.d.ts](./commands/index.d.ts). To use it from your JavaScript specs:

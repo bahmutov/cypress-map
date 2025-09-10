@@ -1,0 +1,23 @@
+<body>
+  <div id="main">
+    <p id="message">Loading...</p>
+  </div>
+  <script>
+    setTimeout(() => {
+      document.getElementById('message').innerText = 'Finished'
+    }, 2000)
+    // a possible error message
+    // set the right side to 1 to always have the error element
+    if (Math.random() < 0) {
+      setTimeout(() => {
+        document.getElementById('main').innerHTML +=
+          '<p class="error" id="error">Got an error, retrying</p>'
+        setTimeout(() => {
+          // remove the error element
+          const error = document.getElementById('error')
+          error.parentNode.removeChild(error)
+        }, 300)
+      }, 1000)
+    }
+  </script>
+</body>

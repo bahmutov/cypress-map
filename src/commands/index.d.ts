@@ -327,6 +327,23 @@ declare namespace Cypress {
     asEnv(name: string): Chainable<any>
 
     /**
+     * Confirms the element with the given selector
+     * does NOT exist for the duration of the timeout.
+     * You can use jQuery selectors.
+     * @example
+     *  cy.never('.error')
+     * @example
+     *  cy.never('.error', { timeout: 2_000 })
+     * @example
+     *  // stop checking once there is the finished message
+     *  cy.never('.error', { stopSelector: '#message:contains("Finished")' })
+     */
+    never(
+      selector: string,
+      options?: { timeout?: number; stopSelector?: string },
+    ): Chainable<void>
+
+    /**
      * Queries each selector and returns the found elements _in the specified order_.
      * Retries if the elements are not found for any of the selectors.
      * Supports parent subject.

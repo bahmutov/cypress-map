@@ -3,6 +3,7 @@ const { defineConfig } = require('cypress')
 const cypressSplit = require('cypress-split')
 
 module.exports = defineConfig({
+  defaultBrowser: 'electron',
   e2e: {
     // baseUrl, etc
     viewportHeight: 200,

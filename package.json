@@ -15,7 +15,8 @@
     "stop-only": "stop-only --folder cypress/e2e",
     "lint": "tsc --noEmit --pretty --allowJs --esModuleInterop src/commands/*.* cypress/*/*.js cypress/*/*/*.js",
     "build": "tsc",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "e2e": "cypress open"
   },
   "keywords": [
     "cypress-plugin"
@@ -24,7 +25,7 @@
   "license": "MIT",
   "devDependencies": {
     "cy-spok": "^1.6.3",
-    "cypress": "^15.1.0",
+    "cypress": "^15.2.0",
     "cypress-split": "^1.19.0",
     "prettier": "^3.6.2",
     "semantic-release": "^24.0.0",

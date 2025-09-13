@@ -1,10 +1,10 @@
-/// <reference types="cypress" />
+/// <reference path="../../src/commands/index.d.ts" />
 // @ts-check
 import '../../commands'
 
-const doubleIt = (n) => n + n
+const doubleIt = (n: number) => n + n
 
-async function asyncDouble(n) {
+async function asyncDouble(n: number) {
   await Cypress.Promise.delay(500)
   return n + n
 }
@@ -23,13 +23,13 @@ it('maps each item using async function', () => {
 
 it('maps each item to the cy yielded value of the returned chain', () => {
   cy.wrap([1, 2, 3])
-    .mapChain((x) => cy.wrap(x).then(doubleIt))
+    .mapChain((x: number) => cy.wrap(x).then(doubleIt))
     .should('deep.equal', [2, 4, 6])
 })
 
 it('maps each item using a Promise', () => {
   cy.wrap([1, 2, 3])
-    .mapChain((x) => {
+    .mapChain((x: number) => {
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve(doubleIt(x))
@@ -42,7 +42,7 @@ it('maps each item using a Promise', () => {
 // https://github.com/bahmutov/cypress-map/issues/27
 it('maps each item to the cy yielded value without returned chain', () => {
   cy.wrap([1, 2, 3])
-    .mapChain((x) => {
+    .mapChain((x: number) => {
       // do not return the command chain
       // but it still should grab the resolved value
       cy.wrap(x).then(doubleIt)

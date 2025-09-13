@@ -6,6 +6,8 @@
     "outDir": "./commands",
     "allowJs": true,
     "esModuleInterop": true,
+    "skipLibCheck": false,
+    "skipDefaultLibCheck": false
   },
-  "include": ["src/commands/*.*"],
+  "include": ["src/commands/*.*"]
 }

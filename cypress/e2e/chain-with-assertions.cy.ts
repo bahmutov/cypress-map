@@ -1,14 +1,14 @@
-/// <reference types="cypress" />
+/// <reference path="../../src/commands/index.d.ts" />
 // @ts-check
 
-const double = (n) => n * 2
+const double = (n: number) => n * 2
 
 // @ts-ignore
-Cypress.Commands.addQuery('apply', (fn) => (n) => fn(n))
+Cypress.Commands.addQuery('apply', (fn) => (n: number) => fn(n))
 
 // https://github.com/cypress-io/cypress/issues/25134
 it.skip('fails to retry the cy.its', () => {
-  const list = []
+  const list: number[] = []
   cy.wrap(list)
     .its(0) // first item
     // this assertion breaks the query chain retries
@@ -28,7 +28,7 @@ it.skip('fails to retry the cy.its', () => {
 })
 
 it('retries queries with assertions', () => {
-  const list = []
+  const list: number[] = []
   cy.wrap(list)
     // several queries (without assertion)
     .its(0) // first item

@@ -3,8 +3,10 @@
 const { registerCommand } = require('./utils')
 
 registerCommand('mapChain', { prevSubject: 'Array' }, (list, fn) => {
-  if (!Array.isArray(list)) {
-    throw new Error('Expected cy.mapChain subject to be an array')
+  if (!Array.isArray(list) && !Cypress.dom.isJquery(list)) {
+    throw new Error(
+      'Expected cy.mapChain subject to be an array or jQuery object',
+    )
   }
   if (!list.length) {
     // if there are items in the list

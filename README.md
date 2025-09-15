@@ -862,6 +862,23 @@ cy.wrap(usernames, { log: false })
   ])
 ```
 
+`cy.mapChain` also can operate on each element
+
+```ts
+cy.get('button')
+  .should('have.length.above', 3)
+  .mapChain((btn: HTMLButtonElement) => {
+    cy.wrap(btn, { log: false }).click()
+    cy.get('#result')
+      .should('be.visible')
+      .invoke('text')
+      .apply(Number)
+      .should('be.within', 0, 10)
+  })
+  // we get all the yielded numbers in a single array
+  .should('be.an', 'array')
+```
+
 ### never
 
 This is a command that runs for N milliseconds (the default command timeout, or custom) and checks if the given selector is NOT found on the page. Useful to confirm that an error widget does not flash unexpectedly on the page, for example.

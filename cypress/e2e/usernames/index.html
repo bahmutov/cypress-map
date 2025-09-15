@@ -1,0 +1,30 @@
+<body>
+  <p>Username:</p>
+  <input id="username" type="text" />
+  <p id="result"></p>
+  <script>
+    document
+      .getElementById('username')
+      .addEventListener('input', function () {
+        const username = this.value
+        // check the entered username against parameters
+        const result = document.getElementById('result')
+
+        if (username.length < 3) {
+          result.textContent = 'Username is too short'
+          result.style.color = 'orange'
+        } else if (username.length > 15) {
+          result.textContent = 'Username is too long'
+          result.style.color = 'orange'
+        } else if (
+          ['admin', 'root', 'superuser'].includes(username)
+        ) {
+          result.textContent = 'Username is reserved'
+          result.style.color = 'red'
+        } else {
+          result.textContent = 'Username is valid'
+          result.style.color = 'green'
+        }
+      })
+  </script>
+</body>

@@ -2,6 +2,9 @@
 // @ts-check
 import '../../commands'
 
+// do not truncate deep objects in error messages
+chai.config.truncateThreshold = 0
+
 const doubleIt = (n: number) => n + n
 
 async function asyncDouble(n: number) {
@@ -86,4 +89,29 @@ it.skip('performs Cy commands on each element', () => {
     .mapChain((el: Element) => {
       cy.wrap(el).click().invoke('addClass', 'matching')
     })
+})
+
+it('collects results of cy commands', () => {
+  cy.visit('cypress/e2e/usernames/index.html')
+
+  const usernames = [
+    'u1',
+    'very-long-username-12345',
+    'admin',
+    'root',
+    'superuser',
+  ]
+  cy.wrap(usernames, { log: false })
+    // check each username and yield the error message text
+    .mapChain((username: string) => {
+      cy.get('input#username').clear().type(username)
+      return cy.get('#result').should('be.visible').invoke('text')
+    })
+    .should('deep.equal', [
+      'Username is too short',
+      'Username is too long',
+      'Username is reserved',
+      'Username is reserved',
+      'Username is reserved',
+    ])
 })

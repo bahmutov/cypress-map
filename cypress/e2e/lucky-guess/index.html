@@ -1,0 +1,20 @@
+<body>
+  <h1>Lucky guess</h1>
+  <button>One</button>
+  <button>Two</button>
+  <button>Three</button>
+  <button>Four</button>
+  <button>Five</button>
+  <br />
+  <h2 id="result"></h2>
+  <script>
+    const buttons = document.querySelectorAll('button')
+    const result = document.getElementById('result')
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const luckyNumber = Math.ceil(Math.random() * 10)
+        result.innerText = String(luckyNumber)
+      })
+    })
+  </script>
+</body>

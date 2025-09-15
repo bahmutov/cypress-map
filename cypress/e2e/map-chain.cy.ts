@@ -77,8 +77,7 @@ it('works for a filtered empty array', () => {
     .should('deep.equal', [])
 })
 
-// TODO: https://github.com/bahmutov/cypress-map/issues/294
-it.skip('performs Cy commands on each element', () => {
+it('performs Cy commands on each element', () => {
   cy.visit('cypress/index.html')
   // there are 5 list items eventually
   cy.get('li').should('have.length', 5)
@@ -89,6 +88,9 @@ it.skip('performs Cy commands on each element', () => {
     .mapChain((el: Element) => {
       cy.wrap(el).click().invoke('addClass', 'matching')
     })
+
+  cy.log('**all matching**')
+  cy.get('li.matching').should('have.length', 5)
 })
 
 it('collects results of cy commands', () => {
@@ -114,4 +116,25 @@ it('collects results of cy commands', () => {
       'Username is reserved',
       'Username is reserved',
     ])
+})
+
+it('operates on each element', () => {
+  cy.visit('cypress/e2e/lucky-guess/index.html')
+  cy.contains('h1', 'Lucky guess').should('be.visible')
+  cy.get('button')
+    .should('have.length.above', 3)
+    .mapChain((btn: HTMLButtonElement) => {
+      cy.wrap(btn, { log: false }).click()
+      cy.get('#result')
+        .should('be.visible')
+        .invoke('text')
+        .apply(Number)
+        .should('be.within', 0, 10)
+    })
+    // we get all the yielded numbers in a single array
+    .should('be.an', 'array')
+    .and('have.length', 5)
+    .each((n, k) => {
+      expect(n, `number ${k + 1}`).to.be.within(0, 10)
+    })
 })

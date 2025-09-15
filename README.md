@@ -845,6 +845,23 @@ cy.get(ids).each(id => cy.request('/users/' + id)).then(users => ...)
 cy.get(ids).mapChain(id => cy.request('/users/' + id)).then(users => ...)
 ```
 
+One example could be checking new usernames by entering each string, then getting back the message text.
+
+```ts
+const usernames = ['u1', 'very-long-username-12345', 'admin']
+cy.wrap(usernames, { log: false })
+  // check each username and yield the error message text
+  .mapChain((username: string) => {
+    cy.get('input#username').clear().type(username)
+    return cy.get('#result').should('be.visible').invoke('text')
+  })
+  .should('deep.equal', [
+    'Username is too short',
+    'Username is too long',
+    'Username is reserved',
+  ])
+```
+
 ### never
 
 This is a command that runs for N milliseconds (the default command timeout, or custom) and checks if the given selector is NOT found on the page. Useful to confirm that an error widget does not flash unexpectedly on the page, for example.

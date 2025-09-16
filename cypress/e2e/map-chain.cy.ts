@@ -103,24 +103,28 @@ it('collects results of cy commands', () => {
     'root',
     'superuser',
   ]
+  const warnings = [
+    'Username is too short',
+    'Username is too long',
+    'Username is reserved',
+    'Username is reserved',
+    'Username is reserved',
+  ]
   cy.wrap(usernames, { log: false })
-    // check each username and yield the error message text
+    // enter each username and yield the error message text
     .mapChain((username: string) => {
       cy.get('input#username').clear().type(username)
       return cy.get('#result').should('be.visible').invoke('text')
     })
-    .should('deep.equal', [
-      'Username is too short',
-      'Username is too long',
-      'Username is reserved',
-      'Username is reserved',
-      'Username is reserved',
-    ])
+    // confirm the warnings are as expected
+    .should('deep.equal', warnings)
 })
 
 it('operates on each element', () => {
   cy.visit('cypress/e2e/lucky-guess/index.html')
   cy.contains('h1', 'Lucky guess').should('be.visible')
+  // click on each button, collect the number shown
+  // and confirm each number is between 0 and 10
   cy.get('button')
     .should('have.length.above', 3)
     .mapChain((btn: HTMLButtonElement) => {

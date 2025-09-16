@@ -23,6 +23,7 @@
   - [The Possess Assertion From cypress-map Plugin](https://youtu.be/HHxkL-BPyjA)
   - [Custom Should Read Assertion From Cypress-map Plugin](https://youtu.be/AzJx-8VD6yI)
   - [Introducing The cy.elements Query Command From Cypress-map Plugin](https://youtu.be/4mFZMQpzBIU)
+  - [cy.mapChain Custom Command Examples](https://youtu.be/-WPCbgZr9Uo)
 - 📝 Read the blog posts
   - [Cypress V12 Is A Big Deal](https://glebbahmutov.com/blog/cypress-v12/)
   - [Crawl Weather Using Cypress](https://glebbahmutov.com/blog/crawl-weather/)
@@ -878,6 +879,8 @@ cy.get('button')
   // we get all the yielded numbers in a single array
   .should('be.an', 'array')
 ```
+
+See 📺 [cy.mapChain Custom Command Examples](https://youtu.be/-WPCbgZr9Uo).
 
 ### never
 

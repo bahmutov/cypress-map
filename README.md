@@ -881,6 +881,12 @@ cy.get('button')
   .should('be.an', 'array')
 ```
 
+`cy.mapChain` passes the item and the 0-based index to the callback
+
+```js
+.mapChain((item, k) => ...)
+```
+
 See 📺 [cy.mapChain Custom Command Examples](https://youtu.be/-WPCbgZr9Uo).
 
 ### never

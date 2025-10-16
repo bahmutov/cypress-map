@@ -164,10 +164,7 @@ describe('stop predicate', () => {
   it('stops when the predicate returns true (checking the index)', () => {
     cy.wrap([1, 2, 3])
       // stop when the index is 1
-      .mapChain(
-        doubleIt,
-        ({ index }: { index: number }) => index === 1,
-      )
+      .mapChain(doubleIt, ({ index }) => index === 1)
       .should('deep.equal', [2, 4])
   })
 

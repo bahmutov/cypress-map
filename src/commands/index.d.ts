@@ -17,6 +17,16 @@ type CyOptions = Partial<Cypress.Loggable & Cypress.Timeoutable>
  */
 type StableType = 'text' | 'value' | 'element'
 
+/**
+ * Predicate function for the mapChain command
+ * with its arguments described
+ */
+type MapChainPredicate = (args: {
+  item: any
+  index: number
+  result: any
+}) => boolean
+
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -80,7 +90,10 @@ declare namespace Cypress {
      *    )
      *    .should('deep.equal', [2, 4, 6]) // stops after producing 6
      */
-    mapChain(fn: Function, predicate?: Function): Chainable<any>
+    mapChain(
+      fn: Function,
+      predicate?: MapChainPredicate,
+    ): Chainable<any>
 
     /**
      * A query command that can log the data without changing it. Useful

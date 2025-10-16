@@ -887,6 +887,17 @@ cy.get('button')
 .mapChain((item, k) => ...)
 ```
 
+You can use a predicate function to stop iteration early
+
+```js
+cy.wrap([1, 2, 3, 4, 5])
+  .mapChain(
+    (x) => x * 2,
+    ({ item, index, result }) => result >= 6,
+  )
+  .should('deep.equal', [2, 4, 6]) // stops after producing 6
+```
+
 See 📺 [cy.mapChain Custom Command Examples](https://youtu.be/-WPCbgZr9Uo).
 
 ### never

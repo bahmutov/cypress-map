@@ -152,3 +152,32 @@ it('passes the index to the callback', () => {
     })
     .should('deep.equal', ['0:a', '1:b', '2:c'])
 })
+
+describe('stop predicate', () => {
+  it('stops when the predicate returns true (checking the input item)', () => {
+    cy.wrap([1, 2, 3])
+      // stop when the item is 2
+      .mapChain(doubleIt, ({ item }: { item: number }) => item === 2)
+      .should('deep.equal', [2, 4])
+  })
+
+  it('stops when the predicate returns true (checking the index)', () => {
+    cy.wrap([1, 2, 3])
+      // stop when the index is 1
+      .mapChain(
+        doubleIt,
+        ({ index }: { index: number }) => index === 1,
+      )
+      .should('deep.equal', [2, 4])
+  })
+
+  it('stops when the predicate returns true (checking the result value)', () => {
+    cy.wrap([1, 2, 3])
+      // stop when the result value is 4
+      .mapChain(
+        doubleIt,
+        ({ result }: { result: number }) => result === 4,
+      )
+      .should('deep.equal', [2, 4])
+  })
+})

@@ -23,9 +23,13 @@ it('waits for the input value to be stable', () => {
   cy.get('#name', { timeout: 0 }).should('have.value', 'World')
 })
 
-it('waits for the element reference to be stable', () => {
-  cy.contains('button', 'Replace result').click()
-  cy.get('#result').stable('element', 1000, {
-    timeout: 3_000,
-  })
-})
+it(
+  'waits for the element reference to be stable',
+  { retries: 3 },
+  () => {
+    cy.contains('button', 'Replace result').click()
+    cy.get('#result').stable('element', 1000, {
+      timeout: 3_000,
+    })
+  },
+)

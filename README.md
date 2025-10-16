@@ -893,6 +893,10 @@ You can use a predicate function to stop iteration early
 cy.wrap([1, 2, 3, 4, 5])
   .mapChain(
     (x) => x * 2,
+    // the predicate function with its arguments object
+    // item: the current item
+    // index: the zero-based item index
+    // result: the value yielded by the chain function
     ({ item, index, result }) => result >= 6,
   )
   .should('deep.equal', [2, 4, 6]) // stops after producing 6

@@ -56,6 +56,12 @@ declare namespace Cypress {
      * Cypress commands are queued up and execute one at a time.
      * The current subject should be an array.
      * Yields the final list of results.
+     *
+     *  The predicate function can be used to stop processing early
+     *  by returning a truthy value from the function. The predicate
+     *  receives an object with the current item, its index, and the
+     *  result value.
+     *
      * @see https://github.com/bahmutov/cypress-map
      * @example
      *  // fetch the users from a list of ids
@@ -65,8 +71,16 @@ declare namespace Cypress {
      *  cy.wrap(['a', 'b', 'c'])
      *    .mapChain((x, i) => `${i}:${x}`)
      *    .should('deep.equal', ['0:a', '1:b', '2:c'])
+     *
+     * @example
+     *  cy.wrap([1, 2, 3, 4, 5])
+     *    .mapChain(
+     *      (x) => x * 2,
+     *      ({ item, index, result }) => result >= 6,
+     *    )
+     *    .should('deep.equal', [2, 4, 6]) // stops after producing 6
      */
-    mapChain(fn: Function): Chainable<any>
+    mapChain(fn: Function, predicate?: Function): Chainable<any>
 
     /**
      * A query command that can log the data without changing it. Useful

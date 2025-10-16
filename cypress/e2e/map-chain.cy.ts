@@ -142,3 +142,13 @@ it('operates on each element', () => {
       expect(n, `number ${k + 1}`).to.be.within(0, 10)
     })
 })
+
+it('passes the index to the callback', () => {
+  cy.wrap(['a', 'b', 'c'])
+    .mapChain((x: string, i: number) => {
+      expect(i, 'index is a number').to.be.a('number')
+      expect(i, 'index').to.equal(['a', 'b', 'c'].indexOf(x))
+      return `${i}:${x}`
+    })
+    .should('deep.equal', ['0:a', '1:b', '2:c'])
+})

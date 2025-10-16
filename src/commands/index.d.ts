@@ -60,6 +60,11 @@ declare namespace Cypress {
      * @example
      *  // fetch the users from a list of ids
      *  cy.get(ids).mapChain(id => cy.request('/users/' + id)).then(users => ...)
+     * @example
+     *  // pass both the item and its index to the function
+     *  cy.wrap(['a', 'b', 'c'])
+     *    .mapChain((x, i) => `${i}:${x}`)
+     *    .should('deep.equal', ['0:a', '1:b', '2:c'])
      */
     mapChain(fn: Function): Chainable<any>
 

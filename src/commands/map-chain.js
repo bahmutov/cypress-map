@@ -17,17 +17,20 @@ registerCommand('mapChain', { prevSubject: 'Array' }, (list, fn) => {
   const results = []
 
   const produceValue = (k) => {
-    return cy
-      .wrap(null, { log: false })
-      .then(() => fn(list[k], k))
-      .then((result) => {
-        results.push(result)
-        if (k >= list.length - 1) {
-          // done
-        } else {
-          return produceValue(k + 1)
-        }
-      })
+    return (
+      cy
+        .wrap(null, { log: false })
+        // pass both the item and its index into the callback
+        .then(() => fn(list[k], k))
+        .then((result) => {
+          results.push(result)
+          if (k >= list.length - 1) {
+            // done
+          } else {
+            return produceValue(k + 1)
+          }
+        })
+    )
   }
 
   // make sure we put the possible promises into the command chain

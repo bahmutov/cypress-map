@@ -29,7 +29,7 @@
     "cypress": "^15.4.0",
     "cypress-split": "^1.24.24",
     "prettier": "^3.6.2",
-    "semantic-release": "^24.0.0",
+    "semantic-release": "^25.0.0",
     "stop-only": "^3.1.2",
     "typescript": "^5.0.0"
   },

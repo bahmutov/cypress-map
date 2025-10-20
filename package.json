@@ -13,7 +13,7 @@
     "badges": "npx -p dependency-version-badge update-badge cypress",
     "semantic-release": "semantic-release",
     "stop-only": "stop-only --folder cypress/e2e",
-    "lint": "tsc --noEmit --pretty --allowJs --esModuleInterop src/commands/*.* cypress/*/*.js cypress/*/*/*.js",
+    "lint": "tsc --noEmit --pretty --allowJs --esModuleInterop src/commands/*.* cypress/*/*.js cypress/*/*.ts cypress/*/*/*.js",
     "build": "tsc",
     "watch": "tsc --watch",
     "e2e": "cypress open"

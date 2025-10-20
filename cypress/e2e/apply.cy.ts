@@ -1,10 +1,7 @@
-/// <reference types="cypress" />
-// @ts-check
-
 import '../../src/commands'
 
-const double = (n) => n * 2
-const div = (a, b) => a / b
+const double = (n: number) => n * 2
+const div = (a: number, b: number) => a / b
 
 describe('apply', () => {
   it('applies the given callback to the subject', () => {
@@ -28,7 +25,7 @@ describe('applyRight', () => {
     cy.wrap(8).applyRight(Cypress._.subtract, 4).should('equal', 4)
     // same as
     cy.wrap(8)
-      .apply((subject) => Cypress._.subtract(subject, 4))
+      .apply((subject: number) => Cypress._.subtract(subject, 4))
       .should('equal', 4)
   })
 })
@@ -48,7 +45,11 @@ describe('applyToFirst', () => {
 
   it('applies to the first element', () => {
     cy.wrap(Cypress.$('<div>100</div><div>200</div>'))
-      .applyToFirst((base, el) => parseInt(el.innerText, base), 10)
+      .applyToFirst(
+        (base: number, el: HTMLElement) =>
+          parseInt(el.innerText, base),
+        10,
+      )
       .should('equal', 100)
   })
 })
@@ -65,14 +66,17 @@ describe('applyToFirstRight', () => {
       .should('equal', 4)
     // same as
     cy.wrap([8])
-      .applyToFirst((subject) => Cypress._.subtract(subject, 4))
+      .applyToFirst((subject: number) =>
+        Cypress._.subtract(subject, 4),
+      )
       .should('equal', 4)
   })
 
   it('applies to the first element', () => {
     cy.wrap(Cypress.$('<div>100</div><div>200</div>'))
       .applyToFirstRight(
-        (el, base) => parseInt(el.innerText, base),
+        (el: HTMLElement, base: number) =>
+          parseInt(el.innerText, base),
         10,
       )
       .should('equal', 100)

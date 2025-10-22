@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 /**
  * Specifies a function callback for different object properties
  */

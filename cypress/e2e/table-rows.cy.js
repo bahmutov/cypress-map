@@ -2,7 +2,6 @@
 // @ts-check
 
 // https://github.com/bahmutov/cy-spok
-// @ts-ignore
 import spok from 'cy-spok'
 
 // import cypress-map plugin

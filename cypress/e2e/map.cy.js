@@ -236,7 +236,7 @@ it('respects the timeout option from the parent command', () => {
     .should('deep.equal', ['Joe', 'Anna'])
 })
 
-describe.only('map index', () => {
+describe('map index', () => {
   // subject is an array of arrays
   const subject = [
     ['a', 'b', 'c'],

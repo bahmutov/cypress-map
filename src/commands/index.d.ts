@@ -61,6 +61,16 @@ declare namespace Cypress {
     mapInvoke(propertyName: string, ...args: any[]): Chainable<any>
 
     /**
+     * A query command that takes every item from the current subject
+     * and calls "new constructor function", passing the given arguments.
+     * @see https://github.com/bahmutov/cypress-map
+     * @example
+     *  // convert all strings into dates
+     *  cy.get('#timestamps li').map('innerText').mapMake(Date)
+     */
+    mapMake(constructorFn: Function, ...args: any[]): Chainable<any>
+
+    /**
      * A regular cy command that takes every item from the current subject
      * and calls the given function with the item and its index.
      * The function could be synchronous, or async. The function could

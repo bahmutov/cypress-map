@@ -284,6 +284,28 @@ cy.wrap('Jan 1, 2019')
   .should('equal', 2019)
 ```
 
+### mapMake
+
+If you want to construct multiple items by mapping over the items in the current subject, use the `cy.mapMake(constructorFn)` query.
+
+```js
+const dates = ['Jan 1, 2019', 'Feb 2, 2020', 'Mar 3, 2021']
+cy.wrap(dates)
+  .mapMake(Date)
+  .print()
+  .mapInvoke('getFullYear')
+  .should('deep.equal', [2019, 2020, 2021])
+```
+
+You can pass additional arguments
+
+```js
+.mapMake(constructorFn, 1, 2, 3)
+// for each item "x" inside the subject,
+// the constructor will be called
+// like "new constructorFn(x, 1, 2, 3)
+```
+
 ### print
 
 A better `cy.log`: yields the value, intelligently stringifies values using `%` and [string-format](https://github.com/davidchambers/string-format) notation.

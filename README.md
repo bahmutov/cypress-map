@@ -225,6 +225,17 @@ cy.wrap(people).map(['name.first', 'human.age'])
 // each object will have "first" and "age" properties
 ```
 
+If the subject is an array of arrays, you can get each element by index
+
+```js
+cy.wrap([
+  [1, 2, 3],
+  [4, 5, 6],
+])
+  .map(1)
+  .should('deep.equal', [2, 5])
+```
+
 ### mapInvoke
 
 ```js

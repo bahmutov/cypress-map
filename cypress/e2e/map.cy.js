@@ -236,6 +236,30 @@ it('respects the timeout option from the parent command', () => {
     .should('deep.equal', ['Joe', 'Anna'])
 })
 
+describe.only('map index', () => {
+  // subject is an array of arrays
+  const subject = [
+    ['a', 'b', 'c'],
+    ['d', 'e', 'f'],
+    ['g', 'h', 'i'],
+  ]
+
+  it('maps index 0 as a string property name', () => {
+    cy.wrap(subject).map('0').should('deep.equal', ['a', 'd', 'g'])
+  })
+
+  it('maps index 1 as an integer', () => {
+    cy.wrap(subject).map(1).should('deep.equal', ['b', 'e', 'h'])
+  })
+
+  it('uses it in the chain', () => {
+    cy.wrap(['hello', 'goodbye'])
+      .mapInvoke('split', '')
+      .map(4)
+      .should('deep.equal', ['o', 'b'])
+  })
+})
+
 // enable only to see the thrown errors
 // https://github.com/bahmutov/cypress-map/issues/74
 describe.skip(

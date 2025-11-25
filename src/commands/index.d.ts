@@ -44,9 +44,17 @@ declare namespace Cypress {
      * @example
      *  cy.wrap({ name: 'Joe' age: '42', zip: '90210' })
      *    .map(['name', 'age']) // { name: ..., age: ... }
+     * @example
+     *  // extract the second item from each array in the list
+     *  cy.wrap([[1, 2, 3], [4, 5, 6]]).map(1) // [2, 5]
      */
     map(
-      mapper: string | string[] | Function | PropertyCallbacks,
+      mapper:
+        | string
+        | string[]
+        | number
+        | Function
+        | PropertyCallbacks,
       options?: CyOptions,
     ): Chainable<any>
 

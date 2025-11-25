@@ -37,6 +37,26 @@ registerQuery('map', function (fnOrProperty, options = {}) {
       options.log !== false &&
       Cypress.log({ name: 'map', message, timeout })
   } else {
+    // we are trying to access a property using an index
+    if (typeof fnOrProperty === 'number') {
+      // the index should be >= 0
+      if (fnOrProperty < 0) {
+        throw new Error(
+          `cy.map does not support negative indices, got: ${fnOrProperty}\n${repoLink}`,
+        )
+      }
+      // convert the number to a string
+      // to be a property name
+      fnOrProperty = String(fnOrProperty)
+    }
+
+    const fnType = typeof fnOrProperty
+    if (fnType !== 'function' && fnType !== 'string') {
+      throw new Error(
+        `Expected a function or a property name string or an array of strings, but got: ${fnType}\n${repoLink}`,
+      )
+    }
+
     const message =
       typeof fnOrProperty === 'string'
         ? fnOrProperty

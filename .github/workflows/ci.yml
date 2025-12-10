@@ -1,5 +1,11 @@
 name: ci
 on: push
+
+# trusted publisher
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
 jobs:
   lint:
     runs-on: ubuntu-24.04
@@ -36,6 +42,9 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
+
+      - name: Print NPM version 📜
+        run: npm --version
 
       - name: Checkout 🛎
         uses: actions/checkout@v6

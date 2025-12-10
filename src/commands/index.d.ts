@@ -30,7 +30,7 @@ type MapChainPredicate = (args: {
 }) => boolean
 
 declare namespace Cypress {
-  interface Chainable {
+  interface Chainable<Subject = any> {
     /**
      * A query command that passes each element from the list or jQuery object
      * through the given synchronous function (or extracts the named property)
@@ -153,14 +153,23 @@ declare namespace Cypress {
      * @example
      *  cy.wrap(2).apply(double).should('equal', 4)
      */
-    apply(fn: Function): Chainable<any>
+    apply<S>(
+      fn: (this: ObjectLike, currentSubject: Subject) => S,
+    ): Chainable<S>
     /**
      * Applies the given function to the arguments and subject
      * The subject is **the last argument**.
      * @example
      *  cy.wrap(2).apply(Cypress._.add, 4).should('equal', 6)
      */
-    apply(fn: Function, ...arguments: any[]): Chainable<any>
+    apply<S>(
+      fn: (this: ObjectLike, currentSubject: Subject) => S,
+      ...arguments: any[]
+    ): Chainable<S>
+    apply<S>(
+      fn: (this: ObjectLike, ...arguments: any[]) => S,
+      ...arguments: any[]
+    ): Chainable<S>
 
     /**
      * A query command that applies the given callback to the subject.

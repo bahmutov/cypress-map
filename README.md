@@ -102,6 +102,8 @@ You can pass additional _left_ arguments to the callback function. Then it puts 
 cy.wrap(8).apply(Cypress._.subtract, 4).should('equal', -4)
 ```
 
+Yields the subject of the same type as the `fn` return.
+
 ### applyRight
 
 Without arguments, `cy.applyRight` works the same as `cy.apply`. If you pass arguments, then the subject plus the arguments become the arguments to the callback. The subject is at the _left_ (first) position

@@ -13,6 +13,21 @@ describe('apply', () => {
     cy.wrap(2).apply(Cypress._.add, 4).should('equal', 6)
     cy.wrap(8).apply(Cypress._.subtract, 4).should('equal', -4)
   })
+
+  it('yields the type of the function return', () => {
+    cy.wrap('100')
+      // cy.then yields the subject of the return type of the callback
+      .then((s) => parseInt(s, 10))
+      .then((n) => {
+        expect(n, 'is number').to.be.a('number')
+      })
+
+    cy.wrap('100')
+      .apply((s: string) => parseInt(s, 10))
+      .then((n) => {
+        expect(n, 'is number').to.be.a('number')
+      })
+  })
 })
 
 describe('applyRight', () => {

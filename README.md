@@ -175,7 +175,7 @@ cy.get('.matching')
   .should('deep.equal', ['first', 'third', 'fourth'])
 ```
 
-You can even map properties of an object by listing callbacks. For example, let's convert the `age` property from a string to a number
+You can even map properties of an object by listing callbacks. For example, let's convert the `age` property from a string to a number for a single object:
 
 ```js
 cy.wrap({
@@ -188,6 +188,19 @@ cy.wrap({
   .should('deep.equal', {
     age: 42,
     lucky: true,
+  })
+```
+
+If the subject is an array, then mapping will go through each item
+
+```js
+const people = [...]
+// each item in the "people" array
+// has "age" property that we want to convert from a string
+// to a number
+cy.wrap(people)
+  .map({
+    age: parseInt
   })
 ```
 

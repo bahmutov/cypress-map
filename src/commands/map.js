@@ -121,17 +121,36 @@ registerQuery('map', function (fnOrProperty, options = {}) {
       })
       return result
     } else if (Cypress._.isPlainObject(fnOrProperty)) {
-      const result = { ...$el }
-      Object.keys(fnOrProperty).forEach((key) => {
-        if (!(key in $el)) {
-          throw new Error(`Cannot find property ${key}`)
-        }
-        if (typeof fnOrProperty[key] !== 'function') {
-          throw new Error(`Expected ${key} to be a function`)
-        }
-        result[key] = fnOrProperty[key]($el[key])
-      })
-      return result
+      console.log('mapping with functions', fnOrProperty)
+      if (Array.isArray($el)) {
+        // map over the array elements
+        const result = $el.map((item) => {
+          const res = { ...item }
+          Object.keys(fnOrProperty).forEach((key) => {
+            if (!(key in item)) {
+              throw new Error(`Cannot find property ${key}`)
+            }
+            if (typeof fnOrProperty[key] !== 'function') {
+              throw new Error(`Expected ${key} to be a function`)
+            }
+            res[key] = fnOrProperty[key](item[key])
+          })
+          return res
+        })
+        return result
+      } else {
+        const result = { ...$el }
+        Object.keys(fnOrProperty).forEach((key) => {
+          if (!(key in $el)) {
+            throw new Error(`Cannot find property ${key}`)
+          }
+          if (typeof fnOrProperty[key] !== 'function') {
+            throw new Error(`Expected ${key} to be a function`)
+          }
+          result[key] = fnOrProperty[key]($el[key])
+        })
+        return result
+      }
     } else {
       // use a spread so that the result is an array
       // and used the Array constructor in the current iframe

@@ -3,6 +3,13 @@
 
 import '../../src/commands'
 
+// print the full assertions for easier debugging
+chai.config.truncateThreshold = 0
+
+/**
+ * @param {JQuery<HTMLElement>} $el
+ * @returns {string[]}
+ */
 const getTexts = ($el) => {
   return Cypress._.map($el, 'innerText')
 }
@@ -55,21 +62,45 @@ it('verifies that LI elements include 3 strings', () => {
     .should('include.members', ['first', 'fifth', 'third'])
 })
 
-it('maps properties of an object', () => {
-  cy.wrap({
-    age: '42',
-    lucky: true,
-  })
-    // cast the property "age" to a number
-    // by running it through the "Number" function
-    .map({
-      age: Number,
-      lucky: Cypress._.identity,
-    })
-    .should('deep.equal', {
-      age: 42,
+describe('casting', () => {
+  it('maps properties of an object', () => {
+    cy.wrap({
+      age: '42',
       lucky: true,
     })
+      // cast the property "age" to a number
+      // by running it through the "Number" function
+      .map({
+        age: Number,
+        lucky: Cypress._.identity,
+      })
+      .should('deep.equal', {
+        age: 42,
+        lucky: true,
+      })
+  })
+
+  it('maps properties of each object in an array', () => {
+    const people = [
+      { name: 'Joe', age: '21' },
+      { name: 'Anna', age: '22' },
+    ]
+    cy.wrap(people)
+      // cast the property "age" to a number
+      // by running it through the "Number" function
+      // TODO: check the yielded subject type
+      // to be the array of objects with merged and casted properties
+      .map(
+        {
+          age: Number,
+        },
+        { timeout: 0 },
+      )
+      .should('deep.equal', [
+        { name: 'Joe', age: 21 },
+        { name: 'Anna', age: 22 },
+      ])
+  })
 })
 
 describe('Picking properties', () => {
@@ -89,6 +120,9 @@ describe('Picking properties', () => {
   })
 
   it('retries to find the picked properties', () => {
+    /**
+     * @type {{name?: string, age?: number, occupation?: string}}
+     */
     const person = {}
     setTimeout(() => {
       person.name = 'Joe'
@@ -104,6 +138,9 @@ describe('Picking properties', () => {
   })
 
   it('picks multiple nested properties', () => {
+    /**
+     * @type {{name?: {first: string, last: string}, age?: number, occupation?: string}}
+     */
     const person = {}
     setTimeout(() => {
       person.name = { first: 'Joe', last: 'Smith' }

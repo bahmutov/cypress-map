@@ -121,7 +121,6 @@ registerQuery('map', function (fnOrProperty, options = {}) {
       })
       return result
     } else if (Cypress._.isPlainObject(fnOrProperty)) {
-      console.log('mapping with functions', fnOrProperty)
       if (Array.isArray($el)) {
         // map over the array elements
         const result = $el.map((item) => {

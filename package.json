@@ -31,7 +31,7 @@
     "prettier": "^3.6.2",
     "semantic-release": "^25.0.2",
     "stop-only": "^3.1.2",
-    "typescript": "^5.0.0"
+    "typescript": "^6.0.0"
   },
   "peerDependencies": {
     "cypress": ">=12"

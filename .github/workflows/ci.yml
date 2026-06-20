@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install everything 📦
         # https://github.com/cypress-io/github-action
@@ -47,7 +47,7 @@ jobs:
         run: npm --version
 
       - name: Checkout 🛎
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install everything 📦
         # https://github.com/cypress-io/github-action

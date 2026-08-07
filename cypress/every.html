@@ -1,0 +1,20 @@
+<body>
+  <ul id="fruits">
+    <li>Apples</li>
+    <li style="display: none">Plums</li>
+    <li style="display: none">Oranges</li>
+  </ul>
+  <script>
+    // make each list item visible one by one
+    setTimeout(() => {
+      document
+        .querySelector('#fruits li:nth-child(2)')
+        .setAttribute('style', '')
+    }, 50)
+    setTimeout(() => {
+      document
+        .querySelector('#fruits li:nth-child(3)')
+        .setAttribute('style', '')
+    }, 200)
+  </script>
+</body>

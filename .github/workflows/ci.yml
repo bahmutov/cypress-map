@@ -1,11 +1,6 @@
 name: ci
 on: push
 
-# trusted publisher
-permissions:
-  id-token: write # Required for OIDC
-  contents: write
-
 jobs:
   lint:
     runs-on: ubuntu-24.04
@@ -38,6 +33,18 @@ jobs:
     needs: [lint, test]
     runs-on: ubuntu-24.04
     if: github.ref == 'refs/heads/main'
+
+    # trusted publisher
+    permissions:
+      # allow the release step to comment on
+      # issues, pull requests, and write to the repo
+      contents: write
+      issues: write
+      pull-requests: write
+      # Required for OIDC to let NPM registry know
+      # that this workflow is trusted
+      id-token: write
+
     steps:
       - uses: actions/setup-node@v7
         with:

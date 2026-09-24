@@ -50,11 +50,7 @@ declare namespace Cypress {
      */
     map(
       mapper:
-        | string
-        | string[]
-        | number
-        | Function
-        | PropertyCallbacks,
+        string | string[] | number | Function | PropertyCallbacks,
       options?: CyOptions,
     ): Chainable<any>
 
@@ -557,5 +553,14 @@ declare namespace Cypress {
      * @see https://github.com/bahmutov/cypress-map
      */
     (chainer: 'unique'): Chainable<Subject>
+
+    /**
+     * Checks if the current subject is a non-empty string
+     * that can be parsed in JSON object or array.
+     * @example cy.wrap('{"key": "value"}').should('be.jsonish')
+     * @example cy.wrap('not json').should('not.be.jsonish')
+     * @see https://github.com/bahmutov/cypress-map
+     */
+    (chainer: 'jsonish'): Chainable<Subject>
   }
 }

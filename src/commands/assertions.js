@@ -247,4 +247,59 @@ chai.use((_chai) => {
     )
   }
   _chai.Assertion.addMethod('look', lookAssertion)
+
+  //
+  // "be.jsonish" assertion
+  //
+  function jsonishAssertion() {
+    const value = this._obj
+    if (!Cypress._.isString(value)) {
+      throw new Error('Expected the value to be a JSON-like string')
+    }
+
+    if (value.length === 0) {
+      throw new Error('Expected the string to be non-empty')
+    }
+
+    const x = value.trim()
+
+    // reject strings that do not have objects or arrays
+    if (!x.startsWith('{') && !x.startsWith('[')) {
+      // why is the log message shown by Cypress mangling
+      // the text?
+      // shows the following for
+      //  cy.wrap('hello').should('not.be.jsonish')
+      //
+      //  wrap hello
+      //.   assert with "{" or "["start
+      //
+      // ???
+      this.assert(
+        false,
+        'starts with "{" or "["',
+        'not start with "{" or "["',
+      )
+      return
+    }
+
+    const maxLength = 40
+    const trimmedForLength =
+      x.length > maxLength ? `${x.slice(0, maxLength)}...` : x
+
+    const quotes = trimmedForLength.includes('"') ? '' : '"'
+
+    const message = `expected ${quotes}${trimmedForLength}${quotes} to be a JSON string`
+    const invertedMessage = `expected ${quotes}${trimmedForLength}${quotes} to not be a JSON string`
+
+    // confirm the string is valid JSON
+    let passed = true
+    try {
+      JSON.parse(x)
+    } catch (e) {
+      passed = false
+    }
+
+    this.assert(passed, message, invertedMessage)
+  }
+  _chai.Assertion.addMethod('jsonish', jsonishAssertion)
 })

@@ -850,6 +850,20 @@ cy.get('#field').should('look', '<div class="error">Missing...</div>')
 
 See the spec [look.cy.js](./cypress/e2e/assertions/look.cy.js) for more examples.
 
+### jsonish
+
+Often we send strings that are serialized JSON objects / arrays. To confirm you can use `be.jsonish` assertion.
+
+```js
+cy.wrap('{"key": "value"}').should('be.jsonish')
+cy.wrap('[1]').should('be.jsonish')
+// negative examples
+cy.wrap('{"foo').should('not.be.jsonish')
+cy.wrap('false').should('not.be.jsonish')
+```
+
+**Important:** this assertion rejects primitives, like numbers, `null`, `undefined`, boolean values. JSONish should only allow serialized objects and arrays.
+
 ## cy.invoke vs cy.map vs cy.mapInvoke
 
 Here are a few examples to clarify the different between the `cy.invoke`, `cy.map`, and `cy.mapInvoke` query commands, see [diff.cy.js](./cypress/e2e/diff.cy.js)
@@ -989,6 +1003,12 @@ If you are using TypeScript, include this module in your types list
 ## The build process
 
 The source code is in the [src/commands](./src/commands/) folder. The build command produces ES5 code that goes into the `commands` folder (should not be checked into the source code control). The `package.json` in its NPM distribution includes `commands` plus the types from `src/commands/index.d.ts` file.
+
+To develop the plugin locally:
+
+- start the watch mode in the first terminal with `npm run watch`
+- open Cypress in another terminal using `npx cypress open`
+- execute any Cypress E2E spec
 
 ## See also
 

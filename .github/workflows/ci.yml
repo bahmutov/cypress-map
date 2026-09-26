@@ -10,7 +10,7 @@ jobs:
 
       - name: Install everything 📦
         # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v7.4.3
+        uses: cypress-io/github-action@v7.4.4
         with:
           runTests: false
 
@@ -58,7 +58,7 @@ jobs:
 
       - name: Install everything 📦
         # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v7.4.3
+        uses: cypress-io/github-action@v7.4.4
         with:
           runTests: false
 

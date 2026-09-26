@@ -3,7 +3,7 @@ on: push
 
 jobs:
   lint:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v7
@@ -31,7 +31,7 @@ jobs:
 
   release:
     needs: [lint, test]
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     if: github.ref == 'refs/heads/main'
 
     # trusted publisher
